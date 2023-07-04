@@ -3,13 +3,16 @@ const ctx = canvas.getContext('2d');
 const size = 30;
 ctx.fillStyle = 'blue';
 
-let x = 0;
+let x = 0,t=1;
 const id = setInterval(() => {
   ctx.clearRect(0, 0, canvas.width, canvas.height); 
   ctx.fillRect(x, 50, size, size);
-  x += size;
+  x += t*size;
 
   if (x >= canvas.width) {
-    clearInterval(id);
+    t=-1;
   }
-}, 200);
+  else if(x<=0){
+    t=1;
+  }
+}, 100);
