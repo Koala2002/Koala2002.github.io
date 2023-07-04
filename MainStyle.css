@@ -19,6 +19,14 @@ a:hover {
     text-decoration: underline;
 }
 
+.MainPageList{
+    font-weight:bold;
+    background-color:#00000030;
+    text-align:center;
+    word-spacing:5em;
+    padding:10px 100px;
+}
+
 .codeStyle{
     background-color: rgb(50,50,50);
     color:rgb(230,230,230);
