@@ -1,0 +1,140 @@
+.MyInformation{
+    width:25%;
+    height:90%;
+
+    position: absolute;
+    top:5%;
+    left: 2.5%;
+
+    background-color: rgba(60, 60, 60);
+    border-radius: 15px;
+
+    box-shadow: 0 0 10px 10px inset rgb(30,30,30,0.5);
+}
+
+.Introduction{
+    height:55%;
+    width:85%;
+    
+    position: absolute;
+
+    left: 50%;
+    bottom: 5%;
+    transform: translate(-50%,0);
+
+    font-size: 12.5pt;
+
+    background-color: rgb(60, 60, 60);
+    border-radius: 15px;
+
+    box-shadow: 0 0 10px 7.5px  rgb(30,30,30,0.5);
+
+    text-align: center;
+}
+
+.ContestTableTitle{
+    position: absolute;
+    top:5%;
+    right:2.5%;
+
+    height: 5%;
+    width: 67.5%;
+
+    font-size: 12pt;
+    font-style: bold;
+ 
+    background-color: rgb(140, 50, 50);
+    border-radius: 15px;
+
+    box-shadow: 0 0 5px 5px  rgba(30,30,30,0.5);
+
+    padding-left: calc(1.5% + 10px);
+    padding-right: calc(1.5% + 10px);
+}
+
+.ContestTable{
+    position: absolute;
+    top:15%;
+    right: 3.25%;
+
+    height:75%;
+    width: calc(64.5% - 10px);
+
+    padding-right: 0.75%;
+    overflow: auto;
+
+   
+}
+
+.ContestTableShadow{
+    position: absolute;
+    top:7.5%;
+    right:2.5%;
+
+    height:87.5%;
+    width: 67.5%;
+    border-radius: 0 0 15px  15px ;
+
+    box-shadow: 0 0 10px 10px inset rgba(30,30,30,0.5);
+    background-color: rgb(60,60,60);
+}
+
+.ContestTable::-webkit-scrollbar {
+    border: 10px solid rgb(30,30,30);
+    border-radius: 5px;
+
+    width: 10px;
+}
+
+
+.ContestTable::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: rgba(250,250,235,0.75);
+}
+
+.ContestTable::-webkit-scrollbar-thumb:hover {
+    background: rgb(240,255,255);
+}
+
+.CT{
+    height: 10%;
+    width: 100%;
+
+    background-color: rgb(60, 60, 60);
+    border: 1px solid whitesmoke ;
+    border-radius: 5px;
+
+    font-size: 10pt;
+
+    transition: background-color 0.75s;
+
+    box-shadow: 0 0 5px 5px inset rgb(30,30,30,0.5);
+    
+    margin-bottom: 1.75%;
+}
+
+#CTTOP{
+    margin-top: 0;
+    margin-bottom: 1.75%;
+}
+
+#CTDOWN{
+    margin-top: 0;
+    margin-bottom:0;
+}
+
+.CT:hover{
+    background-color: rgb(50, 50, 50);
+}
+
+td{
+    width: 100%;
+    text-align: center;
+}
+
+.CTName{width: 40%;}
+.CTDate{width: 15%;}
+.CTpass{width: 15%;}
+.CTRank{width: 15%;}
+.CTType{width: 15%;}
+
