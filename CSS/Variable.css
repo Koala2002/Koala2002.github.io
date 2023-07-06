@@ -1,0 +1,12 @@
+:root{
+    --background-light:rgb(60,60,60);
+    --background-dark:rgb(50,50,50);
+
+    --MainObjectShadow:0 0 12.5px 10px rgba(30,30,30,0.9), 0  0 12.5px 2px inset rgb(75,75,75);
+
+    --BigTextSize:12.5pt;
+    --TextSize:10pt;
+
+    --MenuTextSize:15pt;
+    --MenuTitleSize:17.5pt;
+}

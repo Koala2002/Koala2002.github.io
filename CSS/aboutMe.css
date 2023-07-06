@@ -1,3 +1,6 @@
+@import url(Variable.css);
+
+
 .MyInformation{
     width:25%;
     height:90%;
@@ -22,7 +25,7 @@
     bottom: 5%;
     transform: translate(-50%,0);
 
-    font-size: 12.5pt;
+    font-size: var(--BigTextSize);
 
     background-color: rgb(60, 60, 60);
     border-radius: 15px;
@@ -47,16 +50,18 @@
     height: 5%;
     width: 67.5%;
 
-    font-size: 12pt;
+    font-size: var(--BigTextSize);
     font-style: bold;
  
     background-color: rgb(140, 50, 50);
-    border-radius: 15px;
+    border-radius: 1000px;
 
     box-shadow: 0 0 15px 10px  rgb(30,30,30,0.5);
 
     padding-left: calc(1.5% + 10px);
     padding-right: calc(1.5% + 10px);
+
+    
 }
 
 .ContestTable{
@@ -68,9 +73,8 @@
     width: calc(64.5% - 10px);
 
     padding-right: 0.75%;
-    overflow: auto;
+    overflow-y: auto;
 
-   
 }
 
 .ContestTableShadow{
@@ -107,27 +111,17 @@
     height: 10%;
     width: 100%;
 
-    background-color: rgb(60, 60, 60);
+    background-color: var(--background-light);
     border: 1px solid whitesmoke ;
     border-radius: 5px;
 
-    font-size: 10pt;
+    font-size: var(--TextSize);
 
     transition: background-color 0.75s;
 
-    box-shadow: 0 0 5px 5px inset rgb(30,30,30,0.5);
-    
-    margin-bottom: 1.75%;
-}
+    box-shadow: 0 0 10px 10px inset rgb(30,30,30,0.5);
 
-#CTTOP{
-    margin-top: 0;
-    margin-bottom: 1.75%;
-}
-
-#CTDOWN{
-    margin-top: 0;
-    margin-bottom:0;
+    table-layout: fixed ;
 }
 
 .CT:hover{

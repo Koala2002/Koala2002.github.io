@@ -1,6 +1,8 @@
+@import url(Variable.css);
+
 body {
-    background-color: rgb(245, 250, 240);
-    color: rgb(250, 250, 245);
+    background-color: rgb(245, 245, 240);
+    color: rgb(250, 250, 240);
 }
 a:link {
     color: rgb(250, 250, 245);
@@ -16,7 +18,7 @@ a:visited {
 a:hover {text-decoration: underline;}
 
 .MainMenuLink{
-    font-size: 15pt;
+    font-size: var(--MenuTextSize);
     padding: 10px;
     transition: background-color 0.5s;
 }
@@ -24,27 +26,15 @@ a:hover {text-decoration: underline;}
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-canvas {
-    background-color: cadetblue;
-    width: 50%;
-    height: 50%;
-    position: absolute;
-
-    left: 25%;
-    top: 25%;
-
-    border-radius: 10px;
-    border: 5px solid rgb(255,255,255);
-}
-
-.MainTitle{
-    
+.MainTitle{ 
     border-radius: 0 15px  15px 0;
 
     height: 10%;
     width: 17.5%;
 
     text-align: center;
+    font-size: var(--MenuTitleSize);
+    font-style: bold;
 
     position: absolute;
     top:5%;
@@ -54,25 +44,24 @@ canvas {
     flex-direction: column;
     justify-content: center;
     
-    background-color: rgb(50,50,50);
-    box-shadow: 0 0 12.5px 10px rgba(30,30,30,0.9), 0  0 12.5px 2px inset rgb(75,75,75) ;
+    background-color: var(--background-dark);
+    box-shadow: var(--MainObjectShadow);
 }
 
 .MainMenu{
     height: 70%;
     width: 17.5%;
     border-radius: 0 15px 15px 0;
-    font-weight:bold;
 
-    font-size: 20pt;
-
+    font-size: 0pt;
+    font-style: bold;
     
     position: absolute;
     left:0;
     bottom:10%;
 
-    background-color: rgb(50,50,50);
-    box-shadow: 0 0 12.5px 10px rgba(30,30,30,0.9), 0  0 12.5px 2px inset rgb(75,75,75) ;
+    background-color: var(--background-dark);
+    box-shadow: var(--MainObjectShadow);
 
     text-align:center;
 
@@ -88,8 +77,8 @@ canvas {
 
     font-size: 15pt;
 
-    background-color: rgb(50,50,50);
-    box-shadow: 0 0 12.5px 10px rgba(30,30,30,0.9), 0  0 12.5px 2px inset rgb(75,75,75) ;
+    background-color: var(--background-dark);
+    box-shadow: var(--MainObjectShadow);
                
     border-radius: 15px 0  0 15px;
     position: absolute;
