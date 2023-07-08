@@ -102,8 +102,6 @@
     justify-content: center;
 
     pointer-events: none;
-
-    transition: color 0.25s,font-size 0.25s,height 0.75s;
 }
 
 .skill:hover{
@@ -111,22 +109,34 @@
     background-color: rgb(140, 17, 66);
 }
 
-.skillType:hover{
-    .skillList{
-        transition:opacity 0.75s,height 0.75s;
-        height: 100%;
-        opacity: 1;
+.skillType .skill{
+    transition: color 0.25s ,font-size 0.25s,height 0.75s;
 
-        pointer-events: visible;
-    }
-    .skill{
-        transition: color 0.5s 0.5s,font-size 0.5s 0.5s,height 0.75s;
-        height: 75%;
-        font-size: var(--BigTextSize);
-        color: rgba(255,255,255,1);   
-        pointer-events: visible;
-    }
+    height: 0%;
+    font-size: 0;
+    color: rgba(255,255,255,0);
+    pointer-events: none;
 }
+
+.skillType:hover .skill{
+    transition: color 0.5s 0.5s,font-size 0.5s 0.5s,height 0.75s;
+        
+    height: 75%;
+    font-size: var(--BigTextSize);
+    color: rgba(255,255,255,1);   
+    pointer-events: visible;
+}
+
+.skillType:hover .skillList{ 
+    transition:opacity 0.75s,height 0.75s;
+    height: 100%;
+    opacity: 1;
+
+    pointer-events: visible;
+}
+
+
+
 
 .skillContent{
     position: absolute;
