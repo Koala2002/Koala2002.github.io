@@ -87,8 +87,6 @@
 
 .skill{
     background-color: rgb(70, 90, 85);
-
-    
     
     display: flex;
     flex-wrap: wrap;
@@ -98,9 +96,7 @@
     pointer-events: none;
 }
 
-.skill:hover{
-    background-color: rgb(140, 17, 66);
-}
+.skill:hover{background-color: rgb(140, 17, 66);}
 
 .skillType .skill{
     transition: color 0.25s ,font-size 0.25s,height 0.75s;
