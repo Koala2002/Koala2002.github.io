@@ -73,59 +73,41 @@
     z-index: 5;
 }
 
-.skillList{
-    opacity:0; 
-    height: 0%;
-    width: 80%;
-    margin-left: 10%;
-
-    position: relative;
-    top: 1px;
-    pointer-events: none;
-    transition:opacity 0.75s,height 0.75s;
-}
-
 .skill{
-    background-color: rgb(70, 90, 85);
+    background-color: rgba(70, 90, 85,0);
     
+    width: 80%;
+
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 
-    pointer-events: none;
+    position: relative;
+    top: 1px;
+    left:10%;
+    pointer-events: auto;
 }
 
 .skill:hover{background-color: rgb(140, 17, 66);}
 
 .skillType .skill{
-    transition: color 0.25s ,font-size 0.25s,height 0.75s;
+    transition: color 0.25s ,font-size 0.25s,height 0.75s,background-color 0.75s;
 
     height: 0%;
     font-size: 0;
     color: rgba(255,255,255,0);
-    pointer-events: none;
+    background-color: rgba(70, 90, 85,0);
 }
 
 .skillType:hover .skill{
-    transition: color 0.5s 0.5s,font-size 0.5s 0.5s,height 0.75s,background-color 0.75s;
+    transition: color 0.25s 0.25s,font-size 0.25s 0.25s,height 0.75s,background-color 0.75s;
         
+    background-color: rgba(70, 90, 85,1);
     height: 75%;
     font-size: var(--BigTextSize);
     color: rgba(255,255,255,1);   
-    pointer-events: visible;
 }
-
-.skillType:hover .skillList{ 
-    transition:opacity 0.75s,height 0.75s;
-    height: 100%;
-    opacity: 1;
-
-    pointer-events: visible;
-}
-
-
-
 
 .skillContent{
     position: absolute;

@@ -4,21 +4,42 @@ for(let a=0;a<list.length;a++) {
     var obj=document.getElementById(list[a]);
     obj.addEventListener('mouseover',_Move);
     obj.addEventListener('mouseout',moveBack);
-
+    
     if(a!=list.length-1)obj.style.transform = 'translateY('+50*a+'%)';
     else obj.style.transform = 'translateY('+50*a*7.5+'%)';
 }
 
+
+var endJudgement;
+var menu=document.getElementsByClassName("skillMenu");
+
+menu[0].addEventListener("scroll",()=>{
+    clearTimeout(endJudgement);
+    endJudgement=setTimeout(()=>{
+        for(let a=0;a<list.length;a++) {
+            var obj=document.getElementById(list[a]);
+            obj.style.pointerEvents = 'visible';
+        }
+    },100);
+
+    var subElements=menu[0].childNodes;
+    for(let a=0;a<list.length;a++) {
+        var obj=document.getElementById(list[a]);
+        obj.style.pointerEvents = 'none';
+    }
+    console.log("scroll");
+});
+
+
 function _Move(){  
-    console.log(this);
     let id=-1,size=0;
     
     for(let a=0;a<list.length;a++) {
         if(list[a]==this.id){
-            var target=Array.from(this.childNodes).find(node=>node.id=="skillList");
+            var target=this.getElementsByClassName("skill");
             if(target==null)continue;
-            
-            size=parseInt((target.childNodes).length/2);
+
+            size=parseInt(target.length);
             
             id=a+1;
             break;
