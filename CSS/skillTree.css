@@ -91,7 +91,7 @@
     font-size: 0;
     color: rgba(255,255,255,0);
 
-    height: 0%;
+    height: 75%;
     width: 100%;
     text-align: center;
     
@@ -107,7 +107,7 @@
 }
 
 .skill:hover{
-    background-color: rgba(75, 130, 115, 0.75);
+    
 }
 
 .skillType:hover{
@@ -119,11 +119,10 @@
         pointer-events: visible;
     }
     .skill{
-        transition: color 0.5s 0.5s,font-size 0.5s 0.5s,height 0.75s,background-color 0.75s;
+        transition: color 0.5s 0.5s,font-size 0.5s 0.5s,height 0.75s;
         height: 75%;
         font-size: var(--BigTextSize);
         color: rgba(255,255,255,1);   
-        background-color: rgb(70, 90, 85);
         pointer-events: visible;
     }
 }
