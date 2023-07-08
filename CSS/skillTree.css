@@ -91,7 +91,7 @@
     font-size: 0;
     color: rgba(255,255,255,0);
 
-    height: 75%;
+    height: 0%;
     width: 100%;
     text-align: center;
     
@@ -107,7 +107,8 @@
 }
 
 .skill:hover{
-    
+    transition: background-color 0.75s;
+    background-color: rgb(140, 17, 66);
 }
 
 .skillType:hover{
