@@ -3,29 +3,115 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="CSS/MainStyle.css">
+    <link rel="stylesheet" href="CSS/MainStyle.css"/>
+    <link rel="stylesheet" href="CSS/skillTree.css"/>
     <meta charset="utf-8"/>
     <title>Koala Personal Website</title>
 </head>
 
 <body>
-    <div class="MainTitle">
-        <p>無尾熊の競程筆記</p>
-
-    </div>
-    <div class="MainMenu">   
-        <a class="MainMenuLink" href="index.html">主頁面</a>
-        <a class="MainMenuLink" href="skillTree.html">技能樹</a>
-        <a class="MainMenuLink" href="problemList.html">題庫區</a>
-    </div>
-
-    <div class="MainMenuList">
-        
-    </div>
+    <script src="JS/header.js"></script>
     
     <div class="Content">
-        
-        
+        <div class="skillMenu">
+            
+            <div id="Sort" class="skillType">
+                <div class="skillTitle">Sorting Algorithms</div>
+
+                <div id="skillList" class="skillList">
+                    <a class="skill" href="#">Bubble Sort</a>
+                    <a class="skill" href="#">Selection Sort</a>
+                    <a class="skill" href="#">Insertion sort</a>
+                    <a class="skill" href="#">Merge Sort</a>
+                    <a class="skill" href="#">Quick Sort</a>
+                    <a class="skill" href="#">Heap Sort</a>
+                    <a class="skill" href="#">Radix Sort</a> 
+                </div>
+            </div>
+            <div id="Search" class="skillType">
+                <div class="skillTitle">Searching Algorithms</div>
+                <div id="skillList" class="skillList">
+                    <a class="skill" href="#">Binary Search</a>
+                </div>
+            </div>
+            <div id="Str" class="skillType">
+                <div class="skillTitle">String Algorithms</div>
+                <div id="skillList" class="skillList">
+                    <a class="skill" href="#">Trie</a>
+                    <a class="skill" href="#">Z Algorithm</a>
+                    <a class="skill" href="#">KMP Algorithm</a>
+                    <a class="skill" href="#">Manacher’s Algorithm</a>
+                </div>
+            </div>
+            <div id="Math" class="skillType">
+                <div class="skillTitle">Mathematics</div>
+                <div id="skillList" class="skillList">
+                    <a class="skill" href="#">aaaa</a>
+                    <a class="skill" href="#">bbbb</a>
+                    <a class="skill" href="#">cccc</a>
+                    <a class="skill" href="#">dddd</a>
+                    <a class="skill" href="#">dddd</a>
+                    <a class="skill" href="#">bbbb</a>
+                    <a class="skill" href="#">cccc</a>
+                    <a class="skill" href="#">dddd</a>
+                </div>
+            </div>
+            <div id="DP" class="skillType">
+                <div class="skillTitle">Dynamic Programming</div>
+                <div id="skillList" class="skillList">
+                    <a class="skill" href="#">aaaa</a>
+                    <a class="skill" href="#">bbbb</a>
+                    <a class="skill" href="#">cccc</a>
+                    <a class="skill" href="#">dddd</a>
+                    <a class="skill" href="#">dddd</a>
+                    <a class="skill" href="#">bbbb</a>
+                    <a class="skill" href="#">cccc</a>
+                    <a class="skill" href="#">dddd</a>
+                </div>
+            </div>
+            <div id="OffA" class="skillType">
+                <div class="skillTitle">Offline Algorithm</div>
+                <div id="skillList" class="skillList">
+                    <a class="skill" href="#">aaaa</a>
+                    <a class="skill" href="#">bbbb</a>
+                    <a class="skill" href="#">cccc</a>
+                    <a class="skill" href="#">dddd</a>
+                    <a class="skill" href="#">dddd</a>
+                    <a class="skill" href="#">bbbb</a>
+                    <a class="skill" href="#">cccc</a>
+                    <a class="skill" href="#">dddd</a>
+                </div>
+            </div>
+            <div id="Graph"class="skillType">
+                <div class="skillTitle">Graph Theory And Tree</div>
+                <div id="skillList" class="skillList">
+                    <a class="skill" href="#">aaaa</a>
+                    <a class="skill" href="#">bbbb</a>
+                    <a class="skill" href="#">cccc</a>
+                    <a class="skill" href="#">dddd</a>
+                    <a class="skill" href="#">dddd</a>
+                    <a class="skill" href="#">bbbb</a>
+                    <a class="skill" href="#">cccc</a>
+                    <a class="skill" href="#">dddd</a>
+                </div>
+            </div>
+            <div id="DS" class="skillType">
+                <div class="skillTitle">Data Structure</div>
+                <div id="skillList" class="skillList">
+                    <a class="skill" href="#">aaaa</a>
+                    <a class="skill" href="#">bbbb</a>
+                    <a class="skill" href="#">cccc</a>
+                    <a class="skill" href="#">dddd</a>
+                    <a class="skill" href="#">dddd</a>
+                    <a class="skill" href="#">bbbb</a>
+                    <a class="skill" href="#">cccc</a>
+                    <a class="skill" href="#">dddd</a>
+                </div>
+            </div>
+            <div id="Empty" class="skillTypeEmpty"></div>
+            <script src="JS/skillTreeMenu.js"></script>
+        </div>
+        <div class="skillContent"></div>
     </div>
   
 </body>

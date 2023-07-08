@@ -1,0 +1,148 @@
+.skillMenu{
+    width:25%;
+    height:90%;
+
+    text-align: center;
+
+    position: absolute;
+    top:5%;
+    left: 2.5%;
+    bottom: 5%;
+
+    background-color: var(--background-light);
+    border-radius: 15px;
+
+    box-shadow: 0 0 15px 5px inset rgb(250, 250, 245,0.5); 
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.skillMenu::-webkit-scrollbar{
+    width: 0;
+}
+
+.skillTitle{
+    font-size: var(--BigTextSize);
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0 0 10px 5px  rgb(30,30,30);
+    border-radius:15px; 
+
+    position: relative;
+    z-index: 5;
+}
+
+.skillType{
+    height:7.5%;
+    width:80%;
+   
+    background-color:var(--background-dark);   
+
+    margin-left: 50%;
+    translate: -50% 91.6666667%;
+    
+    border-radius:15px; 
+
+    transition: all 0.75s;
+
+    position: relative;
+    z-index: 5;
+}
+
+.skillTypeEmpty{
+    height:1%;
+    width:80%;
+   
+    background-color:transparent;   
+
+    margin-left: 50%;
+    translate: -50% 687.5%;
+    
+    border-radius:15px; 
+
+    transition: all 0.75s;
+
+    position: relative;
+    z-index: 5;
+}
+
+.skillList{
+    opacity:0; 
+    height: 0%;
+    width: 80%;
+    margin-left: 10%;
+
+    position: relative;
+    top: 1px;
+    pointer-events: none;
+    transition:opacity 0.75s,height 0.75s;
+}
+
+.skill{
+    background-color: rgb(70, 90, 85);
+    
+    font-size: 0;
+    color: rgba(255,255,255,0);
+
+    height: 0%;
+    width: 100%;
+    text-align: center;
+    
+    
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    pointer-events: none;
+
+    transition: color 0.25s,font-size 0.25s,height 0.75s;
+}
+
+.skill:hover{
+    background-color: rgba(75, 130, 115, 0.75);
+}
+
+.skillType:hover{
+    .skillList{
+        transition:opacity 0.75s,height 0.75s;
+        height: 100%;
+        opacity: 1;
+
+        pointer-events: visible;
+    }
+    .skill{
+        transition: color 0.5s 0.5s,font-size 0.5s 0.5s,height 0.75s,background-color 0.75s;
+        height: 75%;
+        font-size: var(--BigTextSize);
+        color: rgba(255,255,255,1);   
+
+        pointer-events: visible;
+    }
+}
+
+.skillContent{
+    position: absolute;
+    top:5%;
+    right:2.5%;
+
+    height:90%;
+    width: 67.5%;
+    border-radius: 15px ;
+
+    box-shadow: 0 0 15px 5px inset rgb(250, 250, 245,0.5);
+    background-color: var(--background-light);
+}
+
+
+
+
+
+
