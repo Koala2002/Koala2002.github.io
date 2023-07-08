@@ -2,7 +2,7 @@
 
 body {
     background-color: rgb(245, 245, 240);
-    color: rgb(250, 250, 240);
+    color: var(--fontColor);
 }
 
 .MainMenuLink{
