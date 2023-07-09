@@ -7,9 +7,11 @@
 
     --MainObjectShadow:0 0 12.5px 10px rgba(30,30,30,0.9), 0  0 12.5px 2px inset rgb(75,75,75);
 
-    --BigTextSize:12.5pt;
-    --TextSize:10pt;
+    --BigTextSize:14pt;
+    --TextSize:12.5pt;
 
-    --MenuTextSize:15pt;
-    --MenuTitleSize:17.5pt;
+    --MenuTextSize:18pt;
+    --MenuTitleSize:20pt;
+
+    --codeTextColor:antiquewhite;
 }

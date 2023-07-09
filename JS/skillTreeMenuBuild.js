@@ -2,7 +2,7 @@ menu=
 '<div ud="skillMenu" class="skillMenu">\
     <div id="Sort" class="skillType">\
         <div class="skillTitle">Sorting Algorithms</div>\
-        <a class="skill" href="SkillTree/BubbleSort.html">Bubble</a>\
+        <a class="skill" href="../SkillTree/BubbleSort.html">Bubble</a>\
         <a class="skill" href="#">Selection</a>\
         <a class="skill" href="#">Insertion</a>\
         <a class="skill" href="#">Merge</a>\
@@ -91,7 +91,7 @@ menu=
             \
     </div>\
     <div id="Empty" class="skillTypeEmpty"></div>\
-    <script src="JS/skillTreeMenu.js"></script>\
+    <script src="../JS/skillTreeMenu.js"></script>\
 </div>';
 
 document.write(menu);

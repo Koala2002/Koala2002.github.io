@@ -131,4 +131,10 @@ a.skill{
 
     box-shadow: 0 0 15px 5px inset rgb(250, 250, 245,0.5);
     background-color: var(--background-light);
+
+    overflow-y: auto;
+}
+
+.skillContent::-webkit-scrollbar{
+    width: 0;
 }
