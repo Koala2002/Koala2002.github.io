@@ -12,7 +12,8 @@
 
     display: flex;
     flex-wrap: flex;
-    overflow-x: auto;
+
+    overflow-x: scroll;
 
     border: 2px solid darkcyan;
     border-radius: 5px;
