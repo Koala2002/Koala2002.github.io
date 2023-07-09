@@ -13,6 +13,9 @@ let StrChars=[
 let Directives=[
     '#include','#define','#ifdef','#ifndef','#if','#elif','else','#undef','#endif'
 ];
+let Comments=[
+    '/*','//'
+];
 let Numbers=[
     '0','1','2','3','4','5','6','7','8','9'
 ];
@@ -20,7 +23,6 @@ let Numbers=[
 var code=document.getElementById('codeBlock');
 var innerHTML=code.innerHTML;
 
-console.log(innerHTML+"\n\n\n\n");
 
 var typeS="<span CLASS='DataTypeHighlight'>",typeE="</span><!--DataType-->";
 var keyS="<span CLASS='KeyWordHighlight'>",keyE="</span><!--KeyWord-->";
@@ -156,20 +158,21 @@ function lineIndexBuild(){
     var cnt=0,id=-1;
     while((id=innerHTML.indexOf("\n",id+1))>=0)cnt++;
     
-    console.log(IDBlock.parentNode.scrollHeight-100);
-   IDBlock.style.height=(3.725*cnt)+"%";
+    IDBlock.style.height=code.scrollHeight+"px";
+
 
     var IDBlockHtml=IDBlock.innerHTML;
     
-    for(let a=1;a<=cnt;a++){
+    for(let a=1;a<=cnt+1;a++){
         IDBlockHtml+=a;
-        if(a!=cnt)IDBlockHtml+="\n";   
+        if(a!=cnt+1)IDBlockHtml+="\n";   
     }
 
     IDBlock.innerHTML=IDBlockHtml;
 }
 
 lineIndexBuild();
+
 console.log(innerHTML);
 
 code.innerHTML = innerHTML;

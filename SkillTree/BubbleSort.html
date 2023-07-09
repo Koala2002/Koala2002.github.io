@@ -16,7 +16,9 @@
     
     <div class="Content">
         <script src="../JS/skillTreeMenuBuild.js"></script>
-        <div class="skillContent">
+        <div class="skillContent">      
+            <div class="paddingBlock"></div>
+            <div class="textRegion"></div>
             <div class="codeBlock">
                 <pre id="IDBlock" class="IndexBlock"></pre>
                 <pre id="codeBlock">
@@ -25,35 +27,14 @@
 
 using namespace std;
 
-vector&ltint&gt G[20];
-vector&ltvector&ltint&gt&gt dp(20,vector&ltint&gt(1&lt&lt20,0));
-bool vis[20][1&lt&lt20];
 
-struct E{int v,s;};
 
-void ham(int n){
-    dp[0][1]=1;
 
-    queue&ltE&gt q;
-    q.push({0,1});
 
-    while(!q.empty()){
-        E cur=q.front();
-        q.pop();
 
-        if(vis[cur.v][cur.s]||cur.v==n-1)continue;
-        vis[cur.v][cur.s]=true;
+test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test 
 
-        for(auto &e:G[cur.v]){
-            int idx=1&lt&lte,nxt=cur.s|idx;
-            if((cur.s&idx)==idx)continue;
-            dp[e][nxt]=(dp[e][nxt]+dp[cur.v][cur.s])%mod;
-            q.push({e,nxt});
-        }
-    } 
 
-    cout&lt&ltdp[n-1][(1&lt&ltn)-1]&lt&ltendl;
-}
 
 int main(){
     int n,m,v,e;
@@ -65,14 +46,13 @@ int main(){
     }
 
     ham(n);
-}
-                </pre>
+}</pre>
             </div>
+            <div class="paddingBlock"></div>
             
-
-            <script src="../JS/CPP_SyntaxHighlight.js"> </script>
-            
+            <script src="../JS/CPP_SyntaxHighlight.js"> </script>         
         </div>
+        
     </div>
   
 </body>

@@ -2,38 +2,46 @@
 
 .codeBlock{
     color: var(--codeTextColor);
-    font-size: var(--TextSize);  
-    
-    height: 90%;
-    width: 90%;
-    background-color: rgb(30,30,30);
+    font-size: var(--codeTextSize);  
 
+    background-color: rgb(30,30,30);
+    width: 90%;
+    
     margin-left: 50%;
     translate: -50%;
 
     display: flex;
-    position: absolute;
-    bottom: 5%;
+    flex-wrap: flex;
+    overflow-x: auto;
 
-    overflow: auto;
+    border: 2px solid darkcyan;
+    border-radius: 5px;
+}
 
+.codeBlock::-webkit-scrollbar {height:10px;}
+
+.codeBlock::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: var(--scrollbarColor);
+}
+
+.codeBlock::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbarHoverColor);
 }
 
 .IndexBlock{
     width: 3.5%;
-    height: 96%;
-    margin-right: 2.5%;
-    padding-right: 1%;
 
+    margin-right: 1.5%;
+    padding-right: 1.5%;
+    padding-left: 1%;
     text-align: right;
 
-    background-color:rgb(30, 30, 30);
+    background-color:rgb(30,30,30);
     border-right: 5px solid darkslategrey;
 }
 
-.codeBlock::-webkit-scrollbar{
-    width: 0;
-}
+
 
 .DataTypeHighlight{
     color: brown;

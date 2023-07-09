@@ -85,5 +85,5 @@ body {
     top:5%;
     bottom: 25px;
 
-    overflow: auto;
+    overflow: hidden;
 }
