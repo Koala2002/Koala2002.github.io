@@ -9,6 +9,13 @@ for(let a=0;a<list.length;a++) {
     else obj.style.transform = 'translateY('+50*a*7.5+'%)';
 }
 
+for(let a=0;a<list.length;a++){
+    
+    setTimeout(()=>{
+    var obj=document.getElementById(list[a]);
+    obj.style.transition="all 0.75s";
+    },1);
+}
 
 var endJudgement;
 var menu=document.getElementsByClassName("skillMenu");

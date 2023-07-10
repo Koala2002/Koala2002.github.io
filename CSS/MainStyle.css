@@ -69,14 +69,14 @@ body {
     justify-content: center;
 }
 
-.Content{
+.ContentRegion{
     height: 85%;
     width: 80%;
     font-weight:bold;
 
     font-size: 15pt;
 
-    background-color: var(--background-dark);
+    background-color: var(--MainColor);
     box-shadow: var(--MainObjectShadow);
                
     border-radius: 15px 0  0 15px;

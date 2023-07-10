@@ -1,46 +1,6 @@
 @import url(Variable.css);
 
-.codeBlock{
-    color: var(--codeTextColor);
-    font-size: var(--codeTextSize);  
 
-    background-color: rgb(30,30,30);
-    width: 90%;
-    
-    margin-left: 50%;
-    translate: -50%;
-
-    display: flex;
-    flex-wrap: flex;
-
-    overflow-x: scroll;
-
-    border: 2px solid darkcyan;
-    border-radius: 5px;
-}
-
-.codeBlock::-webkit-scrollbar {width:10px;height:10px;}
-
-.codeBlock::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-    background: var(--scrollbarColor);
-}
-
-.codeBlock::-webkit-scrollbar-thumb:hover {
-    background: var(--scrollbarHoverColor);
-}
-
-.IndexBlock{
-    width: 3.5%;
-
-    margin-right: 1.5%;
-    padding-right: 1.5%;
-    padding-left: 1%;
-    text-align: right;
-
-    background-color:rgb(30,30,30);
-    border-right: 5px solid darkslategrey;
-}
 
 
 
@@ -62,4 +22,8 @@
 
 .NumberHighlight{
     color:darkgoldenrod;
+}
+
+.CommentHighlight{
+    color: gray;
 }

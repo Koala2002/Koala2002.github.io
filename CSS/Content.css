@@ -1,0 +1,87 @@
+.MainContent{
+    position: absolute;
+    top:5%;
+    right:2.5%;
+
+    height:90%;
+    width: 67.5%;
+    border-radius: 15px ;
+
+    box-shadow: 0 0 15px 5px inset rgb(250, 250, 245,0.5);
+    background-color: var(--background-light);
+
+    overflow-y: auto ;
+    overflow-x: hidden ;
+
+    padding-right: -5%;
+}
+
+.MainContent::-webkit-scrollbar {width: 10px;}
+
+.MainContent::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: var(--scrollbarColor);
+}
+
+.MainContent::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbarHoverColor);
+}
+
+.textBlock{
+    background-color: red;
+    width: 90%;
+    
+    margin-left: 50%;
+    translate: -50%;
+
+    border: 2px solid darkcyan;
+    border-radius: 5px;
+}
+
+.codeBlock{
+    color: var(--codeTextColor);
+    font-size: var(--codeTextSize);  
+
+    background-color: rgb(30,30,30);
+    width: 90%;
+    
+    margin-left: 50%;
+    translate: -50%;
+
+    display: flex;
+    flex-wrap: flex;
+
+    overflow-x: auto;
+
+    border: 2px solid var(--MinorColor);
+    border-radius: 5px;
+}
+
+.codeBlock::-webkit-scrollbar {width:10px;height:10px;}
+
+.codeBlock::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: var(--scrollbarColor);
+}
+
+.codeBlock::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbarHoverColor);
+}
+
+.IndexBlock{
+    width: 3.5%;
+
+    margin-right: 1.5%;
+    padding-right: 1.5%;
+    padding-left: 1%;
+    text-align: right;
+
+    background-color:rgb(30,30,30);
+    border-right: 5px solid darkslategrey;
+}
+
+.paddingBlock{
+    width: 0;
+    height: 5%;
+    background-color: transparent;
+}
