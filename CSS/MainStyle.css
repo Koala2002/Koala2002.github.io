@@ -3,6 +3,8 @@
 body {
     background-color: rgb(245, 245, 240);
     color: var(--fontColor);
+
+    transition: background-color 0.5s;
 }
 
 .MainMenuLink{
@@ -42,7 +44,7 @@ body {
     flex-direction: column;
     justify-content: center;
     
-    background-color: var(--background-dark);
+    background-color: var(--MainColor);
     box-shadow: var(--MainObjectShadow);
 }
 
@@ -59,7 +61,7 @@ body {
     left:0;
     bottom:10%;
 
-    background-color: var(--background-dark);
+    background-color: var(--MainColor);
     box-shadow: var(--MainObjectShadow);
 
     text-align:center;

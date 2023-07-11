@@ -27,16 +27,16 @@ let dirS="<span CLASS='DirectiveHighlight'>",dirE="</span><!--Directive-->";
 let numS="<span CLASS='NumberHighlight'>",numE="</span><!--Number-->";
 let comS="<span CLASS='CommentHighlight'>",comE="</span><!--BigComment-->",smallcomE="</span><!--SmallComment-->";
 
-var Codes=document.getElementsByClassName('Code');
-var IDBlocks=document.getElementsByClassName('IndexBlock');
+let Codes=document.getElementsByClassName('Code');
+let IDBlocks=document.getElementsByClassName('IndexBlock');
 
 function canAdd(innerHTML,id){
-    var strRS=innerHTML.indexOf(strS,id);
-    var strRE=innerHTML.indexOf(strE,id);
-    var dirRE=innerHTML.indexOf(dirE,id);
-    var comRS=innerHTML.indexOf(comS,id);
-    var comRE=innerHTML.indexOf(comE,id);
-    var comSRE=innerHTML.indexOf(smallcomE,id);
+    let strRS=innerHTML.indexOf(strS,id);
+    let strRE=innerHTML.indexOf(strE,id);
+    let dirRE=innerHTML.indexOf(dirE,id);
+    let comRS=innerHTML.indexOf(comS,id);
+    let comRE=innerHTML.indexOf(comE,id);
+    let comSRE=innerHTML.indexOf(smallcomE,id);
 
     if(strRE!=-1&&(strRE<strRS||strRS==-1))return false;
     if(dirRE>=0)return false;
@@ -47,10 +47,10 @@ function canAdd(innerHTML,id){
 }
 
 function codeSyntaxBuild(code){
-    var innerHTML=code.innerHTML;
+    let innerHTML=code.innerHTML;
 
     StrChars.forEach(ele=>{
-        var id=-1,offset=0,get=0;
+        let id=-1,offset=0,get=0;
         while((id=innerHTML.indexOf(ele,id+(offset*strS.length)+1))>=0){
             innerHTML=
                 innerHTML.substring(0,id) + 
@@ -65,9 +65,9 @@ function codeSyntaxBuild(code){
     });
 
     Comments.forEach(ele=>{
-        var id=-1,offset=0;
+        let id=-1,offset=0;
         if(ele=='/*'){
-            var dir=true,preid=0;
+            let dir=true,preid=0;
             while((id=innerHTML.indexOf(dir?'/*':'*/',id+offset+1))>=0){
                 innerHTML=
                     innerHTML.substring(0,id)+
@@ -82,8 +82,8 @@ function codeSyntaxBuild(code){
 
                 if(!dir){
                     while(true){
-                        var preid=innerHTML.lastIndexOf(comS,id);
-                        var strSID=innerHTML.indexOf(strS,preid);
+                        let preid=innerHTML.lastIndexOf(comS,id);
+                        let strSID=innerHTML.indexOf(strS,preid);
 
                         if(strSID==-1||strSID>id)break;
                         
@@ -95,8 +95,8 @@ function codeSyntaxBuild(code){
                     }
 
                     while(true){
-                        var preid=innerHTML.lastIndexOf(comS,id);
-                        var strEID=innerHTML.indexOf(strE,preid);
+                        let preid=innerHTML.lastIndexOf(comS,id);
+                        let strEID=innerHTML.indexOf(strE,preid);
 
                         if(strEID==-1||strEID>id)break;
                         
@@ -112,8 +112,8 @@ function codeSyntaxBuild(code){
         }
         else{
             while((id=innerHTML.indexOf(ele,id+offset*comS.length+1))>=0){
-                var comRS=innerHTML.indexOf(comS,id);
-                var comRE=innerHTML.indexOf(comE,id);
+                let comRS=innerHTML.indexOf(comS,id);
+                let comRE=innerHTML.indexOf(comE,id);
 
                 if(comRE!=-1&&(comRE<comRS||comRS==-1)){
                     offset=0;
@@ -129,10 +129,10 @@ function codeSyntaxBuild(code){
                 
                     offset=1;
 
-                var EndID=innerHTML.indexOf("\n",id+offset*comS.length);
+                let EndID=innerHTML.indexOf("\n",id+offset*comS.length);
                 while(true){
-                    var preid=innerHTML.lastIndexOf(comS,EndID);
-                    var strSID=innerHTML.indexOf(strS,preid);
+                    let preid=innerHTML.lastIndexOf(comS,EndID);
+                    let strSID=innerHTML.indexOf(strS,preid);
                     
                     if(strSID==-1||strSID>EndID)break;
                         
@@ -144,8 +144,8 @@ function codeSyntaxBuild(code){
                 }
 
                 while(true){
-                    var preid=innerHTML.lastIndexOf(comS,EndID);
-                    var strEID=innerHTML.indexOf(strE,preid);
+                    let preid=innerHTML.lastIndexOf(comS,EndID);
+                    let strEID=innerHTML.indexOf(strE,preid);
 
                     if(strEID==-1||strEID>EndID)break;
                     
@@ -160,7 +160,7 @@ function codeSyntaxBuild(code){
     });
     
     Directives.forEach(ele=>{
-        var id=-1,offset=0;
+        let id=-1,offset=0;
     
         while((id=innerHTML.indexOf(ele,id+(offset*dirS.length)+1))>=0){
             innerHTML=
@@ -175,7 +175,7 @@ function codeSyntaxBuild(code){
     });
     
     DataTypes.forEach(ele=>{   
-        var id=-1,offset=0;
+        let id=-1,offset=0;
         while((id=innerHTML.indexOf(ele,id+(offset*typeS.length)+1))>=0){
             if(!canAdd(innerHTML,id)){
                 offset=0;
@@ -194,7 +194,7 @@ function codeSyntaxBuild(code){
     });
     
     KeyWords.forEach(ele=>{
-        var id=-1,offset=0;
+        let id=-1,offset=0;
         while((id=innerHTML.indexOf(ele,id+(offset*keyS.length)+1))>=0){
             if(!canAdd(innerHTML,id)){
                 offset=0;
@@ -213,7 +213,7 @@ function codeSyntaxBuild(code){
     });
     
     Numbers.forEach(ele=>{
-        var id=-1,offset=0;
+        let id=-1,offset=0;
         while((id=innerHTML.indexOf(ele,id+(offset*numS.length)+1))>=0){
             if(!canAdd(innerHTML,id)){
                 offset=0;
@@ -231,17 +231,14 @@ function codeSyntaxBuild(code){
         }
     });
 
-    console.log(innerHTML);
     return innerHTML;
 }
 
 function lineIndexBuild(IDBlock,code) {
-    var cnt=0,id=-1;
+    let cnt=0,id=-1;
     while((id=code.innerHTML.indexOf("\n",id+1))>=0)cnt++;
-    
-    IDBlock.style.height=code.scrollHeight+"px";
 
-    var IDBlockHtml=IDBlock.innerHTML;
+    let IDBlockHtml=IDBlock.innerHTML;
     
     for(let a=1;a<=cnt+1;a++){
         IDBlockHtml+=a;

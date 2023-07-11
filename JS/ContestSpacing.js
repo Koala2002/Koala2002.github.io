@@ -1,16 +1,13 @@
 
-var i=0;
-console.log(i);
+let i=0;
 
 while(true){
     i++;
-    var id=document.getElementById('CTR'+i);
+    let id=document.getElementById('CTR'+i);
     if(id==null)break;
-    console.log(i);
 }
 
 for(let a=i-1;a>=1;a--){
-    var id=document.getElementById('CTR'+a);
-    console.log(i-a);
+    let id=document.getElementById('CTR'+a);
     id.style.transform='translateY('+(i-a-1)*28.5+'%'+')';
 }

@@ -64,7 +64,7 @@ menu=
         <a class="skill" href="#">dddd</a>\
         \
     </div>\
-    <div id="Graph"class="skillType">\
+    <div id="Graph" class="skillType">\
         <div class="skillTitle">Graph Theory And Tree</div>\
         \
         <a class="skill" href="#">aaaa</a>\

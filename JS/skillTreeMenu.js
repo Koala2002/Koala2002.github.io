@@ -1,7 +1,7 @@
-var list=['Sort', 'Search', 'Str', 'Math', 'DP','OffA','Graph','DS','Empty'];
+let list=['Sort', 'Search', 'Str', 'Math', 'DP','OffA','Graph','DS','Empty'];
 
 for(let a=0;a<list.length;a++) {
-    var obj=document.getElementById(list[a]);
+    let obj=document.getElementById(list[a]);
     obj.addEventListener('mouseover',_Move);
     obj.addEventListener('mouseout',moveBack);
     
@@ -10,28 +10,28 @@ for(let a=0;a<list.length;a++) {
 }
 
 for(let a=0;a<list.length;a++){
-    
     setTimeout(()=>{
-    var obj=document.getElementById(list[a]);
-    obj.style.transition="all 0.75s";
+        let obj=document.getElementById(list[a]);
+        obj.style.transition="all 0.75s";
+        
     },1);
 }
 
-var endJudgement;
-var menu=document.getElementsByClassName("skillMenu");
+let endJudgement;
+let menu=document.getElementsByClassName("skillMenu");
 
 menu[0].addEventListener("scroll",()=>{
     clearTimeout(endJudgement);
     endJudgement=setTimeout(()=>{
         for(let a=0;a<list.length;a++) {
-            var obj=document.getElementById(list[a]);
+            let obj=document.getElementById(list[a]);
             obj.style.pointerEvents = 'visible';
         }
-    },100);
+    },50);
 
-    var subElements=menu[0].childNodes;
+    let subElements=menu[0].childNodes;
     for(let a=0;a<list.length;a++) {
-        var obj=document.getElementById(list[a]);
+        let obj=document.getElementById(list[a]);
         obj.style.pointerEvents = 'none';
     }
     console.log("scroll");
@@ -43,7 +43,7 @@ function _Move(){
     
     for(let a=0;a<list.length;a++) {
         if(list[a]==this.id){
-            var target=this.getElementsByClassName("skill");
+            let target=this.getElementsByClassName("skill");
             if(target==null)continue;
 
             size=parseInt(target.length);
@@ -58,7 +58,7 @@ function _Move(){
         let len=size*75;
 
         for(let a=id;a<list.length;a++) {
-            var obj=document.getElementById(list[a]);
+            let obj=document.getElementById(list[a]);
             if(a!=list.length-1)obj.style.transform='translateY(+'+(50*a+len)+'%)'; 
             else obj.style.transform = 'translateY('+((50*a*7.5)+len*7.5)+'%)';
         }
@@ -78,7 +78,7 @@ function moveBack(){
 
 
     for(let a=id;a<list.length;a++) {
-        var obj=document.getElementById(list[a]);
+        let obj=document.getElementById(list[a]);
         if(a!=list.length-1)obj.style.transform = 'translateY('+50*a+'%)';
         else obj.style.transform = 'translateY('+50*a*7.5+'%)';
     }
