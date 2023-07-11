@@ -7,6 +7,7 @@ header=
     <a class="MainMenuLink" href="../skillTreeMainPage.html">技能樹</a>\
     <a class="MainMenuLink" href="../problemList.html">題庫區</a>\
 </div>\
-<div class="MainMenuList"></div>';
+<div class="MainMenuList"></div>\
+<script src="JS/87.js"></script>';
 
 document.write(header);

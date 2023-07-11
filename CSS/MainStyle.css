@@ -1,7 +1,7 @@
 @import url(Variable.css);
 
 body {
-    background-color: rgb(245, 245, 240);
+    background-color: rgb(25, 25, 25);
     color: var(--fontColor);
 
     transition: background-color 0.5s;
