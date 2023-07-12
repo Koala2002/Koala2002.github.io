@@ -8,6 +8,24 @@ header=
     <a class="MainMenuLink" href="../problemList.html">題庫區</a>\
 </div>\
 <div class="MainMenuList"></div>\
-<script src="JS/87.js"></script>';
+<div class="BottomAnimeBackground">\
+    <div class="Ditch">\
+        <div class="PACMAN_Point"></div>\
+        <div class="PACMAN_Point"></div>\
+        <div class="PACMAN_Point"></div>\
+        <div class="PACMAN_Point"></div>\
+        <div class="PACMAN_Point"></div>\
+        <div class="PACMAN_Point"></div>\
+        <div class="PACMAN_Point"></div>\
+        <div class="PACMAN_Point"></div>\
+        <div class="PACMAN_Point"></div>\
+        <div class="PACMAN_Background">\
+            <div class="PACMAN one"></div>\
+            <div class="PACMAN two"></div>\
+        </div>\
+        <script src="../JS/PACMAN_PointAnime.js"></script>\
+    </div>\
+</div>'
+
 
 document.write(header);

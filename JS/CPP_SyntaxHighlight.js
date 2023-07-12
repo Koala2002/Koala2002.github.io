@@ -67,7 +67,7 @@ function codeSyntaxBuild(code){
     Comments.forEach(ele=>{
         let id=-1,offset=0;
         if(ele=='/*'){
-            let dir=true,preid=0;
+            let dir=true;
             while((id=innerHTML.indexOf(dir?'/*':'*/',id+offset+1))>=0){
                 innerHTML=
                     innerHTML.substring(0,id)+

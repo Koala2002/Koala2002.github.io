@@ -9,14 +9,6 @@ for(let a=0;a<list.length;a++) {
     else obj.style.transform = 'translateY('+50*a*7.5+'%)';
 }
 
-for(let a=0;a<list.length;a++){
-    setTimeout(()=>{
-        let obj=document.getElementById(list[a]);
-        obj.style.transition="all 0.75s";
-        
-    },1);
-}
-
 let endJudgement;
 let menu=document.getElementsByClassName("skillMenu");
 
@@ -84,3 +76,9 @@ function moveBack(){
     }
 }
 
+window.onload=function(){
+    for(let a=0;a<list.length;a++){
+        let obj=document.getElementById(list[a]);
+        obj.style.transition="all 0.75s";
+    }
+}

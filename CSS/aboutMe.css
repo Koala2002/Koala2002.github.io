@@ -25,14 +25,66 @@
     bottom: 5%;
     transform: translate(-50%,0);
 
-    font-size: var(--BigTextSize);
+    
 
-    background-color: var(--MainColor);
+    background-color: var(--MinorColor);
     border-radius: 15px;
 
     box-shadow: 0 0 15px 5px  rgb(30,30,30);
 
     text-align: center;
+
+    overflow: hidden;    
+}
+
+.IntroductionTexts{
+    position: absolute;
+    top:10%;
+    font-size: var(--BigTextSize);
+    z-index: 2;
+
+    line-height: 200%;
+
+    margin-left: 50%;
+    translate: -50%;
+}
+
+.IntroductionImage{
+    position: absolute;
+    top:50%;
+    
+    z-index: 2;
+
+    translate: -50%;
+}
+@keyframes waveRotate{
+    0%{transform:rotate(0deg);}
+    100%{transform:rotate(360deg);}
+}
+
+.wave{
+    width:55vh;
+    height: 55vh;
+
+    border-radius: 35%;
+
+    background-color:var(--MainColor);
+    position: absolute;
+    top: -20vh;
+
+    translate:-10vh;
+    opacity: 0.9;
+    animation: waveRotate 12s infinite linear;
+
+    &:nth-child(2){
+        opacity: 0.6;
+        animation: waveRotate 18s infinite linear;
+    }
+    
+    &:nth-child(3){
+        opacity: 0.3;
+        animation: waveRotate 24s infinite linear;
+    }
 }
 
 .Avatar{
