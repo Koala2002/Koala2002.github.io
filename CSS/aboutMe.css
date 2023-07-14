@@ -13,6 +13,8 @@
     border-radius: 15px;
 
     box-shadow: var(--ObjectInsideShadow);
+
+    
 }
 
 .Introduction{
@@ -85,6 +87,8 @@
         opacity: 0.3;
         animation: waveRotate 24s infinite linear;
     }
+
+    filter: blur(1.5px);
 }
 
 .Avatar{

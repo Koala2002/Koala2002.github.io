@@ -1,5 +1,6 @@
 :root{
     --fontColor:rgb(250, 250, 240);
+    --fontShadow:0 0 5px rgb(250,250,240);
     --fontColor_Transparent:rgba(250,250,240,0);
 
     --ContentInsideBackgroundColor:rgb(55,55,55);

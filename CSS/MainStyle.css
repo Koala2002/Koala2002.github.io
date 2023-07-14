@@ -1,12 +1,35 @@
 @import url(Variable.css);
 
 body {
-    background-color: rgb(38, 83, 162);
+    background-color: var(--MinorColor);
     color: var(--fontColor);
 
     transition: background-color 0.5s;
 
     overflow: hidden;
+}
+
+.MainTitle{ 
+    border-radius: 0 0 15px 0;
+
+    height: 10%;
+    width: 17.5%;
+
+    text-align: center;
+    font-size: var(--MenuTitleSize);
+    font-style: bold;
+
+    position: absolute;
+    top:0;
+    left:0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    background-color: var(--MainColor);
+    box-shadow: var(--MainObjectShadow);
+    text-shadow: var(--fontShadow);
 }
 
 .MainMenuLink{
@@ -28,31 +51,8 @@ body {
 }
 .MainMenu a:hover{text-decoration: underline;}
 
-.MainTitle{ 
-    border-radius: 0 15px  15px 0;
-
-    height: 10%;
-    width: 17.5%;
-
-    text-align: center;
-    font-size: var(--MenuTitleSize);
-    font-style: bold;
-
-    position: absolute;
-    top:2.5%;
-    left:0;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    
-    background-color: var(--MainColor);
-    box-shadow: var(--MainObjectShadow);
-}
-
 .MainMenu{
-   
-    height: 70%;
+    height: 52.5%;
     width: 17.5%;
     border-radius: 0 15px 15px 0;
 
@@ -61,10 +61,11 @@ body {
     
     position: absolute;
     left:0;
-    bottom:12.5%;
+    top:15%;
 
     background-color: var(--MainColor);
     box-shadow: var(--MainObjectShadow);
+    text-shadow: var(--fontShadow);
 
     text-align:center;
 
@@ -73,8 +74,21 @@ body {
     justify-content: center;
 }
 
+.MainContactBlock{
+    height: 15%;
+    width: 17.5%;
+    border-radius: 0 15px 15px 0;
+
+    position: absolute;
+    left:0;
+    top:72.5%;
+
+    background-color: var(--MainColor);
+    box-shadow: var(--MainObjectShadow);
+}
+
 .ContentRegion{
-    height: 85%;
+    height: 87.5%;
     width: 80%;
     font-weight:bold;
 
@@ -83,156 +97,76 @@ body {
     background-color: var(--MainColor);
     box-shadow: var(--MainObjectShadow);
                
-    border-radius: 15px 0  0 15px;
+    border-radius: 0 0  0 15px;
     position: absolute;
     left:20%;
-    top:2.5%;
+    top:0;
     bottom: 25px;
 
     overflow: hidden;
 }
 
-.BottomAnimeBackground{
+.BackgroundAnimeContainer{
     width: 100%;
-    height:7.5%;
-    
-    background-color: var(--MainColor);
-    box-shadow: var(--MainObjectShadow);
+    height: 7.5%;
+    background-color:var(--MainColor) ;
 
     position: absolute;
     bottom: 0%;
     left: 0%;
 
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    box-shadow: var(--MainObjectShadow);
+    
+    overflow: hidden;
+    z-index: 5;
 }
 
-.Ditch{
-    width:94%;
-    height: 70%;
+.wrap1 {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
 
-    background-color: var(--ContentInsideBackgroundColor);
-    box-shadow: var(--ObjectInsideShadow);
-    border-radius: 1000px ;
-
-    padding-left: 0.5%;
-    padding-right: 0.5%;
+    filter: saturate(1);
 }
 
-@keyframes PACMAN_Move{
-    0%{
-        translate:0vw 0.5vh;
-    }
-    40%,50%{
-        translate:92vw 0.5vh;
-    }
-    90%,100%{
-        translate:0vw 0.5vh;
-    }
-}
-
-@keyframes PACMAN_Rotate{
-    0%,49%{transform: rotate(90deg);}
-    50%{
-        transform: rotate(270deg);
-    }
-    50%,99%{transform: rotate(270deg);}
-    100%{
-        transform: rotate(450deg);
-    }
-}
-
-@keyframes PACMAN_Mouse1{
-    0%{
-        transform: rotate(0deg);
-    }    
-    50%{
-        transform: rotate(-60deg);
-    }
-    100%{
-        transform: rotate(0deg);
-    } 
-}
-
-@keyframes PACMAN_Mouse2{
-    0%{
-        transform: rotate(0deg);
-    }    
-    50%{
-        transform: rotate(60deg);
-    }
-    100%{
-        transform: rotate(0deg);
-    } 
-}
-
-.PACMAN_Background{
-    height: 4vh;
-    width: 4vh;
+.wrap2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    height: 100%;
+    width: 100%;
     background-color: transparent;
     
-    border-radius: 50%;
-
-    position: absolute;
-    
-    transform: rotate(90deg);
-    z-index: 15;
-    animation: PACMAN_Move 15s infinite linear, PACMAN_Rotate 15s infinite linear;
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        
+        z-index: 1;
+        backdrop-filter: blur(5px);
+    }
 }
 
-
-.PACMAN.one{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    transform: rotate(0deg);
-    clip: rect(0,2vh,4vh,0); 
-    border-radius: 50%;
-    background-color: rgb(255, 205, 75);
-
-    z-index: 15;
-    animation: PACMAN_Mouse1 1s infinite linear;
+@keyframes bubbleMove{   
+    20% {
+        opacity: 1;
+    }
+    100% {
+        opacity: .01;
+        transform: scale(.25);
+        top:-100%;
+    }
 }
 
-.PACMAN.two{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    transform: rotate(90deg);
-    clip: rect(0,4vh,4vh,2vh); 
-    border-radius: 50%;
-    background-color: rgb(255, 205, 75);
-
-    z-index: 15;
-    animation: PACMAN_Mouse2 1s infinite linear;
-}
-
-.PACMAN_Point{
-    height: 1.5vh;
-    width: 1.5vh;
-
-    background-color:brown;
-
-    border-radius: 50%;
+.animeBubble{
+    background-color: var(--MinorColor);
+    border-radius: 25%;
 
     position: absolute;
-    
-    transform: translateY(1.875vh);
+    top:200%;
 
-    transition: opacity 0.1s linear;
-
-    box-shadow: 0 0 5px 2px brown;
-
-    &:nth-child(1){translate: 9.4vw;}
-    &:nth-child(2){translate: 18.8vw;}
-    &:nth-child(3){translate: 28.2vw;}
-    &:nth-child(4){translate: 37.6vw;}
-    &:nth-child(5){translate: 47vw;}
-    &:nth-child(6){translate: 56.4vw;}
-    &:nth-child(7){translate: 65.8vw;}
-    &:nth-child(8){translate: 75.2vw;}
-    &:nth-child(9){translate: 84.6vw;}
-    
+    transition: width 5s linear,height 5s linear,left 5s linear;
 }
+

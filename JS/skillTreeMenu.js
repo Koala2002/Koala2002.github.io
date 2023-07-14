@@ -4,9 +4,6 @@ for(let a=0;a<list.length;a++) {
     let obj=document.getElementById(list[a]);
     obj.addEventListener('mouseover',_Move);
     obj.addEventListener('mouseout',moveBack);
-    
-    if(a!=list.length-1)obj.style.transform = 'translateY('+50*a+'%)';
-    else obj.style.transform = 'translateY('+50*a*7.5+'%)';
 }
 
 let endJudgement;
@@ -51,10 +48,9 @@ function _Move(){
 
         for(let a=id;a<list.length;a++) {
             let obj=document.getElementById(list[a]);
-            if(a!=list.length-1)obj.style.transform='translateY(+'+(50*a+len)+'%)'; 
-            else obj.style.transform = 'translateY('+((50*a*7.5)+len*7.5)+'%)';
+            if(a!=list.length-1)obj.style.transform='translateY(+'+((50*a)+len)+'%)'; 
+            else obj.style.transform = 'translateY('+((50*a*7.5)+(len*7.5))+'%)';
         }
-
     }
 }
 
@@ -68,17 +64,9 @@ function moveBack(){
         }
     }
 
-
     for(let a=id;a<list.length;a++) {
         let obj=document.getElementById(list[a]);
-        if(a!=list.length-1)obj.style.transform = 'translateY('+50*a+'%)';
-        else obj.style.transform = 'translateY('+50*a*7.5+'%)';
-    }
-}
-
-window.onload=function(){
-    for(let a=0;a<list.length;a++){
-        let obj=document.getElementById(list[a]);
-        obj.style.transition="all 0.75s";
+        if(a!=list.length-1)obj.style.transform = 'translateY('+(50*a)+'%)';
+        else obj.style.transform = 'translateY('+(50*a*7.5)+'%)';
     }
 }

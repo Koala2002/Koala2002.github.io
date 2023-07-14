@@ -1,13 +1,5 @@
+let list = document.getElementsByClassName('CT');
 
-let i=0;
-
-while(true){
-    i++;
-    let id=document.getElementById('CTR'+i);
-    if(id==null)break;
-}
-
-for(let a=i-1;a>=1;a--){
-    let id=document.getElementById('CTR'+a);
-    id.style.transform='translateY('+(i-a-1)*28.5+'%'+')';
+for(let a=0;a<list.length;a++){
+    list[a].style['transform']='translateY('+a*28.5+'%'+')';
 }
