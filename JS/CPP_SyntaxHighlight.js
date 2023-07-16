@@ -11,7 +11,7 @@ let StrChars=[
     '\'','\"'
 ];
 let Directives=[
-    '#include','#define','#ifdef','#ifndef','#if','#elif','else','#undef','#endif'
+    '#include','#define','#ifdef','#ifndef','#if','#elif','#else','#undef','#endif'
 ];
 let Comments=[
     '/*','//'
@@ -42,7 +42,6 @@ function canAdd(innerHTML,id){
     if(dirRE>=0)return false;
     if(comRE!=-1&&(comRE<comRS||comRS==-1))return false;
     if(comSRE!=-1&&(comSRE<comRS||comRS==-1))return false;
-
     return true;
 }
 

@@ -1,14 +1,14 @@
 menu=
-'<div class="skillMenu">\
+'<div id="skillMenu" class="skillMenu">\
     <div id="Sort" class="skillType">\
         <div class="skillTitle">Sorting Algorithms</div>\
         <a class="skill" href="../SkillTree/BubbleSort.html">Bubble</a>\
-        <a class="skill" href="#">Selection</a>\
-        <a class="skill" href="#">Insertion</a>\
-        <a class="skill" href="#">Merge</a>\
-        <a class="skill" href="#">Quick</a>\
-        <a class="skill" href="#">Heap</a>\
-        <a class="skill" href="#">Radix</a>\
+        <a class="skill" href="../SkillTree/SelectionSort.html">Selection</a>\
+        <a class="skill" href="../SkillTree/InsertionSort.html">Insertion</a>\
+        <a class="skill" href="../SkillTree/MergeSort.html">Merge</a>\
+        <a class="skill" href="../SkillTree/QuickSort.html">Quick</a>\
+        <a class="skill" href="../SkillTree/HeapSort.html">Heap</a>\
+        <a class="skill" href="../SkillTree/RadixSort.html">Radix</a>\
     </div>\
     <div id="Search" class="skillType">\
         <div class="skillTitle">Searching Algorithms</div>\
@@ -74,6 +74,7 @@ menu=
         <a class="skill" href="#">cccc</a>\
         <a class="skill" href="#">dddd</a>\
     </div>\
+    <script src="../JS/skillTreeMenuSetting.js"></script>\
 </div>\
 <div id="skillMshadow" class="skillMenuShadow"></div>';
 

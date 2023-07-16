@@ -4,45 +4,54 @@
 
 <head>
     <link rel="stylesheet" href="../CSS/MainStyle.css"/>
-    <link rel="stylesheet" href="../CSS/Content.css"/>
     <link rel="stylesheet" href="../CSS/skillTree.css"/>
+    <link rel="stylesheet" href="../CSS/Content.css"/>
     <link rel="stylesheet" href="../CSS/syntaxHighlight.css">
-
     <meta charset="utf-8"/>
     <title>Koala Personal Website</title>
 </head>
 
 <body>
     <script src="../JS/MainObjectBuild.js"></script>
-
+    
     <div class="ContentRegion">
         <script src="../JS/skillTreeMenuBuild.js"></script>
         <div class="MainContentShadow"></div>
-        
         <div class="MainContent"><!--主要內容-->
             <div class="textBlock">
                 <pre>
-時間複雜度：O(n<sup>2</sup>)
-空間複雜度：O(1)</pre>
+時間複雜度：
+    &bullet; 平均 &DoubleRightArrow; O(n&middotlog(n))
+    &bullet; 最差 &DoubleRightArrow; O(n<sup>2</sup>)
+
+空間複雜度：O(log(n))</pre>
             </div>
-            
+
             <div class="codeBlock">
                 <pre class="IndexBlock"></pre>
                 <pre class="Code">
-//由小排到大
-void Bubble_Sort(vector&ltint&gt &arr,int len){
-    for(int a=0;a&ltlen-1;a++){
-        for(int b=0;b&ltlen-1;b++){
-            if(arr[a]&gtarr[b])swap(arr[b],arr[b+1]);
-        }
+void QuickSort(vector&ltint&gt &arr,int l,int r){
+    if(l&gt=r)return;
+    int key=arr[l];
+    int lidx=l,ridx=r;
+	
+    while(lidx&ltridx){
+        while(arr[ridx]&gt=key&&lidx&ltridx)ridx--;
+        while(arr[lidx]&lt=key&&lidx&ltridx)lidx++;
+		
+        swap(arr[lidx],arr[ridx]);
     }
+    swap(arr[l],arr[lidx]);
+
+    QuickSort(arr,l,lidx-1);
+    QuickSort(arr,lidx+1,r);
 }</pre>
-            </div> 
-            <script src="../JS/CPP_SyntaxHighlight.js"> </script>      
+            </div>
+
+            <script src="../JS/CPP_SyntaxHighlight.js"> </script>
         </div>
-        
     </div>
-  
+    
 </body>
 
 </html>

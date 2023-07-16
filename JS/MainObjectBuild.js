@@ -1,4 +1,4 @@
-header=
+MainObject=
 '<div class="MainTitle">\
     <p>無尾熊の競程筆記</p>\
 </div>\
@@ -19,4 +19,4 @@ header=
 
 
 
-document.write(header);
+document.write(MainObject);
