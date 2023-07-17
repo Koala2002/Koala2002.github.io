@@ -5,13 +5,14 @@
 
     --ContentInsideBackgroundColor:rgb(55,55,55);
 
-    --MainObjectShadow:0 0 12.5px 10px rgba(30,30,30,0.9), 0  0 12.5px 2px inset rgb(60,60,60);
-    --ObjectInsideShadow:0 0 15px 5px inset rgb(30, 30, 30,1); 
+    --MainObjectShadow:0 0 7.5px 7.5px rgb(35,40,40,1), 0  0 7.5px 3.75px inset rgb(50,50,50);
+    --ObjectInsideShadow:0 0 10px 5px inset rgb(30, 30, 30); 
+    --ContentShadow:0 0 10px 5px  rgb(30,30,30);
 
-    --BigTextSize:12.5pt;
+    --BigTextSize:13.5pt;
     --TextSize:10pt;
 
-    --MenuTextSize:18pt;
+    --MenuTextSize:15pt;
     --MenuTitleSize:20pt;
 
     --codeTextColor:antiquewhite;

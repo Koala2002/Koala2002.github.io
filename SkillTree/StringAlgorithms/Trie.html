@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="../../CSS/MainStyle.css"/>
+    <link rel="stylesheet" href="../../CSS/Content.css"/>
+    <link rel="stylesheet" href="../../CSS/skillTree.css"/>
+    <link rel="stylesheet" href="../../CSS/syntaxHighlight.css">
+    <meta charset="utf-8"/>
+    <title>Koala Personal Website</title>
+</head>
+
+<body>
+    <script src="../../JS/MainObjectBuild.js"></script>
+    
+    <div class="ContentRegion">
+        <script src="../../JS/skillTreeMenuBuild.js"></script>
+        <div class="MainContentShadow"></div>
+        <div class="MainContent"><!--主要內容-->
+            <div class="textBlock">
+                <pre>主要結構</pre>
+            </div>
+            <div class="codeBlock">
+                <pre class="IndexBlock"></pre>
+                <pre class="Code">
+struct trie{
+    trie* next[26]={nullptr};//如果字典範圍是小寫英文字母
+    int prefixCount=0;//以這個節點為前綴的字串數量
+    int endCount=0;//字串結尾判斷
+};
+
+trie *root=new trie();</pre>
+            </div>
+
+            <div class="textBlock">
+                <pre>插入字串 O(len(str))</pre>
+            </div>
+            <div class="codeBlock">
+                <pre class="IndexBlock"></pre>
+                <pre class="Code">
+void insert(string str){
+    trie *current=root;
+    for(int a=0;a&ltstr.length();a++){
+        if(current-&gtnext[str[a]-'a']==nullptr){
+            current-&gtnext[str[a]-'a']=new trie();
+        }
+        current=current-&gtnext[str[a]-'a'];
+        current-&gtprefixCount++;
+    }
+
+    current-&gtendCount++;
+}</pre>
+            </div>
+            
+            <div class="textBlock">
+                <pre>查詢字串 O(len(str))</pre>
+            </div>
+            <div class="codeBlock">
+                <pre class="IndexBlock"></pre>
+                <pre class="Code">
+bool find(string str){
+    trie *current=root;
+    for(int a=0;a&ltstr.length();a++){
+        if(current-&gtnext[str[a]-'a']==nullptr)return false;
+        current=current-&gtnext[str[a]-'a'];
+    }
+    return true;
+}</pre>
+            </div>
+            
+            <div class="textBlock">
+                <pre>從某個前綴開始的字串總數 O(len(str))</pre>
+            </div>
+            <div class="codeBlock">
+                <pre class="IndexBlock"></pre>
+                <pre class="Code">
+int startWith(string str){
+    trie *current=root;
+    for(int a=0;a&ltstr.length();a++){
+        if(current-&gtnext[str[a]-'a']==nullptr)return 0;
+        current=current-&gtnext[str[a]-'a'];
+    }
+    return current-&gtprefixCount;
+}</pre>
+            </div>
+            
+            
+            <script src="../../JS/CPP_SyntaxHighlight.js"></script>
+        </div>
+    </div>
+    
+</body>
+
+</html>

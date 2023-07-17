@@ -16,8 +16,6 @@
 
     overflow-y: auto;
     overflow-x: hidden;
-    
-    
 }
 
 .skillMenuShadow{
@@ -112,7 +110,7 @@ a.skill{text-decoration: none;}
     transition-timing-function: ease-in-out;
     background-color: rgba(70, 90, 85,1);
     height: 75%;
-    font-size: var(--BigTextSize);
+    font-size: var(--TextSize);
     color: var(--fontColor);    
 
     &:hover{background-color: rgb(70, 90,85, 0.75);}
