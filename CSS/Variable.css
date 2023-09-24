@@ -3,11 +3,11 @@
     --fontShadow:0 0 5px rgb(250,250,240);
     --fontColor_Transparent:rgba(250,250,240,0);
 
-    --ContentInsideBackgroundColor:rgb(55,55,55);
+    --ContentInsideBackgroundColor:rgb(50,50,50);
 
     --MainObjectShadow:0 0 7.5px 7.5px rgb(35,40,40,1), 0  0 7.5px 3.75px inset rgb(50,50,50);
-    --ObjectInsideShadow:0 0 10px 5px inset rgb(30, 30, 30); 
-    --ContentShadow:0 0 10px 5px  rgb(30,30,30);
+    --ObjectInsideShadow:0 0 7.5px 5px inset rgba(30, 30, 30,0.75); 
+    --ContentShadow:0 0 7.5px 5px  rgba(30, 30, 30,0.75);
 
     --BigTextSize:13.5pt;
     --TextSize:10pt;

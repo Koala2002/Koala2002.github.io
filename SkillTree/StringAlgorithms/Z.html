@@ -18,8 +18,32 @@
         <script src="../../JS/skillTreeMenuBuild.js"></script>
         <div class="MainContentShadow"></div>
         <div class="MainContent"><!--主要內容-->
+            <div class="textBlock">
+                <pre>
+- 演算法目的：在一個文本(Text)當中找到某個段落(Pattern)的次數或位置
+- 時間複雜度： O(n+m)，n 為Text的長度、m 為Pattern的長度
+
+要找到所求的段落位置首先需要先找到此演算法主要的核心 Z 陣列，Z 陣列的內容存取的是對於整個文本 T 的每個後綴和的段落 P 的最大共同前綴長度。
+
+在找最大共同前綴長度之前可以先將文本 T 和段落 P 用一個從沒出現過的字元合併變成 P?T 然後再做最大共同前綴。 
+
+例如：文本( aabaabcaab )、查詢段落( aabc )產生的 Z 陣列如下
+</pre>
+            </div>
+            <div class="codeBlock">
+                <pre class="IndexBlock"></pre>
+                <pre class="Code">
+int startWith(string str){
+    trie *current=root;
+    for(int a=0;a&ltstr.length();a++){
+        if(current-&gtnext[str[a]-'a']==nullptr)return 0;
+        current=current-&gtnext[str[a]-'a'];
+    }
+    return current-&gtprefixCount;
+}</pre>
+            </div>
             
-            
+            <script src="../../JS/CPP_SyntaxHighlight.js"></script>
         </div>
     </div>
     
