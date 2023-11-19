@@ -37,16 +37,14 @@
 
 .textBlock{
     background-color: var(--MainColor);
+    color: var(--textBolckColor);
     font-size: var(--BigTextSize);
     width: 90%;
     
-    margin-top: 3.375vh;
-    margin-bottom: 3.375vh;
-    margin-left:5.2vh;
-    margin-right:5.2vh;
+    margin: 3.375vh 5.2vh;
 
     line-height: 125%;
-    padding: 0.05vh 5%;
+    padding: 0.5vh 5%;
 
     border: 2px solid var(--MinorColor);
     border-radius: 15px;
@@ -55,6 +53,18 @@
 
     box-sizing: border-box;
     display: block;
+}
+
+.textBlock > table {
+    border: 2px solid var(--codeTextColor);
+    border-radius: 5px;
+}
+
+.textBlock > table >tr,td{
+    border: 2px solid var(--codeTextColor);
+    padding: 8px;
+
+    text-align: center;
 }
 
 .codeBlock{

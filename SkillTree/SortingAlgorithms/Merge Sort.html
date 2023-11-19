@@ -1,0 +1,34 @@
+<div class="textBlock">
+    <pre>
+時間複雜度：O(n&middotlog(n))
+空間複雜度：O(n)</pre>
+    </div>
+
+<div class="codeBlock">
+    <pre class="IndexBlock"></pre>
+    <pre class="Code">
+//由小排到大
+vector&ltint&gt Merge_Sort(vector&ltint&gt arr){   
+    if(arr.size()==1)return arr;
+    vector&ltint&gt l,r;
+    
+    for(int a=0;a&ltarr.size();a++){
+    	if(a&ltarr.size()/2)l.push_back(arr[a]);
+    	else r.push_back(arr[a]);
+    }
+    l=Merge_Sort(l);
+    r=Merge_Sort(r);
+    
+    vector&ltint&gt sortedarr;
+    
+    int l_pos=0,r_pos=0;
+    while(l_pos&ltl.size()&&r_pos&ltr.size()){
+        if(l[l_pos]&lt=r[r_pos])sortedarr.push_back(l[l_pos++]);
+        else sortedarr.push_back(r[r_pos++]);
+    }
+    while(l_pos&ltl.size())sortedarr.push_back(l[l_pos++]);
+    while(r_pos&ltr.size())sortedarr.push_back(r[r_pos++]);
+    
+    return sortedarr;
+}</pre>
+</div>

@@ -1,26 +1,26 @@
 menu=
 '<div id="skillMenu" class="skillMenu">\
-    <div id="Sort" class="skillType">\
+    <div id="SortingAlgorithms" class="skillType">\
         <div class="skillTitle">Sorting Algorithms</div>\
-        <a class="skill" href="../../SkillTree/SortingAlgorithms/BubbleSort.html">Bubble Sort</a>\
-        <a class="skill" href="../../SkillTree/SortingAlgorithms/SelectionSort.html">Selection Sort</a>\
-        <a class="skill" href="../../SkillTree/SortingAlgorithms/InsertionSort.html">Insertion Sort</a>\
-        <a class="skill" href="../../SkillTree/SortingAlgorithms/MergeSort.html">Merge Sort</a>\
-        <a class="skill" href="../../SkillTree/SortingAlgorithms/QuickSort.html">Quick Sort</a>\
-        <a class="skill" href="../../SkillTree/SortingAlgorithms/HeapSort.html">Heap Sort</a>\
-        <a class="skill" href="../../SkillTree/SortingAlgorithms/RadixSort.html">Radix Sort</a>\
+        <a class="skill" href="#">Bubble Sort</a>\
+        <a class="skill" href="#">Selection Sort</a>\
+        <a class="skill" href="#">Insertion Sort</a>\
+        <a class="skill" href="#">Merge Sort</a>\
+        <a class="skill" href="#">Quick Sort</a>\
+        <a class="skill" href="#">Heap Sort</a>\
+        <a class="skill" href="#">Radix Sort</a>\
     </div>\
-    <div id="Search" class="skillType">\
+    <div id="SearchingAlgorithms" class="skillType">\
         <div class="skillTitle">Searching Algorithms</div>\
-        <a class="skill" href="../../SkillTree/SearchingAlgorithms/BinarySearch.html">Binary Search</a>\
-        <a class="skill" href="../../SkillTree/SearchingAlgorithms/TwoPointer.html">Two Pointer</a>\
+        <a class="skill" href="#">Binary Search</a>\
+        <a class="skill" href="#">Two Pointer</a>\
     </div>\
-    <div id="Str" class="skillType">\
+    <div id="StringAlgorithms" class="skillType">\
         <div class="skillTitle">String Algorithms</div>\
-        <a class="skill" href="../../SkillTree/StringAlgorithms/Trie.html">Trie</a>\
-        <a class="skill" href="../../SkillTree/StringAlgorithms/Z.html">Z Algorithm</a>\
-        <a class="skill" href="../../SkillTree/StringAlgorithms/KMP.html">KMP Algorithm</a>\
-        <a class="skill" href="../../SkillTree/StringAlgorithms/Manacher.html">Manacher Algorithm</a>\
+        <a class="skill" href="#">Z Algorithm</a>\
+        <a class="skill" href="#">KMP Algorithm</a>\
+        <a class="skill" href="#">Manacher Algorithm</a>\
+        <a class="skill" href="#">Trie</a>\
     </div>\
     <div id="Math" class="skillType">\
         <div class="skillTitle">Mathematics</div>\

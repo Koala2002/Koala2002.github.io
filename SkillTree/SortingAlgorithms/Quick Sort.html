@@ -1,0 +1,29 @@
+<div class="textBlock">
+    <pre>
+時間複雜度：
+    &bullet; 平均 &DoubleRightArrow; O(n&middotlog(n))
+    &bullet; 最差 &DoubleRightArrow; O(n<sup>2</sup>)
+
+空間複雜度：O(log(n))</pre>
+</div>
+
+<div class="codeBlock">
+    <pre class="IndexBlock"></pre>
+    <pre class="Code">
+void QuickSort(vector&ltint&gt &arr,int l,int r){
+    if(l&gt=r)return;
+    int key=arr[l];
+    int lidx=l,ridx=r;
+	
+    while(lidx&ltridx){
+        while(arr[ridx]&gt=key&&lidx&ltridx)ridx--;
+        while(arr[lidx]&lt=key&&lidx&ltridx)lidx++;
+		
+        swap(arr[lidx],arr[ridx]);
+    }
+    swap(arr[l],arr[lidx]);
+
+    QuickSort(arr,l,lidx-1);
+    QuickSort(arr,lidx+1,r);
+}</pre>
+</div>

@@ -1,0 +1,24 @@
+<div class="textBlock">
+    <pre>
+時間複雜度：O(n<sup>2</sup>)
+空間複雜度：O(1)</pre>    
+</pre>
+</div>
+
+<div class="codeBlock">
+    <pre class="IndexBlock"></pre>
+    <pre class="Code">
+//由小排到大
+void Selection_Sort(vector&ltint&gt &arr,int len){
+    for(int a=0;a&ltlen;a++){
+        int min_ele=arr[a],pos=a;
+        for(int b=a+1;b&ltlen;b++){
+            if(arr[b]&ltarr[a]){
+                min_ele=arr[b];
+                pos=b;
+            }
+        }
+        swap(arr[a],arr[pos]);
+    }
+}</pre>
+</div>

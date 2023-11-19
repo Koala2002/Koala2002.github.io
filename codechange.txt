@@ -1,8 +1,17 @@
+void ZFunction(string text,string pattern){
 
+    string str=pattern+'?'+text;
+    int Z[str.length()];
+    Z[0]=str.length();
 
-
-
-
-
-
-
+    int L=0,R=0;
+    for(int Index=1;Index&lt;str.length();Index++){
+        if(Index&gt;R||Z[Index-L]&gt;=R-Index+1){
+            if(Index&gt;R)R=Index-1;
+            L=Index;
+            while(str[R+1-L]==str[R+1])R++;
+            Z[Index]=R-L+1;	
+        }
+        else Z[Index]=Z[Index-L];		
+    }
+}

@@ -58,7 +58,7 @@
     height:7.5%;
     width:80%;
    
-    background-color: var(--MinorColor);
+    background-color: var(--MainColor);
 
     margin-bottom: 3.375vh;
     margin-left: 50%;
@@ -102,13 +102,13 @@ a.skill{text-decoration: none;}
     height: 0%;
     font-size: 0;
     color: var(--fontColor_Transparent);
-    background-color: rgba(70, 90, 85,0);
+    background-color: var(--MainColorTp);
 }
 
 .skillType:hover .skill{
     transition: color 0.75s 0.25s,font-size 0.75s 0.25s,height 0.75s,background-color 0.75s;
     transition-timing-function: ease-in-out;
-    background-color: rgba(70, 90, 85,1);
+    background-color: var(--MainColor);
     height: 75%;
     font-size: var(--TextSize);
     color: var(--fontColor);    

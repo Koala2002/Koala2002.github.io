@@ -1,0 +1,37 @@
+<div class="textBlock">
+    <pre>
+時間複雜度：O(n&middotlog<sub>r</sub>(k))，r 為基底、k 為 arr 中最大的數字位數
+空間複雜度：O(n+k)</pre>
+</div>
+            
+<div class="codeBlock">
+    <pre class="IndexBlock"></pre>
+    <pre class="Code">
+void radixsort(vector&ltint&gt &arr,int r,int bksize){
+    int bucket[bksize][arr.size()][2],radix=1;
+    vector&ltvector&ltint&gt&gt idx(bksize,vector&ltint&gt(2,0));
+	
+    while(true){
+        for(int a=0;a&ltarr.size();a++){
+            int i=abs(arr[a])/radix%r,p=(arr[a]&gt=0);
+            if(!p)i=9-i;
+            bucket[i][idx[i][p]++][p]=arr[a];
+        }
+		 
+        int arridx=0;
+        bool isfinish=false;
+		
+        for(int a=0;a&lt2;a++){
+            if(idx[0][1]+idx[9][0]==arr.size())isfinish=true;
+            for(int b=0;b&ltbksize;b++){
+                for(int c=0;c&ltidx[b][a];c++){
+                    arr[arridx++]=bucket[b][c][a];		
+                }
+                idx[b][a]=0;
+            }
+        }
+        if(isfinish)break;
+        radix*=r;
+    }
+}</pre>
+</div>

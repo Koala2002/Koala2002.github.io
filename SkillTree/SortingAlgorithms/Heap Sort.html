@@ -1,0 +1,30 @@
+<div class="textBlock">
+<pre>
+時間複雜度：O(n&middotlog(n))
+空間複雜度：O(1)</pre>
+</div>
+            
+<div class="codeBlock">
+    <pre class="IndexBlock"></pre>
+    <pre class="Code">
+void adj(vector&ltint&gt &arr,int root,int n){
+    int temp=arr[root],child=root*2+1;
+
+    while(child&ltn){
+        if(child+1&ltn&&arr[child+1]&gtarr[child])child+=1;
+        if(temp&gt=arr[child])break;
+        arr[(child-(child%2==0))/2]=arr[child];	 
+        child=child*2+1
+    }
+    arr[(child-(child%2==0))/2]=temp;
+}
+
+void HeapSort(vector&ltint&gt &arr){
+    for(int a=(arr.size()-1)/2;a&gt=0;a--)adj(arr,a,arr.size());
+	
+    for(int a=arr.size()-1;a&gt=0;a--){	
+        swap(arr[0],arr[a]);
+        adj(arr,0,a);
+    }	
+}</pre>
+</div>

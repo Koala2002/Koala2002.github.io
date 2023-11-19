@@ -23,3 +23,27 @@ menu.addEventListener("scroll",()=>{
 
     for(let a=0;a<menulists.length;a++) menulists[a].style['pointerEvents'] = 'none';
 });
+
+
+//testing//
+skillElements=document.getElementsByClassName('skill');
+
+for(let a=0;a<skillElements.length;a++) {
+    skillElements[a].addEventListener('click', function() {
+        let titleName=this.parentElement.id;//類型名稱
+        let skillName=this.innerHTML;//小主題名稱
+        console.log(skillName);
+        //console.log(document.getElementById('MainContentID').innerHTML);
+    
+        fetch('../SkillTree/'+titleName+'/'+skillName+'.html')
+            .then(response => response.text())
+            .then(htmlString => {
+                document.getElementById('MainContentID').innerHTML = htmlString;
+                fetch('./JS/CPP_SyntaxHighlight.js')
+                    .then(response => response.text())
+                    .then(scriptCode => {eval(scriptCode);});
+            });
+    });
+}
+//testing//
+

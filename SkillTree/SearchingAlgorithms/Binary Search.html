@@ -1,0 +1,32 @@
+<div class="textBlock">
+    <pre>遞迴二分搜</pre>
+</div>
+<div class="codeBlock">
+    <pre class="IndexBlock"></pre>
+    <pre class="Code">
+int Binary_Search(vector&ltint&gt& arr,int l,int r,const int find_ele){
+    //一開始傳進來的r為arr的size-1
+    if(l&gtr)return -1;
+    int mid=(l+r)/2;
+    if(arr[mid]==find_ele)return mid;
+    else if(arr[mid]&ltfind_ele)return Binary_Search(arr,mid+1,r,find_ele);
+    else return Binary_Search(arr,l,mid-1,find_ele);
+}</pre>
+</div>
+
+<div class="textBlock">
+    <pre>倍增法二分搜</pre>
+</div>
+<div class="codeBlock">
+    <pre class="IndexBlock"></pre>
+    <pre class="Code">
+int Binary_Search(vector&ltint&gt& arr,const int find_ele){
+    int start=0,step=arr.size()-1;
+    while(step&gt0){
+        if(start+step&ltarr.size()&&arr[start+step]&lt=find_ele)start+=step;
+        else step/=2;
+    }
+    
+    return start;
+}</pre>
+</div>
