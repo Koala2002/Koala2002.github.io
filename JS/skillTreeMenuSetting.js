@@ -1,5 +1,7 @@
 let menulists=document.getElementsByClassName("skillType");
 
+console.log(menulists);
+
 for(let a=0;a<menulists.length;a++){
     let delta=menulists[a].getElementsByClassName("skill").length;
     let css = '.skillType:nth-child('+(a+1)+'):hover ~ .skillType{top: +'+(4.4296875*delta)+'vh;}';
@@ -8,6 +10,7 @@ for(let a=0;a<menulists.length;a++){
     style.appendChild(document.createTextNode(css));
 
     menulists[a].appendChild(style);
+    if(a==menulists.length-1)menulists[a].style.height = '0';
 }
 
 let endJudgement;

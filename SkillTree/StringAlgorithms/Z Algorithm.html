@@ -9,46 +9,48 @@
 
 例如：文本( aabaabcaab )、查詢段落( aabc )產生的 Z 陣列如下
 </pre>
-                <table>
-                    <tr>
-                        <td>a</td>
-                        <td>a</td>
-                        <td>b</td>
-                        <td>c</td>
-                        <td>?</td>
-                        <td>a</td>
-                        <td>a</td>
-                        <td>b</td>
-                        <td>a</td>
-                        <td>a</td>
-                        <td>b</td>
-                        <td>c</td>
-                        <td>a</td>
-                        <td>a</td>
-                        <td>b</td>
-                    </tr>
-                    <tr>
-                        <td>15</td>
-                        <td>1</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>0</td>
-                        <td>4</td>
-                        <td>1</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>0</td>
-                    </tr>
-                </table>
+
+<table>
+    <tr>
+        <td>a</td>
+        <td>a</td>
+        <td>b</td>
+        <td>c</td>
+        <td>?</td>
+        <td>a</td>
+        <td>a</td>
+        <td>b</td>
+        <td>a</td>
+        <td>a</td>
+        <td>b</td>
+        <td>c</td>
+        <td>a</td>
+        <td>a</td>
+        <td>b</td>
+    </tr>
+    <tr>
+        <td>15</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>3</td>
+        <td>1</td>
+        <td>0</td>
+        <td>4</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>3</td>
+        <td>1</td>
+        <td>0</td>
+    </tr>
+</table>
+
 <pre>在 Z 陣列內數值和段落長度一樣的位置就是段落出現的位置。</pre>                
-            </div>
-            <div class="textBlock">
-                <pre>
+</div>
+<div class="textBlock">
+    <pre>
 用暴力法求 Z 陣列的話時間複雜度為 O(nm)。
 可以使用兩個變數 L、R 維護來降低時間複雜度至 O(n+m)。
                    
@@ -57,17 +59,19 @@ L 和 R 代表的是一個區間，R 是從 L 之後和 P?T 開頭重疊的最�
 
 考慮以下情況：
 </pre>
-            </div>
-            <div class="textBlock">
-            <pre>
+</div>
+
+<div class="textBlock">
+    <pre>
 <font style="color:var(--textBlockColor1)">目前查找 Index &gt; R：</font>
         
 代表目前 Index 還沒有和 P?T 前綴子字串比較過，所以要重置 L、R 的位置為 Index，然後開始尋找從 L 開始 R 可以往後擴增多少位置(最長共同前綴)。
 Z[Index] 的值會等於 R-L+1。
 </pre>
-            </div>
-            <div class="textBlock">
-                <pre>
+</div>
+
+<div class="textBlock">
+    <pre>
 <font style="color:var(--textBlockColor1)">目前查找 Index &leq; R：</font>
 
 代表目前 Index 和 P?T 前綴子字串比較過所以目前 Index 在 LR 區間內。
@@ -86,13 +90,15 @@ Z[Index] 的值會等於 R-L+1。
         L 更新為 Index。
         R 開始比較還能往後擴增多少位置(最長共同前綴)。
 </pre>
-            </div>
-            <div class="textBlock">
-                <pre>一般版 Code</pre>                
-            </div>
-            <div class="codeBlock">
-                <pre class="IndexBlock"></pre>
-                <pre class="Code">
+</div>
+
+<div class="textBlock">
+    <pre>一般版 Code</pre>                
+</div>
+
+<div class="codeBlock">
+    <pre class="IndexBlock"></pre>
+    <pre class="Code">
 void ZFunction(string text,string pattern){
     string str=pattern+'?'+text;
     int Z[str.length()];
@@ -118,13 +124,15 @@ void ZFunction(string text,string pattern){
         }
     }
 }</pre>
-            </div>
-            <div class="textBlock">
-                <pre>簡化版 Code</pre>                
-            </div>
-            <div class="codeBlock">
-                <pre class="IndexBlock"></pre>
-                <pre class="Code">
+</div>
+
+<div class="textBlock">
+    <pre>簡化版 Code</pre>                
+</div>
+
+<div class="codeBlock">
+    <pre class="IndexBlock"></pre>
+    <pre class="Code">
 void ZFunction(string text,string pattern){
     string str=pattern+'?'+text;
     int Z[str.length()];
@@ -141,3 +149,4 @@ void ZFunction(string text,string pattern){
         else Z[Index]=Z[Index-L];		
     }
 }</pre>
+</div>

@@ -1,9 +1,10 @@
-            <div class="textBlock">
-                <pre>主要結構</pre>
-            </div>
-            <div class="codeBlock">
-                <pre class="IndexBlock"></pre>
-                <pre class="Code">
+<div class="textBlock">
+    <pre>主要結構</pre>
+</div>
+
+<div class="codeBlock">
+    <pre class="IndexBlock"></pre>
+    <pre class="Code">
 struct trie{
     trie* next[26]={nullptr};//如果字典範圍是小寫英文字母
     int prefixCount=0;//以這個節點為前綴的字串數量
@@ -11,14 +12,15 @@ struct trie{
 };
 
 trie *root=new trie();</pre>
-            </div>
+</div>
 
-            <div class="textBlock">
-                <pre>插入字串 O(len(str))</pre>
-            </div>
-            <div class="codeBlock">
-                <pre class="IndexBlock"></pre>
-                <pre class="Code">
+<div class="textBlock">
+    <pre>插入字串 O(len(str))</pre>
+</div>
+
+<div class="codeBlock">
+    <pre class="IndexBlock"></pre>
+    <pre class="Code">
 void insert(string str){
     trie *current=root;
     for(int a=0;a&ltstr.length();a++){
@@ -31,14 +33,15 @@ void insert(string str){
 
     current-&gtendCount++;
 }</pre>
-            </div>
-            
-            <div class="textBlock">
-                <pre>查詢字串 O(len(str))</pre>
-            </div>
-            <div class="codeBlock">
-                <pre class="IndexBlock"></pre>
-                <pre class="Code">
+</div>
+
+<div class="textBlock">
+    <pre>查詢字串 O(len(str))</pre>
+</div>
+
+<div class="codeBlock">
+    <pre class="IndexBlock"></pre>
+    <pre class="Code">
 bool find(string str){
     trie *current=root;
     for(int a=0;a&ltstr.length();a++){
@@ -47,14 +50,14 @@ bool find(string str){
     }
     return true;
 }</pre>
-            </div>
-            
-            <div class="textBlock">
-                <pre>從某個前綴開始的字串總數 O(len(str))</pre>
-            </div>
-            <div class="codeBlock">
-                <pre class="IndexBlock"></pre>
-                <pre class="Code">
+</div>
+
+<div class="textBlock">
+    <pre>從某個前綴開始的字串總數 O(len(str))</pre>
+</div>
+<div class="codeBlock">
+    <pre class="IndexBlock"></pre>
+    <pre class="Code">
 int startWith(string str){
     trie *current=root;
     for(int a=0;a&ltstr.length();a++){
@@ -63,4 +66,4 @@ int startWith(string str){
     }
     return current-&gtprefixCount;
 }</pre>
-            </div>
+</div>

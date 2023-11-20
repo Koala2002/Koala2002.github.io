@@ -41,10 +41,15 @@
     font-size: var(--BigTextSize);
     width: 90%;
     
-    margin: 3.375vh 5.2vh;
+    margin-top: 3.375vh;   
+    margin-bottom:3.375vh;
+    margin-left: 50%;
+    translate: -50%;
 
     line-height: 125%;
-    padding: 0.5vh 5%;
+
+    padding-left:  1vw;
+    padding-right: 1vw;
 
     border: 2px solid var(--MinorColor);
     border-radius: 15px;
@@ -52,7 +57,8 @@
     overflow-x: auto;
 
     box-sizing: border-box;
-    display: block;
+    display: flex;
+    flex-wrap: wrap;    
 }
 
 .textBlock > table {
@@ -74,10 +80,13 @@
     background-color: var(--codeBlockBackgroundColor);
     width: 90%;
     
-    margin-top: 3.375vh;
+    margin-top: 3.375vh;   
     margin-bottom: 3.375vh;
-    margin-left:5.2vh;
-    margin-right:5.2vh;
+    margin-left: 50%;
+    translate: -50%;
+
+    padding-left: 1vw;
+    padding-right: 1vw;
 
     display: flex;
     flex-wrap: nowrap;
@@ -89,6 +98,7 @@
     border-radius: 15px;
 
     line-height: 125%;
+    box-sizing: border-box;
 }
 
 .codeBlock::-webkit-scrollbar,
@@ -108,12 +118,14 @@
 .IndexBlock{
     width: 3.5%;
 
-    margin-right: 1.5%;
+    margin-right: 0.5vw;
     padding-right: 1.5%;
-    padding-left: 1%;
+    
     text-align: right;
 
     background-color:var(--codeBlockBackgroundColor);
     border-right: 5px solid darkslategrey;
     line-height: 125%;
+
+    box-sizing: border-box;
 }

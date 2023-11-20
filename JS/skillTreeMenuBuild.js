@@ -69,6 +69,8 @@ menu=
         <a class="skill" href="#">Monotonic Stack</a>\
         <a class="skill" href="#">Monotonic Queue</a>\
     </div>\
+    <div id="None" class="skillType">\
+    </div>\
     <script src="../../JS/skillTreeMenuSetting.js"></script>\
 </div>\
 <div id="skillMshadow" class="skillMenuShadow"></div>';

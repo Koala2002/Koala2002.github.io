@@ -8,14 +8,16 @@ MainObject=
     <a class="MainMenuLink" href="../../problemList.html">題庫區</a>\
 </div>\
 <div class="MainMenuList"></div>\
-<div class="MainContactBlock"></div>\
+<div class="MainContactBlock">\
+</div>\
 <div class="BackgroundAnimeContainer">\
     <div class="wrap1">\
         <div id="animebackground"  class="wrap2">\
             <script src="../../JS/backgroundAnimeBuild.js"></script>\
         </div>\
     </div>\
-</div>';
+</div>\
+';
 
 
 

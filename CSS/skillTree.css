@@ -10,12 +10,11 @@
     top:5%;
     left: 2.5%;
 
-
     background-color: var(--ContentInsideBackgroundColor) ;
     border-radius: 15px;
 
     overflow-y: auto;
-    overflow-x: hidden;
+    overflow-x: hidden;  
 }
 
 .skillMenuShadow{
@@ -72,7 +71,6 @@
     position: relative;
     top:0;
 }
-
 
 .skill{
     background-color: rgba(70, 90, 85,0);

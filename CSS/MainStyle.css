@@ -5,11 +5,10 @@ body {
     color: var(--fontColor);
 
     transition: background-color 0.5s;
-
-  
 }
 
 .MainTitle{ 
+    user-select: none;
     border-radius: 0 0 15px 0;
 
     height: 10%;
@@ -52,6 +51,7 @@ body {
 .MainMenu a:hover{text-decoration: underline;}
 
 .MainMenu{
+    user-select: none;
     height: 52.5%;
     width: 17.5%;
     border-radius: 0 15px 15px 0;
@@ -75,6 +75,7 @@ body {
 }
 
 .MainContactBlock{
+    user-select: none;
     height: 15%;
     width: 17.5%;
     border-radius: 0 15px 15px 0;
@@ -88,6 +89,7 @@ body {
 }
 
 .ContentRegion{
+    user-select: none;
     height: 87.5%;
     width: 80%;
     font-weight:bold;
