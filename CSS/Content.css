@@ -48,7 +48,8 @@
     padding-left:  17.5px;
     padding-right: 17.5px;
     
-    line-height: 125%;
+    line-height: 1.25;
+    
 
     border: 2.5px solid var(--MinorColor);
     border-radius: 15px;

@@ -35,12 +35,10 @@ for(let a=0;a<skillElements.length;a++) {
     skillElements[a].addEventListener('click', function() {
         let titleName=this.parentElement.id;//類型名稱
         let skillName=this.innerHTML;//小主題名稱
-        console.log(skillName);
-        //console.log(document.getElementById('MainContentID').innerHTML);
     
         fetch('../SkillTree/'+titleName+'/'+skillName+'.html')//抓取內容檔案
             .then(response => response.text())
-            .then(htmlString => {document.getElementById('MainContentID').innerHTML = htmlString;                       })
+            .then(htmlString => {document.getElementById('MainContentID').innerHTML = htmlString;})
             .then(()=>{       
                 CopyButtonListenerAdd();
                 BlockMouseListenerAdd();      

@@ -1,6 +1,6 @@
 :root{
     --fontColor:rgb(235,235,225);
-    --fontShadow:0 0 5px rgb(250,250,240);
+    --fontShadow:0 0 4px rgb(250,250,240);
     --fontColor_Transparent:rgba(250,250,240,0);
 
     --fontWeight:400;

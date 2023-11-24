@@ -169,7 +169,7 @@
     font-size: var(--TextSize);
     font-weight: var(--fontWeightThin);
 
-    transition: background-color 0.75s;
+    transition: background-color 0.25s;
 
     box-shadow: 0 0 10px 10px inset rgb(30,30,30,0.5);
 
@@ -177,6 +177,7 @@
 }
 
 .CT:hover{
+    transition: background-color 0.25s;
     background-color: rgb(50, 50, 50);
 }
 
