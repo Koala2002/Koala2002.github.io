@@ -28,7 +28,7 @@ menu.addEventListener("scroll",()=>{
 });
 
 
-//testing//
+//更換新的頁面//
 skillElements=document.getElementsByClassName('skill');
 
 for(let a=0;a<skillElements.length;a++) {
@@ -38,15 +38,22 @@ for(let a=0;a<skillElements.length;a++) {
         console.log(skillName);
         //console.log(document.getElementById('MainContentID').innerHTML);
     
-        fetch('../SkillTree/'+titleName+'/'+skillName+'.html')
+        fetch('../SkillTree/'+titleName+'/'+skillName+'.html')//抓取內容檔案
             .then(response => response.text())
-            .then(htmlString => {
-                document.getElementById('MainContentID').innerHTML = htmlString;
+            .then(htmlString => {document.getElementById('MainContentID').innerHTML = htmlString;                       })
+            .then(()=>{       
+                CopyButtonListenerAdd();
+                BlockMouseListenerAdd();      
+            })
+            .then(()=>{
                 fetch('./JS/CPP_SyntaxHighlight.js')
-                    .then(response => response.text())
-                    .then(scriptCode => {eval(scriptCode);});
+                .then(response => response.text())
+                .then(scriptCode => {
+                    eval(scriptCode);
+                });
             });
+        
     });
 }
-//testing//
+//更換新的頁面//
 

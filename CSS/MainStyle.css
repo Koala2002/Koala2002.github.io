@@ -1,10 +1,15 @@
 @import url(Variable.css);
+@import url(Fonts.css);
+
 
 body {
     background-color: var(--MinorColor);
     color: var(--fontColor);
+}
 
-    transition: background-color 0.5s;
+body,pre:not(.Code,.IndexBlock),td,th{
+    font-family: 'Nunito','JF';
+    font-weight: var(--fontWeight);
 }
 
 .MainTitle{ 
@@ -34,10 +39,11 @@ body {
 .MainMenuLink{
     font-size: var(--MenuTextSize);
     padding: 10px;
-    transition: background-color 0.5s;
+    transition: background-color 0.25s;
 }
 .MainMenuLink:hover{
-    background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color 0.25s;
+    background-color: var(--LinkHoverColor);
 }
 
 .MainMenu a:link {

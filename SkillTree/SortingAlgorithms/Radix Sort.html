@@ -5,8 +5,9 @@
 </div>
             
 <div class="codeBlock">
-    <pre class="IndexBlock"></pre>
-    <pre class="Code">
+    <div class="CodeContent">
+        <pre class="IndexBlock"></pre>
+        <pre class="Code">
 void radixsort(vector&ltint&gt &arr,int r,int bksize){
     int bucket[bksize][arr.size()][2],radix=1;
     vector&ltvector&ltint&gt&gt idx(bksize,vector&ltint&gt(2,0));
@@ -34,4 +35,6 @@ void radixsort(vector&ltint&gt &arr,int r,int bksize){
         radix*=r;
     }
 }</pre>
+    </div>
+    <button class="CodeCopyButton"></button>
 </div>

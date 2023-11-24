@@ -26,8 +26,6 @@
     bottom: 5%;
     transform: translate(-50%,0);
 
-    
-
     background-color: var(--MinorColor);
     border-radius: 15px;
 
@@ -47,18 +45,13 @@
     line-height: 200%;
 
     margin-left: 50%;
-    translate: -50%;
-    
+    translate: -50%; 
+
+    font-family: 'Nunito','JF';
 }
 
-.IntroductionImage{
-    position: absolute;
-    top:50%;
-    
-    z-index: 2;
 
-    translate: -50%;
-}
+
 @keyframes waveRotate{
     0%{transform:rotate(0deg);}
     100%{transform:rotate(360deg);}
@@ -92,10 +85,12 @@
 }
 
 .Avatar{
-    border:2px solid rgb(30,30,30,0.5);
+    border: min(0.5vh,0.5vw) solid var(--MinorColor);
     border-radius: 50%;
-    margin-top: 7.5%;
+    margin-top: calc(15.525vh - min(5vw,10vh) - min(0.25vh,0.25vw));
     box-shadow: var(--ContentShadow);
+
+    width: min(10vw,20vh);
 }
 
 .ContestTableTitle{
@@ -107,10 +102,10 @@
     width: 67.5%;
 
     font-size: var(--BigTextSize);
-    font-style: bold;
- 
+    
+
     background-color: var(--MinorColor);
-    border-radius: 1000px;
+    border-radius: 100000px;
 
     box-shadow: 0 0 15px 10px  rgb(30,30,30,0.5);
 
@@ -168,10 +163,11 @@
     width: 100%;
 
     background-color: var(--MainColor);
-    border: 1px solid whitesmoke ;
+    border: min(0.325vh,0.325vw) solid var(--MinorColor) ;
     border-radius: 5px;
 
     font-size: var(--TextSize);
+    font-weight: var(--fontWeightThin);
 
     transition: background-color 0.75s;
 
@@ -189,6 +185,9 @@ td{
     text-align: center;
 }
 
+th.CTName,th.CTDate,th.CTpass,th.CTRank,th.CTType{
+    font-weight: var(--fontWeight);
+}
 .CTName{width: 40%;}
 .CTDate{width: 15%;}
 .CTpass{width: 15%;}

@@ -19,6 +19,4 @@ MainObject=
 </div>\
 ';
 
-
-
 document.write(MainObject);

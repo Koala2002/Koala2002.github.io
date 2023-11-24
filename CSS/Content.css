@@ -13,7 +13,6 @@
     overflow-x: hidden ;
 }
 
-
 .MainContentShadow{
     position: absolute;
     top:5%;
@@ -38,67 +37,109 @@
 .textBlock{
     background-color: var(--MainColor);
     color: var(--textBolckColor);
-    font-size: var(--BigTextSize);
-    width: 90%;
+    font-size: var(--ContentTextSize);
+    
+    width: calc(48.6vw);
     
     margin-top: 3.375vh;   
-    margin-bottom:3.375vh;
-    margin-left: 50%;
-    translate: -50%;
+    margin-bottom: 3.375vh;
+    margin-left: calc((54vw -  48.6vw) / 2);
 
+    padding-left:  17.5px;
+    padding-right: 17.5px;
+    
     line-height: 125%;
 
-    padding-left:  1vw;
-    padding-right: 1vw;
-
-    border: 2px solid var(--MinorColor);
+    border: 2.5px solid var(--MinorColor);
     border-radius: 15px;
     box-shadow: var(--ContentShadow);
     overflow-x: auto;
 
-    box-sizing: border-box;
     display: flex;
-    flex-wrap: wrap;    
+    flex-wrap: wrap;  
+    
+    box-sizing: border-box;
 }
 
 .textBlock > table {
-    border: 2px solid var(--codeTextColor);
+    border: 2px solid var(--ContentCodeTextColor);
     border-radius: 5px;
 }
 
 .textBlock > table >tr,td{
-    border: 2px solid var(--codeTextColor);
+    border: 2px solid var(--ContentCodeTextColor);
     padding: 8px;
 
     text-align: center;
 }
 
-.codeBlock{
-    color: var(--codeTextColor);
-    font-size: var(--codeTextSize);  
 
-    background-color: var(--codeBlockBackgroundColor);
-    width: 90%;
-    
+
+.codeBlock{
+    background-color: var(--codeBlockBackgroundColor); 
+
+    width: 48.6vw;
+
     margin-top: 3.375vh;   
     margin-bottom: 3.375vh;
-    margin-left: 50%;
-    translate: -50%;
+    margin-left: calc((54vw -  48.6vw) / 2);
+    
+    padding-left: 17.5px;
+    padding-right: 17.5px;
 
-    padding-left: 1vw;
-    padding-right: 1vw;
+    box-shadow:var(--ContentShadow);
+    border: 2.5px solid var(--MinorColor);
+    border-radius: 15px;
 
-    display: flex;
-    flex-wrap: nowrap;
+    box-sizing: border-box;
 
     overflow-x: auto;
 
-    box-shadow:var(--ContentShadow);
-    border: 2px solid var(--MinorColor);
-    border-radius: 15px;
+    display: flex;
+}
+
+.CodeContent{
+    color: var(--ContentCodeTextColor);
+    font-size: var(--ContentCodeTextSize);  
+
+    display: flex;
 
     line-height: 125%;
+}
+
+.CodeCopyButton{
+    transition: background-color 0.25s;
+
+    width:40px;
+    height:35px;
+
+    position: absolute;
+
+    background-color: var(--MinorColorDark);
+
+    border:2.5px solid var(--MinorColor);
+    border-radius: 0 15px 0 15px;
+
+    transform: translateY(-2.5px);
+    left: calc((54vw -  48.6vw) / 2 + 48.6vw - 40px);
+
     box-sizing: border-box;
+
+    font-size: 20px;
+    
+    font-family: "Times New Roman", Times, serif;
+    color:aliceblue;
+}
+
+.CodeCopyButton:hover{
+    cursor: pointer;
+    transition: background-color 0.25s;
+    background-color:var(--MinorColor50);
+}
+
+.CodeCopyButton:active{
+    transition: background-color 0.25s;
+    background-color: var(--MinorColor25);
 }
 
 .codeBlock::-webkit-scrollbar,
@@ -118,14 +159,16 @@
 .IndexBlock{
     width: 3.5%;
 
-    margin-right: 0.5vw;
-    padding-right: 1.5%;
+    margin-right: 10px;
+    padding-right:17.5px;
     
     text-align: right;
 
     background-color:var(--codeBlockBackgroundColor);
     border-right: 5px solid darkslategrey;
+
     line-height: 125%;
 
-    box-sizing: border-box;
+    display: absolute;
 }
+
