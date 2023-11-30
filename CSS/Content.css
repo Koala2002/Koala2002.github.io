@@ -1,16 +1,46 @@
+@import url(Variable.css);
+@import url(Fonts.css);
+
+@media(min-width:801px){
+    .MainContent,.MainContentShadow{
+        height:90%;
+        width: 70%;
+    }
+
+    .textBlock,.codeBlock{width: 50.6vw;}
+
+
+}
+@media(max-width:800px){
+    .MainContent,.MainContentShadow{
+        height: 90%;
+        width: 70%;
+    }
+
+    .textBlock,.codeBlock{width: 70.6vw;}
+}
+
 .MainContent{
     position: absolute;
     top:5%;
     right:2.5%;
 
-    height:90%;
-    width: 67.5%;
     border-radius: 15px ;
+
+    padding-top: 3.9375vh;
+    padding-bottom: 0.1875vh;
+    padding-left: 2.25vw;
+    padding-right: 2.25vw;
+
 
     background-color: var(--ContentInsideBackgroundColor);
 
     overflow-y: auto ;
     overflow-x: hidden ;
+
+    box-sizing: border-box;
+
+    transition: width 0.4s ease-in-out;
 }
 
 .MainContentShadow{
@@ -18,16 +48,17 @@
     top:5%;
     right:2.5%;
 
-    height:90%;
-    width: 67.5%;
     border-radius: 15px ;
 
+    border-top: 2.5px solid var(--MinorColor);
     box-shadow: var(--ObjectInsideShadow);
     background-color: transparent;
 
 
     pointer-events: none;
     z-index: 2;
+
+    transition: width 0.4s ease-in-out;
 }
 
 .MainContent::-webkit-scrollbar {
@@ -38,19 +69,15 @@
     background-color: var(--MainColor);
     color: var(--textBolckColor);
     font-size: var(--ContentTextSize);
-    
-    width: calc(48.6vw);
-    
-    margin-top: 3.375vh;   
-    margin-bottom: 3.375vh;
-    margin-left: calc((54vw -  48.6vw) / 2);
+     
+    width: 100%;
 
+    margin-bottom: 3.375vh;
     padding-left:  17.5px;
     padding-right: 17.5px;
     
     line-height: 1.25;
     
-
     border: 2.5px solid var(--MinorColor);
     border-radius: 15px;
     box-shadow: var(--ContentShadow);
@@ -74,16 +101,13 @@
     text-align: center;
 }
 
-
-
 .codeBlock{
     background-color: var(--codeBlockBackgroundColor); 
 
-    width: 48.6vw;
+    width: 100%;
 
     margin-top: 3.375vh;   
     margin-bottom: 3.375vh;
-    margin-left: calc((54vw -  48.6vw) / 2);
     
     padding-left: 17.5px;
     padding-right: 17.5px;
@@ -115,6 +139,7 @@
     height:35px;
 
     position: absolute;
+    right:2.25vw;
 
     background-color: var(--MinorColorDark);
 
@@ -122,7 +147,6 @@
     border-radius: 0 15px 0 15px;
 
     transform: translateY(-2.5px);
-    left: calc((54vw -  48.6vw) / 2 + 48.6vw - 40px);
 
     box-sizing: border-box;
 
@@ -161,7 +185,7 @@
     width: 3.5%;
 
     margin-right: 10px;
-    padding-right:17.5px;
+    padding-right:10px;
     
     text-align: right;
 

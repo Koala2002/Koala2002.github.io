@@ -1,0 +1,27 @@
+<div class="textBlock">
+    <pre>
+對於每個數字我可以將它看成：6n、6n+1、6n+2、6n+3、6n+4、6n+5
+
+可以確定若 n&gt0 則6n、6n+2、6n+3、6n+4肯定不會是質數。
+所以搜尋的過程可以減化只需用去判斷6n+1與6n+5而不用去對所有的數字逐一確認。
+</pre>
+</div>
+            
+<div class="codeBlock">
+    <div class="CodeContent">
+        <pre class="IndexBlock"></pre>
+        <pre class="Code">
+bool is_prime(int num){
+    if(num<=1)return false;
+    if(num==2||num==3)return true;
+    if(num%2==0||num%3==0)return false;
+    
+    for(int a=5,gap=2;a*a&lt=num;a+=gap,gap=6-gap){
+        if(num%a==0)return false;
+    }
+    
+    return true;
+}</pre>
+    </div>
+    <button class="CodeCopyButton"></button>
+</div> 

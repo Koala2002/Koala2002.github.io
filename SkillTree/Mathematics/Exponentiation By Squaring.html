@@ -1,0 +1,25 @@
+<div class="textBlock">
+    <pre>
+可以把x<sup>y</sup>看成：
+
+如果 y 是2的倍數 =&gt (x<sup><frac>y</frac>/<frac>2</frac></sup>)<sup>2</sup> 
+否則 =&gt x&middot;x<sup>y-1</sup>
+</pre>
+</div>
+            
+<div class="codeBlock">
+    <div class="CodeContent">
+        <pre class="IndexBlock"></pre>
+        <pre class="Code">
+int EXP(int x,int y){
+    if(y==0)return 1;
+    if(y%2==0){
+        int k=EXP(x,y/2);
+        return k*k;
+    }
+    
+    else return x*EXP(x,y-1);
+}</pre>
+    </div>
+    <button class="CodeCopyButton"></button>
+</div> 

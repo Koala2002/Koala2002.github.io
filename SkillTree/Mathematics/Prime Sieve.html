@@ -1,0 +1,26 @@
+<div class="textBlock">
+    <pre>
+利用目前找到的所有質數與非質數的倍數去去除掉目前質數表中可以確定不是質數的數字。
+</pre>
+</div>
+            
+<div class="codeBlock">
+    <div class="CodeContent">
+        <pre class="IndexBlock"></pre>
+        <pre class="Code">
+bool not_prime[1000005];
+vector&ltint&gt prime;
+
+void seive(){
+    not_prime[1]=true;
+    for(int a=2;a&lt1000000;a++){
+        if(!is_prime[a])prime.push_back(a);
+        for(int b=0;a*prime[b]&lt1000000;b++){
+            not_prime[a*prime[b]]=true;
+            if(a%prime[b]==0)break;
+        }
+    }
+}</pre>
+    </div>
+    <button class="CodeCopyButton"></button>
+</div> 

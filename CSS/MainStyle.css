@@ -1,6 +1,10 @@
 @import url(Variable.css);
 @import url(Fonts.css);
 
+html{
+    overflow: hidden;
+
+}
 
 body {
     background-color: var(--MinorColor);
@@ -12,36 +16,142 @@ body,pre:not(.Code,.IndexBlock),td,th{
     font-weight: var(--fontWeight);
 }
 
+pre > sup,sub{font-size:10px;}
+
+@media(min-width:801px){
+    .BackgroundAnimeContainer{
+        height: 7.5%;
+        box-shadow: var(--MainObjectShadow);
+    }
+
+    .MainTitle{
+        height: 10%;
+        width: 17.5%;
+        top:0;
+        left:0;
+
+        font-size: var(--MenuTitleSize);
+
+        box-shadow: var(--MainObjectShadow);
+        text-shadow: var(--fontShadow);
+    }
+
+    .MainMenu{
+        height: 52.5%;
+        width: 17.5%;
+
+        left:0;
+        top:15%;
+   
+        border-radius: 0 15px 15px 0;
+
+        box-shadow: var(--MainObjectShadow);
+        text-shadow: var(--fontShadow);
+
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .MainMenuLink{
+        font-size: var(--MenuTextSize);
+        height: 12.5%;
+        width: 100%;
+    }
+
+    .ContentRegion{
+        height: 87.5%;
+        width: 80%;
+        border-radius: 0 0  0 15px;
+        left:20%;
+    }
+
+    .MainContactRegion{
+        height: 15%;
+        width: 17.5%;
+        
+        left:0;
+        top:72.5%;
+        
+        border-radius: 0 15px 15px 0;
+    }
+}
+
+@media(max-width:800px){
+    .BackgroundAnimeContainer{height: 0%;}
+    
+    .MainTitle{
+        height: 0%;
+        width: 0%;
+        top:0;
+        left:0;
+
+        font-size:0px;
+    }
+    
+    .MainMenu{
+        height: 7.5%;
+        width: 78.75%;
+
+        left:0;
+        bottom:0;
+
+        border-radius: 0 15px 0 0;
+
+        box-shadow: var(--MainObjectShadow);
+        text-shadow: var(--fontShadow);
+        
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .MainMenuLink{
+        font-size: calc(var(--MenuTextSize) + 1vh);
+        height: 100%;
+        width: 12.5%;
+    }
+
+    .ContentRegion{
+        height: 87.5%;
+        width: 100%;
+        border-radius: 0 0  0 0px;
+        left: 0;
+    }
+
+    .MainContactRegion{
+        height: 7.5%;
+        width: 17.5%;
+  
+        right:0;
+        bottom:0;
+
+        border-radius: 15px 0 0 0;
+    }
+}
+
 .MainTitle{ 
     user-select: none;
     border-radius: 0 0 15px 0;
 
-    height: 10%;
-    width: 17.5%;
-
     text-align: center;
-    font-size: var(--MenuTitleSize);
     font-style: bold;
 
     position: absolute;
-    top:0;
-    left:0;
-
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
     
-    background-color: var(--MainColor);
-    box-shadow: var(--MainObjectShadow);
-    text-shadow: var(--fontShadow);
+    background-color: var(--MainColor); 
 }
 
-.MainMenuLink{
-    font-size: var(--MenuTextSize);    
-    
-
-    padding: 10px;
+.MainMenuLink{      
     transition: background-color 0.25s;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    box-sizing: border-box;
 }
 .MainMenuLink:hover{
     transition: background-color 0.25s;
@@ -60,34 +170,19 @@ body,pre:not(.Code,.IndexBlock),td,th{
 
 .MainMenu{
     user-select: none;
-    height: 52.5%;
-    width: 17.5%;
-    border-radius: 0 15px 15px 0;
 
     position: absolute;
-    left:0;
-    top:15%;
-
+    
     background-color: var(--MainColor);
-    box-shadow: var(--MainObjectShadow);
-    text-shadow: var(--fontShadow);
 
     text-align:center;
 
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
 }
 
-.MainContactBlock{
+.MainContactRegion{
     user-select: none;
-    height: 15%;
-    width: 17.5%;
-    border-radius: 0 15px 15px 0;
-
     position: absolute;
-    left:0;
-    top:72.5%;
 
     background-color: var(--MainColor);
     box-shadow: var(--MainObjectShadow);
@@ -95,8 +190,6 @@ body,pre:not(.Code,.IndexBlock),td,th{
 
 .ContentRegion{
     user-select: none;
-    height: 87.5%;
-    width: 80%;
     font-weight:bold;
 
     font-size: 15pt;
@@ -104,26 +197,22 @@ body,pre:not(.Code,.IndexBlock),td,th{
     background-color: var(--MainColor);
     box-shadow: var(--MainObjectShadow);
                
-    border-radius: 0 0  0 15px;
     position: absolute;
-    left:20%;
+    
     top:0;
-    bottom: 25px;
 
     overflow: hidden;
 }
 
 .BackgroundAnimeContainer{
     width: 100%;
-    height: 7.5%;
+    
     background-color:var(--MainColor) ;
 
     position: absolute;
     bottom: 0%;
     left: 0%;
 
-    box-shadow: var(--MainObjectShadow);
-    
     overflow: hidden;
 }
 

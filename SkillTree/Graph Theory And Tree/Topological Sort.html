@@ -1,0 +1,45 @@
+<div class="textBlock">
+    <pre>
+<font style="color:var(--textBlockColor1);">用途</font>
+
+解決事情先後順序，例如：修課、任務。
+先完成某項事情才能完成另一項事情，拓樸排序可以將這些問題完成的先後順序排出來。
+
+也可以判斷一張圖是不是 DAG(有向無環圖)。</pre>
+</div>
+
+<div class="textBlock">
+    <pre>
+<font style="color:var(--textBlockColor1);">實作</font>
+
+1. 先計算所有節點的入邊。
+2. 將入邊為0的節點丟入 Queue。
+3. 將 Queue 目前處理的節點丟入排序結果。
+4. BFS 找到其餘可以丟入 Queue 的節點，在決定可不可以丟入之前先將該節點的入邊數 -1，如果入邊數變為 0 則丟入Queue。
+5. 如果完成排序後被放入排序結果的節點數量和節點總數不同則代表這張圖不是 DAG(有向無環圖)</pre>
+</div>
+
+<div class="codeBlock">
+    <div class="CodeContent">
+        <pre class="IndexBlock"></pre>
+        <pre class="Code">
+vector&lt;int&gt; node[maxSize],result;
+int in[maxSize]={0};
+
+void topologicalSort(int n){//n為節點數
+    queue&lt;int&gt; q;
+    for(int a=1;a&lt;=n;a++)if(in[a]==0)q.push(a);
+
+    while(!q.empty()){
+        int cur=q.front();
+        result.push_back(cur);
+        q.pop();
+        for(int a=0;a&lt;node[cur].size();a++){
+            in[node[cur][a]]--;
+            if(in[node[cur][a]]==0)q.push(node[cur][a]);
+        }
+    }
+}</pre>
+    </div>
+    <button class="CodeCopyButton"></button>
+</div>

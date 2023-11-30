@@ -1,0 +1,96 @@
+<div class="textBlock">
+    <pre>
+<font style="color:var(--textBlockColor1);">定義</font>
+
+對於兩個節點往上碰到的第一個相同節點就是他們的最低共同祖先。</pre>
+</div>
+
+<div class="textBlock">
+    <pre>
+<font style="color:var(--textBlockColor1);">倍增法</font>
+
+1. 先用 DFS 求得所有節點的深度。
+2. 建表求得對於所有節點距離他們2的冪次的所有祖先。
+
+定義 father[n][k] 為對於節點 n 往上 2<sup>k</sup> 層的祖先。
+例：father[n][0] 為 $n$ 的父節點。
+
+所以對於 father[n][k] 它會等於 father[father[n][k-1]][k-1]。</pre>
+</div>
+
+<div class="textBlock">
+    <pre>
+利用以上資訊對於 x 與 y 他們的最低共同祖先會由以下方法求得：
+
+    1. 先使得 x 與 y 的高(深)度相同。
+    2. 高(深)度相同後兩點若一樣則其中一點就是最低共同祖先。
+    3. 否則兩點盡量往上跳到不是共同祖先的節點。
+    4. 最後再往上跳一格就是最低共同祖先。</pre>
+</div>
+
+<div class="textBlock">
+    <pre><font style="color:var(--textBlockColor1);">DFS 找節點深度</font></pre>
+</div>
+
+<div class="codeBlock">
+    <div class="CodeContent">
+        <pre class="IndexBlock"></pre>
+        <pre class="Code">
+void dfs(int n,int pre){
+    if(!dep[n])return;
+    father[n][0]=pre;
+    dep[n]=dep[pre]+1;
+
+    for(auto &son:node[n])dfs(son,n);
+}</pre>
+    </div>
+    <button class="CodeCopyButton"></button>
+</div>
+
+<div class="textBlock">
+    <pre><font style="color:var(--textBlockColor1);">倍增表</font></pre>
+</div>
+
+<div class="codeBlock">
+    <div class="CodeContent">
+        <pre class="IndexBlock"></pre>
+        <pre class="Code">
+//頂點數為200000
+void build(int n){
+    for(int a=1;a&lt;20;a++){
+        for(int b=1;a&lt;=n;b++)father[b][a]=father[father[b][a-1]][a-1];
+    }
+}</pre>
+    </div>
+    <button class="CodeCopyButton"></button>
+</div>
+
+<div class="textBlock">
+    <pre><font style="color:var(--textBlockColor1);">查詢</font></pre>
+</div>
+
+<div class="codeBlock">
+    <div class="CodeContent">
+        <pre class="IndexBlock"></pre>
+        <pre class="Code">
+int find(int x,int y){
+    if(dep[x]&gt;dep[y])return find(y,x);
+
+    for(int a=19;a&gt;=0;a--){
+        if(dep[father[y][a]]>=dep[x])y=father[y][a];
+    } 
+
+    if(x==y)return x;
+
+    for(int a=19;a&gt;=0;a--){
+        if(father[x][a]!=father[y][a]){
+            x=father[x][a];
+            y=father[y][a];
+        }
+    }
+
+    return father[x][0];
+}</pre>
+    </div>
+    <button class="CodeCopyButton"></button>
+</div>

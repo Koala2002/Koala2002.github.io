@@ -8,7 +8,7 @@
     <meta charset="utf-8"/>
    
     <link rel="stylesheet" href="./CSS/MainStyle.css"/>
-    <link rel="stylesheet" href="./CSS/skillTree.css"/>
+    <link rel="stylesheet" href="./CSS/SMenu.css"/>
     <link rel="stylesheet" href="./CSS/Content.css"/>
     <link rel="stylesheet" href="./CSS/syntaxHighlight.css"/>
 
@@ -16,16 +16,16 @@
 </head>
 
 <body>
-    <script src="../JS/MainObjectBuild.js"></script>
-    <script src="../JS/ContentBlockWindowsControl.js"></script>
+    <script src="JS/MainObjectBuild.js"></script>
+    <script src="JS/ContentBlockWindowsControl.js"></script>
     <div class="ContentRegion">
-        <script src="./JS/skillTreeMenuBuild.js"></script>
-        <div class="MainContentShadow"></div>
+        <button class="MenuIndentationButton" id="IndentationButton"></button>
+        <script src="./JS/selectionMenuBuild.js"></script>
+        <div class="MainContentShadow" id="MainContentShadowID"></div>
         <div class="MainContent" id="MainContentID"><!--主要內容-->                  
         </div>
     </div>
-    
-
+    <script src="../../JS/selectionMenuSetting.js"></script>
 </body>
 
 </html>

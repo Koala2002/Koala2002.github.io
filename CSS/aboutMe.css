@@ -1,5 +1,5 @@
 @import url(Variable.css);
-
+@import url(Fonts.css);
 
 .MyInformation{
     width:25%;
@@ -10,6 +10,7 @@
     left: 2.5%;
 
     background-color: var(--ContentInsideBackgroundColor);
+    border-top: 2.5px solid var(--MinorColor);
     border-radius: 15px;
 
     box-shadow: var(--ObjectInsideShadow);
@@ -49,7 +50,6 @@
 
     font-family: 'Nunito','JF';
 }
-
 
 
 @keyframes waveRotate{
