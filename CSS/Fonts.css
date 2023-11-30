@@ -1,9 +1,9 @@
 @font-face {
     font-family: 'JF';
-    src: url('../Font/jf-openhuninn-2.0.ttf') format('truetype'),
+    src: url('../Font/jf-openhuninn-2.0.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Nunito';
-    src: url('../Font/Nunito-VariableFont_wght.ttf') format('truetype'),
+    src: url('../Font/Nunito-VariableFont_wght.ttf') format('truetype');
 }
