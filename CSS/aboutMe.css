@@ -15,6 +15,7 @@
 
     box-shadow: var(--ObjectInsideShadow);
 
+    box-sizing: border-box;
 }
 
 .Introduction{
