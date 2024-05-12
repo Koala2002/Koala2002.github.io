@@ -3,8 +3,8 @@
 
 @media(min-width:801px){
     .MainContent,.MainContentShadow{
-        height:90%;
-        width: 70%;
+        height:83vh;
+        width: 95%;
     }
 
     .textBlock,.codeBlock{width: 50.6vw;}
@@ -22,10 +22,10 @@
 
 .MainContent{
     position: absolute;
-    top:5%;
+    top:2.5vh;
     right:2.5%;
 
-    border-radius: 15px ;
+    border-radius: 10px ;
 
     padding-top: 3.9375vh;
     padding-bottom: 0.1875vh;
@@ -45,12 +45,13 @@
 
 .MainContentShadow{
     position: absolute;
-    top:5%;
+    top:2.5vh;
     right:2.5%;
 
-    border-radius: 15px ;
+    border-radius: 10px ;
 
     border-top: 2.5px solid var(--MinorColor);
+    border-bottom: 2.5px solid var(--MinorColor);
     box-shadow: var(--ObjectInsideShadow);
     background-color: transparent;
 
@@ -79,7 +80,7 @@
     line-height: 1.25;
     
     border: 2.5px solid var(--MinorColor);
-    border-radius: 15px;
+    border-radius: 10px;
     box-shadow: var(--ContentShadow);
     overflow-x: auto;
 
@@ -114,7 +115,7 @@
 
     box-shadow:var(--ContentShadow);
     border: 2.5px solid var(--MinorColor);
-    border-radius: 15px;
+    border-radius: 10px;
 
     box-sizing: border-box;
 
@@ -144,7 +145,7 @@
     background-color: var(--MinorColorDark);
 
     border:2.5px solid var(--MinorColor);
-    border-radius: 0 15px 0 15px;
+    border-radius: 0 10px 0 10px;
 
     transform: translateY(-2.5px);
 

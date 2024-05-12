@@ -1,16 +1,58 @@
 let menulists=document.getElementsByClassName("selectionBlock");
-
+let itemicons=document.getElementsByClassName("selectionBlockIcon");
 console.log(menulists);
 
+var isexpand=new Array();
+var listStyle=new Array
+
 for(let a=0;a<menulists.length;a++){
-    let delta=menulists[a].getElementsByClassName("selectionItem").length;
-    let css = '.selectionBlock:nth-child('+(a+1)+'):hover ~ .selectionBlock{top: +'+(4.4296875*delta)+'vh;}';
-    let style = document.createElement('style');
 
-    style.appendChild(document.createTextNode(css));
+       
+    //if(a==menulists.length-1)menulists[a].style.height = '0';
+    isexpand[a]=false;
+    menulists[a].addEventListener("click",()=>{
+        isexpand[a]=!isexpand[a];
+        var itemlist=menulists[a].getElementsByClassName("selectionItem");
+        if(isexpand[a]){
+            itemicons[a].innerHTML="&#11167;";
+            for(let a=0;a<itemlist.length;a++){
+                //itemlist[a].style["background-color"]="var(--MinorColor50)";
+                itemlist[a].style["height"]="75%";
+                itemlist[a].style["font-size"]="var(--TextSize)";
+                itemlist[a].style["color"]="var(--fontColor)";  
+            }   
+            
+        }
+        else{
+            itemicons[a].innerHTML="&#11166;";
+            for(let a=0;a<itemlist.length;a++){
+               // itemlist[a].style["background-color"]="";
+                itemlist[a].style["height"]="0%";
+                itemlist[a].style["font-size"]="0";
+                itemlist[a].style["color"]="var(--fontColor_Transparent)";  
+            }
+        } 
 
-    menulists[a].appendChild(style);
-    if(a==menulists.length-1)menulists[a].style.height = '0';
+        var expandcnt=0;
+        for(let a=0;a<menulists.length;a++){
+            
+            try{
+                menulists[a].removeChild(listStyle[a]);
+            }catch(error){}
+
+            if(isexpand[a])expandcnt+=menulists[a].getElementsByClassName("selectionItem").length;
+            
+            let newstyle=document.createElement("style");
+            css = '.selectionBlock:nth-child('+(a+1)+') ~ .selectionBlock{top: +'+(3.75*expandcnt)+'vh;}';
+            newstyle.appendChild(document.createTextNode(css));
+            menulists[a].appendChild(newstyle);
+            
+            listStyle[a]=newstyle;
+            
+        }
+        //console.log(expandcnt);
+        
+    });
 }
 
 let endJudgement;
@@ -32,7 +74,7 @@ menu.addEventListener("scroll",()=>{
 selectionItemElements=document.getElementsByClassName('selectionItem');
 
 for(let a=0;a<selectionItemElements.length;a++) {
-    selectionItemElements[a].addEventListener('click', function() {
+    selectionItemElements[a].addEventListener('click', function(e) {
         let titleName=this.parentElement.id;//類型名稱
         let selectionItemName=this.innerHTML;//小主題名稱
     
@@ -51,11 +93,13 @@ for(let a=0;a<selectionItemElements.length;a++) {
                 });
             });
         
+            e.stopPropagation();
     });
 }
 //更換新的頁面//
 
 //隱藏//
+/*
 let IndentationButton=document.getElementById('IndentationButton');
 let MainContentRegion=document.getElementById('MainContentID'),MainContentRegionShadow=document.getElementById('MainContentShadowID');
 let switchOn=true;
@@ -108,4 +152,5 @@ IndentationButton.addEventListener('click',() =>{
     switchOn = !switchOn;
 });
 
+*/
 //隱藏//

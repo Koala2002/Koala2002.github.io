@@ -3,15 +3,16 @@
 
 .MyInformation{
     width:25%;
-    height:90%;
+    height:83vh;
 
     position: absolute;
-    top:5%;
+    top:2.5vh;
     left: 2.5%;
 
     background-color: var(--ContentInsideBackgroundColor);
     border-top: 2.5px solid var(--MinorColor);
-    border-radius: 15px;
+    border-bottom: 2.5px solid var(--MinorColor);
+    border-radius: 10px;
 
     box-shadow: var(--ObjectInsideShadow);
 
@@ -29,13 +30,14 @@
     transform: translate(-50%,0);
 
     background-color: var(--MinorColor);
-    border-radius: 15px;
+    border-radius: 10px;
 
     box-shadow: var(--ContentShadow);
 
     text-align: center;
 
     overflow: hidden;    
+    box-sizing: border-box;
 }
 
 .IntroductionTexts{
@@ -96,10 +98,10 @@
 
 .ContestTableTitle{
     position: absolute;
-    top:5%;
+    top:2.5vh;
     right:2.5%;
 
-    height: 5%;
+    height: 4vh;
     width: 67.5%;
 
     font-size: var(--BigTextSize);
@@ -113,7 +115,7 @@
     padding-left: calc(1.5% + 10px);
     padding-right: calc(1.5% + 10px);
 
-    
+    box-sizing: border-box;
 }
 
 .ContestTable{
@@ -122,24 +124,28 @@
     right: 3.25%;
 
     height:75%;
-    width: calc(64.5% - 10px);
+    width: 64.5%;
 
     padding-right: 0.75%;
     overflow-y: auto;
 
+    box-sizing: border-box;
 }
 
 .ContestTableShadow{
     position: absolute;
-    top:7.5%;
+    top:4.5vh;
     right:2.5%;
 
-    height:87.5%;
+    height:81vh;
     width: 67.5%;
-    border-radius: 0 0 15px  15px ;
+    border-radius: 0 0 10px  10px ;
 
     box-shadow: var(--ObjectInsideShadow);
     background-color: var(--ContentInsideBackgroundColor);
+
+    border-bottom: 2.5px solid var(--MinorColor);
+    box-sizing: border-box;
 }
 
 .ContestTable::-webkit-scrollbar {

@@ -41,7 +41,7 @@
     --MinorColorLight:rgba(60, 75, 85,1);
     --MinorColorDark:rgba(40,55,65,1);
 
-    --LinkHoverColor:rgb(255,255,255,0.05);
+    --LinkHoverColor:rgba(60, 75, 85,0.25);
 
     --codeBlockBackgroundColor:rgba(30,30,30);
 }

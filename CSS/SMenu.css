@@ -3,8 +3,8 @@
 
 @media(min-width:801px){
     .selectionMenu,.selectionMenuShadow{
-        width:22.5%;
-        height:90%;
+        width:18%;
+        height:70%;
     }
 }
 @media(max-width:800px){
@@ -14,31 +14,60 @@
     }
 }
 
-.selectionMenu{
+.selectionMenu {
     text-align: center;
     position: absolute;
     
-    top:5%;
-    left: 2.5%;    
+    top:12%;
+    left: 0;    
 
-    background-color: var(--ContentInsideBackgroundColor) ;
-    border-radius: 15px;
+    background-color: var(--MainColor);
+    box-shadow: var(--MainObjectShadow);
+    border-radius: 0 10px 10px 0;
 
     overflow-y: auto;
     overflow-x: hidden;  
     
     transition: border-radius 0.4s ease-in-out,height 0.4s ease-in-out;
+
+    box-sizing: border-box;
+
+
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
+.menuBorder{
+    
+    height: 65vh;
+    width: 100%;
+
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction:column;
+    justify-content: space-between;
+    align-items: center;
+    
+    overflow-y: auto;
+ 
+    box-sizing: border-box;
+
+    
+}
+
+/*
 .selectionMenuShadow{
     background-color: transparent;
 
     position: absolute;
     top:5%;
-    left: 2.5%;
+    left: 0%;
 
-    border-radius: 15px;
+    border-radius: 10px;
     border-top: 2.5px solid var(--MinorColor);
+    border-bottom: 2.5px solid var(--MinorColor);
     box-shadow: var(--ObjectInsideShadow);
 
     pointer-events: none;
@@ -46,47 +75,79 @@
 
     transition: border-radius 0.4s ease-in-out,height 0.4s ease-in-out,border-top 0.25s ease-in-out;
 }
-
-.selectionMenu::-webkit-scrollbar{width: 0;}
+*/
+.selectionMenu::-webkit-scrollbar,.menuBorder::-webkit-scrollbar{width: 0;}
 
 .selectionBlockTitleName{
     background-color:transparent;   
 
     font-size: var(--BigTextSize);
     
-
-    width: 100%;
+    width: calc(18vw - 5vh);
     height: 100%;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    box-shadow: 0 0 10px 5px  rgb(30,30,30);
+    text-align: center;
+
     border-radius:10px; 
+
+
+    box-sizing: border-box;
 }
 
-.selectionBlock{
-    height:5.90625vh;
-    width:80%;
+.selectionBlockIcon{
+    text-align: right;
+
+    position: absolute;
+    right:1vh;
+
+    box-sizing: border-box;
+
+    
+}
+
+.selectionBlock{ 
+    user-select: none;
+    height:5vh;
+    width:calc(18vw - 5vh);
    
-    background-color: var(--MainColor);
-
-    margin-bottom: 3.375vh;
-    margin-left: 50%;
-
-    translate: -50% 3.9375vh;
+    border-radius: 10px;
+    border-bottom: solid 2.5px var(--MinorColor) ;
+    box-shadow: 0 0 7.5px 5px inset var(--MainColor50) ;
     
-    border-radius:10px; 
-    
-    transition: top 0.75s;
+    transition: top 0.3s;
     transition-timing-function: ease-in-out;
+
     position: relative;
-    top:0;
+    top: 0; 
+    z-index: 0;
+    box-sizing: border-box;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.selectionBlock::after{
+    content: "";
+   
+
+    display:block;
+    border-bottom: solid 2.5px var(--MinorColor) ;
+    height: 5vh;
+    transform: translateY(calc(-5vh + 2.5px));
+    border-radius:10px; 
+
+    box-sizing: border-box;
+    pointer-events: none;
+    
 }
 
 .selectionItem{
-    background-color: rgba(70, 90, 85,0);
+    background-color: transparent;
+    height: 0;
     font-size: 0;
     color: var(--fontColor_Transparent);
 
@@ -96,66 +157,30 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-
+    
     position: relative;
     left:10%;
-
+    top:2.4px;
     z-index: -1;
    
     pointer-events: auto;
 }
 
+
+
 a.selectionItem{text-decoration: none;}
 
 .selectionBlock:not(:hover) .selectionItem{
-    transition: color 0.25s ,font-size 0.75s,height 0.75s,background-color 0.75s;
+    transition: color 0.15s ,font-size 0.3s,height 0.3s;
     transition-timing-function: ease-in-out;
-    height: 0%;
-    font-size: 0;
-    color: var(--fontColor_Transparent);
-    background-color: var(--MainColor0);
 }
 
 .selectionBlock:hover .selectionItem{
-    transition: color 0.75s 0.25s,font-size 0.75s 0.25s,height 0.75s,background-color 0.25s;
-    transition-timing-function: ease-in-out;
-    background-color: var(--MainColor);
-    height: 75%;
-    font-size: var(--TextSize);
-    color: var(--fontColor);    
+    transition: color 0.3s ,font-size 0.3s ,height 0.3s;
+    transition-timing-function: ease-in-out;  
 
     &:hover{
-        transition: color 0.75s 0.25s,font-size 0.75s 0.25s,height 0.75s,background-color 0.25s;
+        transition: color 0.3s ,font-size 0.3s ,height 0.3s;
         background-color: var(--LinkHoverColor);  
     }
-
-}
-
-.MenuIndentationButton{
-    position:absolute;
-
-    background-color: var(--MinorColorDark);
-
-    height: 2.5vh;
-    width: 13vw;
-
-    top:calc(2vh + 2.5px);
-    left:calc(13.75% - 6.5vw);
-
-    border-top: 2.5px solid var(--MinorColor);
-    border-bottom: 0px solid transparent;
-    border-right: 2.5px solid var(--MinorColor);
-    border-left: 2.5px solid var(--MinorColor);
-    border-radius: 10px 10px 0px 0px ;
-
-    box-sizing: border-box;
-
-    transition: background-color 0.25s,left 0.5s ease-in-out,top 0.4s ease-in-out;
-
-    &:hover{
-        cursor: pointer;
-        background-color: var(--MinorColor50);
-    }
-
-    &:active{background-color: var(--MinorColor75);}
 }
