@@ -7,7 +7,6 @@ MainObject=
     <a class="MainMenuLink" href="skillTreeMainPage.html">技能樹</a>\
     <a class="MainMenuLink" href="ProblemList.html">題庫區</a>\
 </div>\
-<div class="MainMenuList"></div>\
 <div class="MainContactRegion"></div>\
 ';
 

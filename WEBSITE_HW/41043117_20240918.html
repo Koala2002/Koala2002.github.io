@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>哈哈</title>
+
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: center;
+
+            background-color: rgba(30,100,255,0.5);
+        }
+        button {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+
+            transition: background-color 0.25s;
+            box-shadow: 0 0 5px 2.5px rgb(80,80,100);
+            
+            user-select: none;
+            
+
+            &:hover{background-color: darkseagreen;}
+        }
+        #playbar {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            width: 500px;
+            height: 100px;
+            margin-top: 100px;
+        }
+        #score {
+            font-size: 24pt;
+            margin-top: 20px;
+
+            user-select: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="playbar">
+        <button class="paper" onclick="play('paper')">🖐️</button>
+        <button class="scissor" onclick="play('scissor')">✌️</button>
+        <button class="rock" onclick="play('rock')">👊</button>
+    </div>
+    <div id="score">SCORE&lt&lt Player: 0 | Computer: 0&gt&gt</div>
+
+    <!-- 音效文件 -->
+    <audio id="winSound" src="win.mp3"></audio>
+    <audio id="loseSound" src="lose.mp3"></audio>
+    <audio id="tieSound" src="tie.mp3"></audio>
+</body>
+
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    let playerScore = 0;
+    let computerScore = 0;
+
+    function play(op) {
+        const cp = Math.floor(Math.random() * 3);
+        const oplist = ["paper", "scissor", "rock"];
+        let result = "";
+
+        if (oplist[cp] == op) {
+            result = "tie";
+            document.getElementById("tieSound").play(); // 播放平局音效
+            Swal.fire({
+                title: 'Result',
+                text: `Computer chose ${oplist[cp]}, you chose ${op}. It's a tie!`,
+                icon: 'info',
+                confirmButtonText: 'OK',
+                customClass: {
+                    confirmButton: 'custom-button'
+                }
+            });
+        } else if (
+            (oplist[cp] == "paper" && op == "rock") ||
+            (oplist[cp] == "scissor" && op == "paper") ||
+            (oplist[cp] == "rock" && op == "scissor")
+        ) {
+            computerScore++;
+            result = 'lose';
+            document.getElementById("loseSound").play(); // 播放輸的音效
+            Swal.fire({
+                title: 'Result',
+                text: `Computer chose ${oplist[cp]}, you chose ${op}. You lose!`,
+                icon: 'error',
+                confirmButtonText: 'Try Again',
+                customClass: {
+                    confirmButton: 'custom-button'
+                }
+            });
+        } else {
+            playerScore++;
+            result = 'win';
+            document.getElementById("winSound").play(); // 播放贏的音效
+            Swal.fire({
+                title: 'Result',
+                text: `Computer chose ${oplist[cp]}, you chose ${op}. You win!`,
+                icon: 'success',
+                confirmButtonText: 'Yay!',
+                customClass: {
+                    confirmButton: 'custom-button'
+                }
+            });
+        }
+
+        updateScore();
+        checkGameOver();
+    }
+
+    function updateScore() {
+        document.getElementById("score").innerText = `Player: ${playerScore} | Computer: ${computerScore}`;
+    }
+
+    function checkGameOver() {
+        if (playerScore === 3 || computerScore === 3) {
+            const winner = playerScore === 3 ? 'Player' : 'Computer';
+            Swal.fire({
+                title: 'Game Over!',
+                text: `${winner} wins the game!`,
+                icon: 'info',
+                confirmButtonText: 'Play Again',
+                customClass: {
+                    confirmButton: 'custom-button'
+                }
+            }).then(() => {
+                resetGame();
+            });
+        }
+    }
+
+    function resetGame() {
+        playerScore = 0;
+        computerScore = 0;
+        updateScore();
+    }
+
+    // 自訂按鈕樣式
+    const style = document.createElement('style');
+    style.innerHTML = `
+        .custom-button {
+            text-align: center; /* 置中 */
+            font-size: 16px; /* 根據需要調整大小 */
+            padding: 10px 20px; /* 調整內邊距 */
+            width: 100px;
+            height: 50px;
+        }
+    `;
+    document.head.appendChild(style);
+</script>
+
+</html>
