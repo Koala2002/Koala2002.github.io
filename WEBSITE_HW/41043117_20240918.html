@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>哈哈</title>
+    <title>網頁程式設計作業2024/09/18 四資工四甲 吳瑋修 41043117</title>
 
     <!-- SweetAlert2 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
@@ -16,56 +16,161 @@
             flex-direction: column;
             flex-wrap: wrap;
             align-items: center;
-
-            background-color: rgba(30,100,255,0.5);
         }
-        button {
-            width: 50px;
-            height: 50px;
+
+        #GameBlock {
+            position: absolute;
+            top:0;
+        
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        
+            width: 70vw;
+            height: 100vh;
+            background-color: rgba(30, 100, 255, 0.5);
+        }
+
+        #playbar button {
+            width: 5vw;
+            height: 5vw;
             border-radius: 10px;
             border: none;
             cursor: pointer;
-            font-size: 24px;
+            font-size: 28pt;
 
             transition: all 0.1s;
-            box-shadow: 0 0 5px 2.5px rgb(80,80,100);
-            
-            user-select: none;
-            
+            box-shadow: 0 0 5px 2.5px rgba(80, 80, 100, 0.75);
 
-            &:hover{
+            user-select: none;
+
+
+            &:hover {
                 background-color: darkseagreen;
                 scale: 1.25;
             }
         }
+
         #playbar {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
-            width: 500px;
-            height: 100px;
-            margin-top: 100px;
+            width: 35vw;
+            height: 45vh;
         }
-        #score {
-            font-size: 24pt;
-            margin-top: 20px;
 
+        #scoreBlock {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            width: 40vw;
+            height: 40vh;
             user-select: none;
+
+        }
+
+        .scoreRow {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+
+            height: 45%;
+            width: 100%;
+
+            box-sizing: border-box;
+            box-shadow: 0 0 5px 2.5px rgba(80, 80, 100, 0.75);
+            border-radius: 25px;
+        }
+
+        .playerHeader {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+
+            width: 25%;
+            height: 100%;
+            ;
+            font-size: 60pt;
+            background-color: rgba(0, 30, 45, 0.5);
+            border-radius: 25px 0px 0px 25px;
+        }
+
+
+        .scoreBar {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            background-color: rgb(0, 30, 45);
+            width: 75%;
+            height: 100%;
+            border-radius: 0px 25px 25px 0px;
+
+            padding: 0 50px;
+
+            box-sizing: border-box;
+        }
+
+        .score {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.8);
+
+            box-shadow: 0 0 7.5px inset rgb(155, 200, 255);
+            border: none;
+            border-radius: 50%;
+
+            transition: all 0.25s;
+        }
+
+
+        .custom-button {
+            text-align: center;
+            font-size: 14pt;
+            width: 150px;
+            height: 50px;
+            box-sizing: border-box;
         }
     </style>
 
 </head>
 
 <body>
-    <div id="playbar">
-        <button class="paper" onclick="play('paper')">🖐️</button>
-        <button class="scissor" onclick="play('scissor')">✌️</button>
-        <button class="rock" onclick="play('rock')">👊</button>
-    </div>
-    <div id="score">SCORE&lt&lt Player: 0 | Computer: 0&gt&gt</div>
+    <div id="GameBlock">
+        <div id="playbar">
+            <button id="paper" onclick="play('paper')">🖐️</button>
+            <button id="scissor" onclick="play('scissor')">✌️</button>
+            <button id="rock" onclick="play('rock')">👊</button>
+        </div>
 
+        <div id="scoreBlock">
+            <div class="scoreRow">
+                <div class="playerHeader">🧑</div>
+                <div class="scoreBar" id="PlayerScore">
+                    <div class="score"></div>
+                    <div class="score"></div>
+                    <div class="score"></div>
+                </div>
+            </div>
+            <div class="scoreRow">
+                <div class="playerHeader">🤖</div>
+                <div class="scoreBar" id="BotScore">
+                    <div class="score"></div>
+                    <div class="score"></div>
+                    <div class="score"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- 音效文件 -->
     <audio id="winSound" src="win.mp3"></audio>
     <audio id="loseSound" src="lose.mp3"></audio>
@@ -77,7 +182,7 @@
 
 <script>
     let playerScore = 0;
-    let computerScore = 0;
+    let BotScore = 0;
 
     function play(op) {
         const cp = Math.floor(Math.random() * 3);
@@ -86,12 +191,13 @@
 
         if (oplist[cp] == op) {
             result = "tie";
-            document.getElementById("tieSound").play(); // 播放平局音效
+            document.getElementById("tieSound").play();
             Swal.fire({
                 title: 'Result',
-                text: `Computer chose ${oplist[cp]}, you chose ${op}. It's a tie!`,
+                text: `Bot choose ${oplist[cp]}, you choose ${op}. It's a tie!`,
                 icon: 'info',
                 confirmButtonText: 'OK',
+                position: 'top',
                 customClass: {
                     confirmButton: 'custom-button'
                 }
@@ -101,14 +207,15 @@
             (oplist[cp] == "scissor" && op == "paper") ||
             (oplist[cp] == "rock" && op == "scissor")
         ) {
-            computerScore++;
+            BotScore++;
             result = 'lose';
-            document.getElementById("loseSound").play(); // 播放輸的音效
+            document.getElementById("loseSound").play();
             Swal.fire({
                 title: 'Result',
-                text: `Computer chose ${oplist[cp]}, you chose ${op}. You lose!`,
+                text: `Bot choose ${oplist[cp]}, you choose ${op}. You lose!`,
                 icon: 'error',
                 confirmButtonText: 'Try Again',
+                position: 'top',
                 customClass: {
                     confirmButton: 'custom-button'
                 }
@@ -116,12 +223,13 @@
         } else {
             playerScore++;
             result = 'win';
-            document.getElementById("winSound").play(); // 播放贏的音效
+            document.getElementById("winSound").play();
             Swal.fire({
                 title: 'Result',
-                text: `Computer chose ${oplist[cp]}, you chose ${op}. You win!`,
+                text: `Bot choose ${oplist[cp]}, you choose ${op}. You win!`,
                 icon: 'success',
                 confirmButtonText: 'Yay!',
+                position: 'top',
                 customClass: {
                     confirmButton: 'custom-button'
                 }
@@ -133,17 +241,25 @@
     }
 
     function updateScore() {
-        document.getElementById("score").innerText = `Player: ${playerScore} | Computer: ${computerScore}`;
+        Array.from(document.getElementById("PlayerScore").children).forEach((point, id) => {
+            if (id < playerScore) point.style.backgroundColor = "rgba(255, 255, 75,0.8)";
+            else point.style.backgroundColor = "rgba(0, 0, 0,0.8)";
+        });
+        Array.from(document.getElementById("BotScore").children).forEach((point, id) => {
+            if (id < BotScore) point.style.backgroundColor = "rgba(255, 255, 75,0.8)";
+            else point.style.backgroundColor = "rgba(0, 0, 0,0.8)";
+        });
     }
 
     function checkGameOver() {
-        if (playerScore === 3 || computerScore === 3) {
-            const winner = playerScore === 3 ? 'Player' : 'Computer';
+        if (playerScore === 3 || BotScore === 3) {
+            const winner = playerScore === 3 ? 'Player' : 'Bot';
             Swal.fire({
                 title: 'Game Over!',
                 text: `${winner} wins the game!`,
                 icon: 'info',
                 confirmButtonText: 'Play Again',
+                position: 'top',
                 customClass: {
                     confirmButton: 'custom-button'
                 }
@@ -155,22 +271,9 @@
 
     function resetGame() {
         playerScore = 0;
-        computerScore = 0;
+        BotScore = 0;
         updateScore();
     }
-
-    // 自訂按鈕樣式
-    const style = document.createElement('style');
-    style.innerHTML = `
-        .custom-button {
-            text-align: center; /* 置中 */
-            font-size: 16px; /* 根據需要調整大小 */
-            padding: 10px 20px; /* 調整內邊距 */
-            width: 100px;
-            height: 50px;
-        }
-    `;
-    document.head.appendChild(style);
 </script>
 
 </html>
