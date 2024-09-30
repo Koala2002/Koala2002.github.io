@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            margin-top: 25vh;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        button{
+            height: 10vh;
+            width: 10vw;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(50,100,155);
+
+            box-shadow: 0 0 5px 2.5px rgba(0,0,0,0.5);
+            color: rgb(250, 255, 230);
+
+            
+            transition: scale 0.1s;
+            
+            &:hover{
+                cursor: pointer;
+                background-color: rgb(60,110,165);
+                scale: 1.05;
+            }
+        }
+
+        .GameMap{
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 606px;
+            height: 606px;
+            
+            box-sizing: border-box;
+        }
+
+        .GameRow{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 606px;
+            height:150px;
+        }
+        
+        .Card{
+            width:150px;
+            height: 150px;
+            
+            border:2px solid black;
+            border-radius: 5px;
+
+            box-sizing: border-box;
+
+            transition: all 0.1s;
+
+            &:hover{
+                cursor: pointer;
+                background-color: rgb(50,100,155);
+            }
+        }
+
+        #GameFunctionBar{
+            position: absolute;
+            right:10vw;
+        
+            width: 10vw;
+            height: 50vh;
+
+            display: hidden;
+            flex-wrap: wrap;
+            flex-direction: column;
+
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        /*----------------used AI----------------*/
+        .flip-container {
+            perspective: 1000px;
+        }
+
+        .flipper {
+            position: relative;
+            width: 150px; /* Set your desired width */
+            height: 150px; /* Set your desired height */
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+
+        .back {
+            transform: rotateY(180deg);
+        }
+
+        .flip-container.flipped .flipper {
+            transform: rotateY(180deg);
+        }
+        /*----------------used AI----------------*/
+
+        #CardTypeChooseBlock{
+            display: hidden;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            height: 40vh;
+        }
+    </style>
+
+</head>
+<body>
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEinfJ5fgf9kZai-csal_mVnQt72i2Si9Cx0o89oKM3kIETYBHkP133Oet35BsASHUaFHl5ZZPUu2XXhlw-Kzqo30C5l2K2CfRrAFIy9Y6-y9x6jFnrQVix27jd0dgsYXZQqpHCJ6s-eXZFc/s180-c/animal_rakuda_kobu_tareru.png">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEieks99OzkiAothfzTz7FbtakQMfXVPQDL6eUDMJfv_2ghB5xB0gUYsA5n-2YUHe5Adevn9YrfUjswiDQneXg1Q0uzEjIu3R9G-DJ7xvxi6nbj-XiNWool1RV3lRjy3-zKFGPySzfgQxHGw/s180-c/animal_black_sheep_hitsuji.png">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh05bFfvysjY5SwF1P_VKuIWSpZz6K3mlqFnA2uQUyGXUV51_FuiQG_uXkguwOnasKPgWV9S41KbSdxWrlbNofq1Yd5wC4_m3wY9obQeklvu-gHpov5xpCwX9MErbfrE4xvmmBob6r5oHvs/s180-c/animal_okojo_summer.png">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhy6xlfKWWn6NHtMPNU9DC10EYC9XKc7_OK0msapTZHIrmvqZLoq-z1PeXfNyXC1LHtcblqKCSmKYGRLrNHCyQAN4yWpkSJ3paF6LD_a880_fIHL7COo1mWHwmyqOZBikCnG14pBtU7Bt0m/s180-c/animal_kiboshi_iwa_hyrax.png">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj43Qf67CecA7zIR3NJUaooyxmvqD3e1O4x7qxMCMJgudBM7tE7TxP7cy-lT6m8roSpsdfQa3NZNikCVnPk-s2rpQkaZxQJ2pyjha1R-SohqlG5pH7CKev51j3Z9I19Pmakyhmgn4Gcj_W5/s180-c/hamster_sleeping_golden.png">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjO4MITeCu1xs7ze7ct_-kVgJAYsIBz3B5Km1q_NX2wWopxi6LSvVP-L30ErrwrH69pNRz-_vRT8VCWywuJiu3jbUcwzbSPzA8f5vBdbfCXgqSEkoUus80vx-ERElDIFlIJ6M7F4k2vfy93/s180-c/animal_uma_horse_stand.png">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiagPDLGbuy0TBLWUspfr_E28ropH_MkdybgCkLpaC6DGxRrm4JlC9KTcofkpPNmnXCwoSr6rvh9vaDyGfnqSA7CZUpSrOwWPCutbZdRGLIf6KTJdvkBM-LgcMluOObwrrNRTL1qIP9ewHU/s180-c/animal_moose.png">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSDqW1pujD_Am254B9S_C9tMeKiWUTrOn_Xs9mFohdPhyphenhyphenJpAmljxTCn5T8d7c32QxW-z9lXcnbbgnR_CnKXiGQfDB1ug2SW28oxVl0Y1SbWrk93ViQl1xfVYILVxGQKxnvzl3W7xqPtP1M/s180-c/animal_oomimigitsune.png">
+    
+    <img src="https://illustcenter.com/wp-content/uploads/2022/05/rdesign_14285.png">
+    <img src="https://illustcenter.com/wp-content/uploads/2021/12/rdesign_8997.png">
+    <img src="https://illustcenter.com/wp-content/uploads/2022/05/rdesign_14282.png">
+    <img src="https://illustcenter.com/wp-content/uploads/2021/12/rdesign_8979.png">
+    <img src="https://illustcenter.com/wp-content/uploads/2021/12/rdesign_8982.png">
+    <img src="https://illustcenter.com/wp-content/uploads/2022/05/rdesign_14291.png">
+    <img src="https://illustcenter.com/wp-content/uploads/2021/12/rdesign_8993.png">
+    <img src="https://illustcenter.com/wp-content/uploads/2021/12/rdesign_8995.png">
+    
+
+
+
+    <button id="GameStartButton">開始遊戲</button>
+    
+    <div id="CardTypeChooseBlock" hidden>
+        請選擇你喜歡的卡牌樣式
+        <button id="CardType1">卡牌樣式1</button>
+        <button id="CardType2">卡牌樣式2</button>
+    </div>
+
+    <div id="GameMap" hidden>
+    
+    </div>
+
+    <div id="GameFunctionBar" hidden>
+        <button id="FlipALLButton" onclick="FlipALL()">全部翻轉</button>
+        <button id="FlipALLFrontButton" onclick="FlipALLFront()">全部翻轉到正面</button>
+        <button id="FlipALLBackButton" onclick="FlipALLBack()">全部翻轉到背面</button>
+    </div>
+</body>
+
+<script>
+    const Cards_1=[],Cards_2=[];
+    const GameStartButton=document.getElementById("GameStartButton");
+
+    function MapCreate(Cards){
+        const GameMap=document.getElementById("GameMap");
+        GameMap.innerHTML="";
+
+        for(let a=0;a<4;a++){
+            const GameRow=document.createElement('div');
+            GameRow.className='GameRow';
+            if(a%2==0){
+                for(let b=0;b<8;b++){
+                    let rdid=Math.floor(Math.random()*Cards.length);
+                    [Cards[b],Cards[rdid]]=[Cards[rdid],Cards[b]];
+                }
+            }
+
+            for(let b=0;b<4;b++){
+                const flip_container=document.createElement('div'),flipper=document.createElement('div');
+                flip_container.className="flip-container";
+                flip_container.id="flip-container";
+                flipper.className="flipper";
+
+                const imgbg=document.createElement('img');
+                imgbg.setAttribute('class','Card back');
+                imgbg.setAttribute('src','https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEinfJ5fgf9kZai-csal_mVnQt72i2Si9Cx0o89oKM3kIETYBHkP133Oet35BsASHUaFHl5ZZPUu2XXhlw-Kzqo30C5l2K2CfRrAFIy9Y6-y9x6jFnrQVix27jd0dgsYXZQqpHCJ6s-eXZFc/s180-c/animal_rakuda_kobu_tareru.png');
+                imgbg.setAttribute('alt','Back Image');
+
+                flipper.appendChild(Cards[(a%2)*4+b].cloneNode(true));
+                flipper.appendChild(imgbg);
+
+                flip_container.appendChild(flipper);
+
+                GameRow.appendChild(flip_container);
+            }
+            GameMap.appendChild(GameRow);
+        }
+    }
+
+    function FlipSingle(event){
+        event.target.parentNode.parentNode.classList.toggle('flipped');
+    }
+
+    function FlipALL(){
+        Array.from(document.getElementsByClassName("flip-container")).forEach((e)=>{
+            e.classList.toggle('flipped');
+        });
+    }
+
+    function FlipALLFront(){
+        Array.from(document.getElementsByClassName("flip-container")).forEach((e)=>{
+            e.className='flip-container flipped';
+        });
+    }
+   
+    function FlipALLBack(){
+        Array.from(document.getElementsByClassName("flip-container")).forEach((e)=>{
+            e.className='flip-container';
+        });
+    }
+
+    function GameState1(){
+        GameStartButton.hidden=true;
+        const State2Block=document.getElementById("CardTypeChooseBlock");
+        State2Block.setAttribute("style","display:flex;");
+        State2Block.hidden=false;
+    }
+
+    function GameState2(event){
+        if(event.target.id=="CardType1")MapCreate(Cards_1);
+        else MapCreate(Cards_2);
+        
+        Array.from(document.getElementsByClassName("flip-container")).forEach(e=>{
+            e.addEventListener("click",FlipSingle);
+        });
+
+        const State2Block=document.getElementById("CardTypeChooseBlock");
+        State2Block.setAttribute("style","display:hidden;");
+        State2Block.hidden=true;
+
+        document.getElementById("GameMap").hidden=false; 
+        const GameFunctionBar=document.getElementById("GameFunctionBar");
+        GameFunctionBar.hidden=false;
+        GameFunctionBar.setAttribute("style","display:flex;");
+        
+        document.body.style.marginTop="5vh";
+
+        setTimeout(FlipALLFront,10000);
+    }
+
+    
+    Array.from(document.getElementsByTagName("img")).forEach((e)=>{
+        let ele=e.cloneNode(true);
+        ele.className='Card front';
+        ele.setAttribute("alt","Front Image");
+
+        if(Cards_1.length<8)Cards_1.push(ele);
+        else Cards_2.push(ele);
+        e.remove();
+    });
+
+    GameStartButton.addEventListener('click',GameState1);
+    document.getElementById("CardType1").addEventListener('click',GameState2);
+    document.getElementById("CardType2").addEventListener('click',GameState2);
+    
+</script>
+</html>
