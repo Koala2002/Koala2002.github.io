@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>網頁程式設計作業2024/09/25 四資工四甲 吳瑋修 41043117</title>
+
+    <style>
+        body{
+            height: 100vh;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+
+            margin:0;
+
+            background-color: rgb(30,30,30);
+        }
+
+        button{
+            height: 10vh;
+            width: 15vw;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(235, 235, 235);
+
+            box-shadow: 0 0 5px 2.5px rgba(0,0,0,0.5);
+            color: rgb(27, 27, 27);
+            font-weight:bold;
+            
+            transition: scale 0.1s;
+            
+            &:hover{
+                cursor: pointer;
+                background-color: rgb(255, 255, 255);
+                scale: 1.05;
+            }
+        }
+
+        select{
+            width: 10vw;
+            height:5vh;
+            border: 1px black solid;
+            border-radius: 5px;
+            background-color: rgb(235, 235, 235);
+            box-shadow: 0 0 5px 2.5px rgba(0,0,0,0.5);
+            color: rgb(27, 27, 27);
+            font-weight:bold;
+
+            text-align: center;
+
+            transition: scale 0.1s;
+            
+            &:hover{
+                cursor: pointer;
+                background-color: rgb(255, 255, 255);
+            }
+        
+        }
+
+        #GameStartBlock{
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+
+            width: 30vw;
+            height: 60vh;
+
+            background-color: darkgray;
+            border-radius:25px;
+
+            border:  2.5px black solid;
+            padding: 50px;
+
+            box-sizing: border-box;
+        }
+
+        #GameMap{
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: space-between;
+            
+            box-sizing: border-box;
+
+            background-color: darkgray;
+            border-radius:25px;
+
+            padding:25px;
+
+            box-sizing: border-box;
+        }
+
+        .GameRow{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .Card{
+            width:100px;
+            height: 100px;
+            
+            border:2px solid black;
+            border-radius: 5px;
+
+            box-sizing: border-box;
+
+            transition: all 0.1s;
+
+            background-color: rgb(235,235,235);
+
+            &:hover{
+                cursor: pointer;
+                scale:1.01;
+                background-color: rgb(255,255,255);
+            }
+        }
+
+        #FunctionBar{
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            
+            align-items: center;
+            justify-content: space-between;
+
+            position: absolute;
+
+            right:0;
+        
+            height: 50vh;
+            width:15vw;
+
+            padding-top: 25px;
+            padding-bottom: 25px;
+
+            background-color: darkgray;
+
+            border-radius: 25px 0 0 25px;
+        
+            box-sizing: border-box;
+        }
+
+        .CheckerBlock{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+
+
+            background-color: rgb(27, 27, 27);
+            color: rgb(255,255,255);
+            border-radius: 5px;
+        
+            height: 5vh;
+
+            padding: 5px;
+        }
+
+        /*----------------used AI----------------*/
+        .flip-container {
+            perspective: 1000px;
+        }
+
+        .flipper {
+            position: relative;
+            width: 100px; /* Set your desired width */
+            height: 100px; /* Set your desired height */
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+
+        .back {
+            transform: rotateY(180deg);
+        }
+
+        .flip-container.flipped .flipper {
+            transform: rotateY(180deg);
+        }
+        /*----------------used AI----------------*/
+
+    </style>
+
+</head>
+<body>
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEinfJ5fgf9kZai-csal_mVnQt72i2Si9Cx0o89oKM3kIETYBHkP133Oet35BsASHUaFHl5ZZPUu2XXhlw-Kzqo30C5l2K2CfRrAFIy9Y6-y9x6jFnrQVix27jd0dgsYXZQqpHCJ6s-eXZFc/s180-c/animal_rakuda_kobu_tareru.png">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEieks99OzkiAothfzTz7FbtakQMfXVPQDL6eUDMJfv_2ghB5xB0gUYsA5n-2YUHe5Adevn9YrfUjswiDQneXg1Q0uzEjIu3R9G-DJ7xvxi6nbj-XiNWool1RV3lRjy3-zKFGPySzfgQxHGw/s180-c/animal_black_sheep_hitsuji.png">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh05bFfvysjY5SwF1P_VKuIWSpZz6K3mlqFnA2uQUyGXUV51_FuiQG_uXkguwOnasKPgWV9S41KbSdxWrlbNofq1Yd5wC4_m3wY9obQeklvu-gHpov5xpCwX9MErbfrE4xvmmBob6r5oHvs/s180-c/animal_okojo_summer.png">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhy6xlfKWWn6NHtMPNU9DC10EYC9XKc7_OK0msapTZHIrmvqZLoq-z1PeXfNyXC1LHtcblqKCSmKYGRLrNHCyQAN4yWpkSJ3paF6LD_a880_fIHL7COo1mWHwmyqOZBikCnG14pBtU7Bt0m/s180-c/animal_kiboshi_iwa_hyrax.png">
+   
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj43Qf67CecA7zIR3NJUaooyxmvqD3e1O4x7qxMCMJgudBM7tE7TxP7cy-lT6m8roSpsdfQa3NZNikCVnPk-s2rpQkaZxQJ2pyjha1R-SohqlG5pH7CKev51j3Z9I19Pmakyhmgn4Gcj_W5/s180-c/hamster_sleeping_golden.png">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjO4MITeCu1xs7ze7ct_-kVgJAYsIBz3B5Km1q_NX2wWopxi6LSvVP-L30ErrwrH69pNRz-_vRT8VCWywuJiu3jbUcwzbSPzA8f5vBdbfCXgqSEkoUus80vx-ERElDIFlIJ6M7F4k2vfy93/s180-c/animal_uma_horse_stand.png">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiagPDLGbuy0TBLWUspfr_E28ropH_MkdybgCkLpaC6DGxRrm4JlC9KTcofkpPNmnXCwoSr6rvh9vaDyGfnqSA7CZUpSrOwWPCutbZdRGLIf6KTJdvkBM-LgcMluOObwrrNRTL1qIP9ewHU/s180-c/animal_moose.png">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSDqW1pujD_Am254B9S_C9tMeKiWUTrOn_Xs9mFohdPhyphenhyphenJpAmljxTCn5T8d7c32QxW-z9lXcnbbgnR_CnKXiGQfDB1ug2SW28oxVl0Y1SbWrk93ViQl1xfVYILVxGQKxnvzl3W7xqPtP1M/s180-c/animal_oomimigitsune.png">
+    
+    <img src="https://illustcenter.com/wp-content/uploads/2022/05/rdesign_14285.png">
+    <img src="https://illustcenter.com/wp-content/uploads/2021/12/rdesign_8997.png">
+    <img src="https://illustcenter.com/wp-content/uploads/2022/05/rdesign_14282.png">
+    <img src="https://illustcenter.com/wp-content/uploads/2021/12/rdesign_8979.png">
+    <img src="https://illustcenter.com/wp-content/uploads/2021/12/rdesign_8982.png">
+    <img src="https://illustcenter.com/wp-content/uploads/2022/05/rdesign_14291.png">
+    <img src="https://illustcenter.com/wp-content/uploads/2021/12/rdesign_8993.png">
+    <img src="https://illustcenter.com/wp-content/uploads/2021/12/rdesign_8995.png">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiFpzihLDtaJKxmLYkMgbQMKU1McqVGJ7smqcWb7vq1lJLJLPrds4IiD8CT4P_SPBAFHJ-8wRq4ssZIb-SPo3vzgeNis2Dqt3FQ13im_p9Y4_jxpC07cj9MMNHtAykpf7eENIgiTX7ArMw/s400/character_isshi-.png">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiIjFm_12POf78otOr85NBODhj_2tPQD-MUmbFKNTnyxRYSZ8RiyT9c4iC2tzqzm_8bbL22t28-wS6wfDq5cgjkcdc0gA6lf6Ps4BSwI0r5wIreILhvtHZQWIyRdk0felzg-JGYVmJeKvMT/s400/dinosaur_protoceratops.png">
+
+    <audio id="winSound" src="win.mp3"></audio>
+    <audio id="loseSound" src="lose.mp3"></audio>
+
+    <div id="GameFunctionBar" hidden>
+        <button id="FlipALLButton" onclick="FlipALL()">全部翻轉</button>
+        <button id="FlipALLFrontButton" onclick="FlipALLFront()">全部翻轉到正面</button>
+        <button id="FlipALLBackButton" onclick="FlipALLBack()">全部翻轉到背面</button>
+    </div>
+</body>
+
+<script>
+    
+
+    var CardType=0,GameSize=2,GameDelayTime=1000,InGame=0;
+    var CardState=[],PreCard=null;
+
+    const Cards=[[],[]];
+    const GameStartButton=document.getElementById("GameStartButton");
+
+    function GameStart(){
+        let GameStartBlock;
+
+        GameStartBlock=document.createElement("div");
+        GameStartBlock.id="GameStartBlock";
+
+        let GameStartButton,CardTypeSelect,GameSizeSelect;
+        GameStartButton=document.createElement("button");
+        CardTypeSelect=document.createElement("select");
+        GameSizeSelect=document.createElement("select");
+        GameLevelSelect=document.createElement("select");
+        
+        GameStartButton.innerText = "遊戲開始";
+        GameStartButton.id="GameStartButton";
+
+        for(let i=0;i<2;i++){
+            let option=document.createElement("option");
+            option.value = i;
+            option.innerText ="卡片樣式-"+i;
+            CardTypeSelect.appendChild(option);
+        }
+
+        for(let i=2;i<=6;i+=2){
+            let option=document.createElement("option");
+            option.value = i;
+            option.innerText = "大小-"+i;
+            GameSizeSelect.appendChild(option);
+        }
+
+        for(let i=1;i<=5;i++){
+            let option=document.createElement("option");
+            option.value = 12000-i*2000;
+            option.innerText = "難度-"+i;
+            GameLevelSelect.appendChild(option);    
+        }
+
+        GameStartButton.addEventListener("click",()=>{
+            GameStartBlock.remove();
+            CardType=CardTypeSelect.value;
+            GameSize=GameSizeSelect.value;
+            GameDelayTime=GameLevelSelect.value;
+            GamePlay();
+        });
+
+        GameStartBlock.appendChild(GameStartButton);
+        GameStartBlock.appendChild(CardTypeSelect);
+        GameStartBlock.appendChild(GameSizeSelect);
+        GameStartBlock.appendChild(GameLevelSelect);
+
+        document.body.appendChild(GameStartBlock);
+    }
+    
+    function FlipSingle(event){
+        if(InGame){
+            const card=event.target.parentNode.getElementsByClassName("front")[0];
+            const cardID=card.id.substring(5);
+                
+            if(PreCard!=null &&PreCard.id==card.id){
+                event.target.parentNode.parentNode.classList.toggle('flipped');
+                
+                InGame=0;
+                setTimeout(()=>{
+                    document.getElementById("winSound").play();
+                    card.hidden = document.getElementById("CorrectDisplayChecker").checked?false:true; 
+                    PreCard.hidden = document.getElementById("CorrectDisplayChecker").checked?false:true; 
+                
+                    PreCard=null;
+                    InGame=1;
+                },300);
+
+                CardState[cardID]=2;
+            }
+            else {
+                if(CardState[cardID]==2)return;
+
+                event.target.parentNode.parentNode.classList.toggle('flipped');
+
+                if(PreCard!=null&&PreCard.id!=card.id){
+                    CardState[cardID]=0;
+                    CardState[PreCard.id.substring(5)]=0;
+                    
+                    InGame=0;
+                    setTimeout(()=>{
+                        document.getElementById("loseSound").play();
+                    },300);
+
+                    setTimeout(()=>{
+                        event.target.parentNode.parentNode.classList.toggle('flipped');
+                        PreCard.parentNode.parentNode.classList.toggle('flipped');    
+                        InGame=1;
+                        PreCard=null;
+                    },600);
+
+                    
+                }
+                else{
+                    CardState[cardID]=1;
+                    PreCard=card;
+                }
+            }
+        }
+    }
+
+    function FlipALL(){
+        Array.from(document.getElementsByClassName("flip-container")).forEach((e)=>{
+            e.classList.toggle('flipped');
+        });
+    }
+
+    function FlipALLFront(){
+        Array.from(document.getElementsByClassName("flip-container")).forEach((e)=>{
+            e.className='flip-container flipped';
+        });
+    }
+   
+    function FlipALLBack(){
+        Array.from(document.getElementsByClassName("flip-container")).forEach((e)=>{
+            e.className='flip-container';
+        });
+    }
+
+
+    function MapCreate(){
+        let GameMap;
+        if(GameMap=document.getElementById("GameMap"))GameMap.remove();
+        
+        GameMap=document.createElement("div");
+        GameMap.id="GameMap";
+        GameMap.style.width=(50+GameSize*101+(GameSize-1)*2)+"px";
+        GameMap.style.height=(50+GameSize*101+(GameSize-1)*2)+"px";
+
+        let GameCards=[];
+        for(let i=0;i<GameSize*GameSize;i++)GameCards.push(Cards[CardType][Math.floor(i/2)]);
+        
+       
+        for(let b=0;b<GameSize*GameSize/2;b++){
+            let rdid=Math.floor(Math.random()*GameCards.length);
+            [GameCards[b],GameCards[rdid]]=[GameCards[rdid],GameCards[b]];
+        }
+
+        for(let a=0;a<GameSize;a++){
+            const GameRow=document.createElement('div');
+            GameRow.className='GameRow';
+            GameRow.style.width=(GameSize*101+(GameSize-1)*2)+"px";
+            
+
+            for(let b=0;b<GameSize;b++){
+                const flip_container=document.createElement('div'),flipper=document.createElement('div');
+                flip_container.className="flip-container";
+                flip_container.id="flip-container";
+                flipper.className="flipper";
+
+                const imgbg=document.createElement('img');
+                imgbg.setAttribute('class','Card back');
+                imgbg.setAttribute('src','https://cdn.pixabay.com/photo/2022/05/03/11/11/background-7171509_640.jpg');
+                imgbg.setAttribute('alt','Back Image');
+                
+                flipper.appendChild(GameCards[a*GameSize+b].cloneNode(true));
+                flipper.appendChild(imgbg);
+                flipper.addEventListener("click",FlipSingle);
+
+                flip_container.appendChild(flipper);
+
+                GameRow.appendChild(flip_container);
+            }
+            GameMap.appendChild(GameRow);
+        }
+
+        document.body.appendChild(GameMap);
+    }
+
+    function FunctionBarCreate(){
+        let FunctionBar;
+        if(FunctionBar=document.getElementById("FunctionBar"))FunctionBar.remove();
+
+        FunctionBar=document.createElement("div");
+        FunctionBar.id="FunctionBar";
+        
+        let CheckerBlock=document.createElement("div");
+        CheckerBlock.className="CheckerBlock";
+
+        let CorrectDisplayChecker=document.createElement("input");
+        CorrectDisplayChecker.setAttribute("type","checkbox");
+        CorrectDisplayChecker.checked=true;
+        CorrectDisplayChecker.id="CorrectDisplayChecker";
+    
+        CorrectDisplayChecker.addEventListener("change",(e)=>{
+            let cards=document.getElementsByClassName("Card front");
+           
+            for(let i=0;i<cards.length;i++){
+                if(CardState[cards[i].id.substring(5)]==2){
+                    cards[i].hidden=e.target.checked?false:true;
+                }
+            }
+        });
+
+        let CDClabel=document.createElement("label");
+        CDClabel.setAttribute("for","CorrectDisplayChecker");
+        CDClabel.innerText="顯示配對成功的卡牌";
+    
+        CheckerBlock.appendChild(CorrectDisplayChecker);
+        CheckerBlock.appendChild(CDClabel);
+
+        FunctionBar.appendChild(CheckerBlock);
+
+        document.body.appendChild(FunctionBar);
+    }
+    
+    function GamePlay(){
+        MapCreate();
+        FunctionBarCreate();
+        setTimeout(()=>{
+            FlipALLFront();
+            InGame=1;
+        },GameDelayTime);
+    }
+
+    Array.from(document.getElementsByTagName("img")).forEach((e)=>{
+        let ele=e.cloneNode(true);
+        ele.className='Card front';
+        ele.setAttribute("alt","Front Image");
+        if(Cards[0].length<18){
+            ele.id="Card-"+Cards[0].length;
+            Cards[0].push(ele);
+        }
+        else {
+            ele.id="Card-"+Cards[1].length;
+            Cards[1].push(ele);
+        }
+        e.remove();
+    });
+
+    for(let i=0;i<18;i++)CardState.push(0);
+
+    GameStart();
+</script>
+</html>
