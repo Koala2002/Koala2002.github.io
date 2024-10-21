@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>聯絡 - 吳瑋修</title>
+
+    <style>
+        body {
+            background-color: rgb(30, 30, 30);
+            color: white;
+        }
+
+        .contact-section {
+            padding: 40px 20px;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 頁首 -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="41043117_20241016.html">無尾熊の網頁程式設計作業</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="41043117_20241016_aboutme.html">關於</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="41043117_20241016_contactme.html">聯絡</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- 聯絡區塊 -->
+<div class="contact-section">
+    <div class="container">
+        <h2 class="text-center">聯絡我</h2>
+        <p class="text-center">如有任何問題或合作意向，歡迎填寫以下表單！</p>
+        <form>
+            <div class="mb-3">
+                <label for="name" class="form-label">姓名</label>
+                <input type="text" class="form-control" id="name" placeholder="請輸入您的姓名" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">電子郵件</label>
+                <input type="email" class="form-control" id="email" placeholder="請輸入您的電子郵件" required>
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">訊息</label>
+                <textarea class="form-control" id="message" rows="4" placeholder="請輸入您的訊息" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">發送訊息</button>
+        </form>
+    </div>
+</div>
+
+<!-- 頁尾 -->
+<footer>
+    <p>© 2024 吳瑋修 - 四資工四甲 41043117</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

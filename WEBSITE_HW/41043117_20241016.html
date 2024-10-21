@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>網頁程式設計作業2024/10/16 四資工四甲 吳瑋修 41043117</title>
+
+    <style>
+        body {
+            background-color: rgb(30, 30, 30);
+        }
+
+        .carousel {
+            border: rgb(30, 30, 30) solid 5px;
+            border-radius: 10px;
+            width: 50%; /* 設定寬度為 50% */
+            margin: auto; /* 置中顯示 */
+        }
+        .carousel-inner img {
+            width: 100%; /* 確保圖片填滿容器 */
+            height: 50vh; /* 自適應高度 */
+            object-fit: cover; 
+        }
+
+        .carousel-caption.d-none.d-md-block p {
+            background-color: rgba(30, 30, 30, 0.9);
+            border-radius: 10px;
+            color: rgba(235, 235, 235);
+        }
+
+        .intro-section {
+            text-align: center; /* 置中顯示 */
+            padding: 40px 0; /* 上下內距 */
+            background-color: #f8f9fa; /* 背景顏色 */
+        }
+
+        .works-section {
+            padding: 40px 0; /* 上下內距 */
+            background-color: #e9ecef; /* 背景顏色 */
+        }
+
+        h2 {
+            margin-bottom: 30px; /* 標題下方間距 */
+        }
+        .embed-responsive {
+            margin-bottom: 0; /* 取消影片下方間距 */
+        }
+
+        footer {
+            background-color: #343a40; /* 頁尾背景顏色 */
+            color: white; /* 頁尾文字顏色 */
+            padding: 10px 0; /* 上下內距 */
+            text-align: center; /* 置中顯示 */
+        }
+    </style>
+</head>
+<body>
+
+<!-- 頁首 -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="41043117_20241016.html">無尾熊の網頁程式設計作業</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto"> <!-- 使用 ms-auto 使導航項目靠右 -->
+                <li class="nav-item">
+                    <a class="nav-link" href="41043117_20241016_aboutme.html">關於</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="41043117_20241016_contactme.html">聯絡</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- 輪播圖片 -->
+<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://csie.nfu.edu.tw/upload/imgDB/202407301406124d40.jpg" class="d-block w-100" alt="第一張圖片">
+            <div class="carousel-caption d-none d-md-block">
+                <p>第九屆科技大專校院程式設計競賽 金獎第一</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="https://csie.nfu.edu.tw/upload/imgDB/202307041351488N80.jpg" class="d-block w-100" alt="第二張圖片">
+            <div class="carousel-caption d-none d-md-block">
+                <p>第八屆科技大專校院程式設計競賽 金獎第三</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="https://csie.nfu.edu.tw/upload/imgDB/202304100845051OMw.jpg" class="d-block w-100" alt="第三張圖片">
+            <div class="carousel-caption d-none d-md-block">
+                <p>ICPC 桃園區賽 銅牌55th</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="https://csie.nfu.edu.tw/upload/imgDB/20230113102054x0i7.jpg" class="d-block w-100" alt="第四張圖片">
+            <div class="carousel-caption d-none d-md-block">
+                <p>第七屆科技大專校院程式設計競賽 金獎第一</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">上一個</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">下一個</span>
+    </button>
+</div>
+
+<!-- 自我介紹區塊 -->
+<div class="intro-section">
+    <h2>自我介紹</h2>
+    <p>你好，我是吳瑋修，一名來自虎尾科技大學資訊工程系的競程選手。</p>
+    <a href="#works" class="btn btn-primary">查看我的作品</a>
+</div>
+
+<!-- 作品區塊 -->
+<div id="works" class="works-section">
+    <h2 class="text-center">我的作品</h2>
+    <p class="text-center">這裡是我的作品展示，包含各種專案與程式。</p>
+    <div class="container">
+        <div class="row justify-content-center text-center"> <!-- 使用 justify-content-center -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">剪刀石頭布</h5>
+                        <p class="card-text">就是剪刀石頭布</p>
+                        <a href="https://koala2002.github.io/WEBSITE_HW/41043117_20240918.html" class="btn btn-primary">查看作品</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">記憶大考驗</h5>
+                        <p class="card-text">就是翻卡牌遊戲</p>
+                        <a href="https://koala2002.github.io/WEBSITE_HW/41043117_20241009.html" class="btn btn-primary">查看作品</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- YouTube 影片區塊 -->
+<div class="container-fluid mt-0 text-center" style="background-color: white; color: black; padding: 20px;">
+    <h2 class="text-center text-dark">我的影片</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/wTMmQSPs8eQ" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Bm8_8207G8E" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/WKT2TWioovA" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 頁尾 -->
+<footer>
+    <p>© 2024 吳瑋修 - 四資工四甲 41043117</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
