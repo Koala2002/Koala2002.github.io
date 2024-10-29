@@ -461,7 +461,7 @@ function collisionDetection() {
                             brickCount--;
                             score+=GameStage*GamePoint[GameMode];
                             if(score>bonus){
-                                live+=Math.floor(Math.random()*2);
+                                lives+=Math.floor(Math.random()*2);
                                 bonus+=100;
                             }
                             AddItem(b.x,b.y);
