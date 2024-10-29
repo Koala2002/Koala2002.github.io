@@ -96,12 +96,12 @@
 <body class="d-flex flex-column">
     <div class="content">
         <div class="container my-4">
-            <h1 id="GameTitle" >打磚塊遊戲</h1>
+            <h1 id="GameTitle" style="user-select:none;" >打磚塊遊戲</h1>
         </div>
         <canvas class="GameObj" id="GameStatus" width="900" height="60" style="display: none;"></canvas>
+        <canvas class="GameObj" id="SkillStatus" width="100" height="25" style="display: none;"></canvas>
         <canvas class="GameObj" id="myCanvas" width="900" height="450" style="display: none;"></canvas>
-        <p class="GameObj" id="GameDescription" style="display: none;">遊戲說明：⬅️➡️移動擋板、shift鍵加速、Q鍵使用技能</p>
-    
+        <p class="GameObj" id="GameDescription" style="user-select:none;display: none;">遊戲說明：⬅️➡️移動擋板、shift鍵加速、Q鍵使用效果持續5秒的技能(🍺:分數加倍、⚔️:對方塊傷害加倍)</p>
         
         <div id="GameMode-Select-Block">
             <button id="easy" onclick="GameInit('easy')">簡單模式</button>
@@ -120,7 +120,7 @@
     
 
       <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-4">
+    <footer class="bg-dark text-white text-center py-4" style="user-select:none;">
         <div class="container">
             <p>©國立虎尾科技大學 四資工四甲 吳瑋修 41043117</p>
         </div>
@@ -161,7 +161,7 @@
     O 2.視覺特效：設計磚塊被擊破時的爆炸或閃光動畫效果，提升遊戲的視覺體驗。
    
     ※Bonus:
-    2.道具可保留或是過關後隨機抽選道具，下一場直接使用。
+    2.(每個關卡獲得隨機技能)道具可保留或是過關後隨機抽選道具，下一場直接使用。
  
     -->
 </body>

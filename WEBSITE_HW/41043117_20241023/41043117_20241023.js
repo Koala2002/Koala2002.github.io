@@ -1,11 +1,16 @@
 const canvas = document.getElementById('myCanvas');
 const gstatus=document.getElementById('GameStatus');
+const skillstatus=document.getElementById('SkillStatus');
 
 const ctx = canvas.getContext('2d');
 const gs=gstatus.getContext('2d');
+const ss=skillstatus.getContext('2d');
 
 ctx.textBaseline = 'middle';
 ctx.textAlign = 'center';
+ss.textBaseline='middle';
+ss.textAlign='center';
+
 
 // 球
 let ballRadius = 10;
@@ -28,7 +33,7 @@ let bricks = [],brickCount=0,items=[];
 
 let score = 0,bonus=100;
 let lives = 3,atk=1;
-let skillcoolDown=10,CurSkill;
+let skillcoolDown=0,skilleffectTime=0,CurSkill;
 
 let GameID=null,GameMode,GameStage=1,GameAnime=0;
 
@@ -110,7 +115,7 @@ const ItemImg={
 let rightPressed = false;
 let leftPressed = false;
 let shiftPressed = false;
-
+let qPressed=false;
 document.addEventListener('keydown', (e)=>{
     if (e.key === 'Right' || e.key === 'ArrowRight') {
         rightPressed = true;
@@ -118,6 +123,7 @@ document.addEventListener('keydown', (e)=>{
         leftPressed = true;
     }
     else if(e.key==="Shift")shiftPressed=true;
+    else if(e.key === 'q' || e.key === 'Q')qPressed=true;
 }, false);
 
 document.addEventListener('keyup', (e)=>{
@@ -127,6 +133,13 @@ document.addEventListener('keyup', (e)=>{
         leftPressed = false;
     }
     else if(e.key==="Shift")shiftPressed=false;
+    else if(e.key === 'q' || e.key === 'Q'){
+        qPressed=false;
+        if(skillcoolDown==0){
+            skillcoolDown = 3000;
+            skilleffectTime=750;
+        }
+    }
 }, false);
 
 /*Animation*/
@@ -223,6 +236,8 @@ function GameOver(){
 function DrawStageClearedAnimation(light){
     gs.clearRect(0,0,gstatus.width,gstatus.height);
     ctx.clearRect(0,0,canvas.width,canvas.height);
+    ss.clearRect(0,0,skillstatus.width,skillstatus.height);
+   
     ctx.font='54pt Arial';
     ctx.fillStyle=light?"#fefefe":"#ddddee";
         
@@ -235,6 +250,8 @@ function DrawStageClearedAnimation(light){
 function DrawNextLevelAnimation(light){
     gs.clearRect(0,0,gstatus.width,gstatus.height);
     ctx.clearRect(0,0,canvas.width,canvas.height);
+    ss.clearRect(0,0,skillstatus.width,skillstatus.height);
+   
     ctx.font='54pt Arial';
     ctx.fillStyle=light?"#fefefe":"#ddddee";
         
@@ -246,8 +263,9 @@ function DrawNextLevelAnimation(light){
 
 function DrawGameOverAnimation(light) {
     gs.clearRect(0, 0, gstatus.width, gstatus.height);
-    ctx.clearRect(0, 0, 900, 450);
-
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ss.clearRect(0,0,skillstatus.width,skillstatus.height);
+   
     ctx.font = '54pt Arial';
     ctx.fillStyle = light ? "#fefefe" : "#ddddee";
 
@@ -260,6 +278,8 @@ function DrawGameOverAnimation(light) {
 function DrawScoreAnimation(light){
     gs.clearRect(0,0,gstatus.width,gstatus.height);
     ctx.clearRect(0,0,canvas.width,canvas.height);
+    ss.clearRect(0,0,skillstatus.width,skillstatus.height);
+   
     ctx.font='54pt Arial';
     ctx.fillStyle=light?"#fefefe":"#ddddee";
         
@@ -273,6 +293,8 @@ function DrawScoreAnimation(light){
 function DrawRestartAnimation(light){
     gs.clearRect(0,0,gstatus.width,gstatus.height);
     ctx.clearRect(0,0,canvas.width,canvas.height);
+    ss.clearRect(0,0,skillstatus.width,skillstatus.height);
+   
     ctx.font='54pt Arial';
     ctx.fillStyle=light?"#fefefe":"#ddddee";
         
@@ -287,6 +309,8 @@ function DrawRestartAnimation(light){
 function DrawCountDown(time){
     gs.clearRect(0,0,gstatus.width,gstatus.height);
     ctx.clearRect(0,0,canvas.width,canvas.height);
+    ss.clearRect(0,0,skillstatus.width,skillstatus.height);
+   
     ctx.font='54pt Arial';
     ctx.fillStyle="#fefefe";
         
@@ -329,7 +353,9 @@ function drawBall() {
         ctx.shadowOffsetY = 0; // 光暈垂直偏移
         ctx.beginPath();
         ctx.arc(Balls[i].x, Balls[i].y, ballRadius, 0, Math.PI * 2);
-        ctx.fillStyle = i?"rgb(20,205,225)":"rgb(235,235,235)";
+        
+        if(!i&&skilleffectTime)ctx.fillStyle="rgba("+(Math.floor(Math.random()*255))+","+(Math.floor(Math.random()*255))+","+(Math.floor(Math.random()*255))+")";
+        else ctx.fillStyle = i?"rgb(35,205,235)":"rgb(235,235,235)";
         ctx.fill();
         ctx.closePath();
         ctx.shadowColor = 'transparent'; // 取消光暈
@@ -454,12 +480,16 @@ function collisionDetection() {
                         
                         ball.dy = ball.dy>0?-nxtdy:nxtdy;
 
-                        b.status --;
+                        if(skilleffectTime&&CurSkill=="ATKUP")b.status=Math.max(b.status-2,0);
+                        else b.status--;
+
                         b.display=1;
                         
                         if(b.status===0){
                             brickCount--;
-                            score+=GameStage*GamePoint[GameMode];
+                            if(skilleffectTime&&CurSkill=="POINTUP")score+=2*GameStage*GamePoint[GameMode];
+                            else score+=GameStage*GamePoint[GameMode];
+
                             if(score>bonus){
                                 lives+=Math.floor(Math.random()*2);
                                 bonus+=100;
@@ -590,13 +620,16 @@ function GameInit(mode,stage){
         GameStage=1;
         lives = GameLive[GameMode];
     }
-    console.log(GameMode,GameStage);
+    
     document.getElementById("GameMode-Select-Block").style.display = "none";
     document.getElementById("TryAgain-Block").style.display = "none";
     Array.from(document.getElementsByClassName("GameObj")).forEach(obj=>{
         obj.style.display = "block";
     });
+    CurSkill=skill[Math.floor(Math.random()*2)];
 
+    skillcoolDown=0;
+    skilleffectTime=0;
     GameAnime=0;
     paddleX = (canvas.width - paddleWidth) / 2;
     paddleWidth = 100;
@@ -631,6 +664,16 @@ function GameInit(mode,stage){
     GameStartCountDown();
 }
 
+function skillCoolUpdate() {
+    if(skillcoolDown)skillcoolDown--;
+    if(skilleffectTime)skilleffectTime--;
+    ss.font="14pt Arial";
+    ss.fillText(skillImg[CurSkill],skillstatus.width/2,skillstatus.height/2);
+
+    ss.fillStyle="rgba(255,255,255,0.4)";
+    ss.fillRect(0,0,skillstatus.width*(skillcoolDown/2250),skillstatus.height);
+}
+
 function GameUpdate() {
     if(GameAnime) return;
     gs.clearRect(0, 0, gstatus.width, gstatus.height);
@@ -642,6 +685,8 @@ function GameUpdate() {
     drawBall();
     drawPaddle();
     drawItems();
+    ss.clearRect(0,0,skillstatus.width,skillstatus.height);
+    skillCoolUpdate();
 
     collisionDetection();
     OutSideDetection();
