@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>打磚塊遊戲</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   
+   <style>
+        html, body {
+            height: 100%;
+        }
+        /* 讓頁面內容區域自動填滿並居中 */
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        /* footer 設置 */
+        footer {
+            background-color: rgb(40, 45, 50); /* 深色背景 */
+            color: white; /* 白色文字 */
+        }
+
+        canvas {
+            background: rgb(40, 45, 50);
+            
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button{
+            width: 10vw;
+            height: 7.5vh;
+
+            border-radius: 5px;
+            border: none;
+            transition: all 0.1s;
+            
+            user-select: none;
+
+            font-size: 14pt;
+          
+            box-shadow: 0px 0px 5px 5px rgba(30,30,30,0.5);
+
+            &:hover{
+                scale: 1.05;
+                cursor: pointer;
+            }
+        }
+
+        h1{font-weight: bold;}
+
+        #GameMode-Select-Block{
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        
+            background-color: rgb(40, 45, 50);
+        
+            width: 15vw;
+            height: 35vh;
+
+            border-radius: 15px;
+            
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        #TryAgain-Block{
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        
+            background-color: rgb(40, 45, 50);
+        
+            width: 15vw;
+            height: 25vh;
+
+            border-radius: 15px;
+            
+            padding: 20px;
+            box-sizing: border-box;    
+        }
+
+    </style>
+</head>
+<body class="d-flex flex-column">
+    <div class="content">
+        <div class="container my-4">
+            <h1 id="GameTitle" >打磚塊遊戲</h1>
+        </div>
+        <canvas class="GameObj" id="GameStatus" width="900" height="60" style="display: none;"></canvas>
+        <canvas class="GameObj" id="myCanvas" width="900" height="450" style="display: none;"></canvas>
+        <p class="GameObj" id="GameDescription" style="display: none;">遊戲說明：⬅️➡️移動擋板、shift鍵加速、Q鍵使用技能</p>
+    
+        
+        <div id="GameMode-Select-Block">
+            <button id="easy" onclick="GameInit('easy')">簡單模式</button>
+            <button id="normal" onclick="GameInit('normal')">一般模式</button>
+            <button id="hard" onclick="GameInit('hard')">困難模式</button>
+        </div>
+
+        <div id="TryAgain-Block" style="display: none;">
+            <button id="try-again-button" onclick="GameInit()">再玩一次遊戲</button>
+            <button id="back-to-difficulty-choose-button" onclick="BackToMenu()">重新選擇難度</button>
+        </div>
+    </div>
+    
+    <script src="41043117_20241023.js"></script>
+
+    
+
+      <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p>©國立虎尾科技大學 四資工四甲 吳瑋修 41043117</p>
+        </div>
+    </footer>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!--
+    O 1.玩家控制的擋板：滑鼠或鍵盤控制擋板左右移動，防止球掉落。
+    O 2.磚塊動態生成：在遊戲開始時生成磚塊。
+    O 3.球的物理運動：實現球的反彈和運動，碰到擋板或磚塊改變方向。
+    O 4.分數系統：擊破磚塊獲得分數，顯示當前得分。
+    O 5.遊戲結束判定：當球掉落到底部，遊戲結束並顯示結果。
+    O 6.重啟關卡選項：遊戲結束後允許重新開始當前關卡。
+    O 7.特殊磚塊：加入需要多次擊打的磚塊(顯示需擊打次數及顏色區分)。
+    O 8.遊戲難度選擇：在遊戲開始前提供簡單、中等、困難等難度選項。
+    O 簡單：球速較慢，磚塊數量少，磚塊強度最低（一次擊打即可破壞）。
+    O 中等：球速中等，磚塊數量較多，部分磚塊需要多次擊打。
+    O 困難：球速較快，磚塊數量多，並包含大量多次擊打的磚塊。
+
+    簡單（需選3項以上）：
+    O 3.限制生命次數：每關提供固定數量的生命，球掉落時減少生命，生命用完遊戲結束。
+    O 4.球的尾跡效果：為移動中的球增加尾跡效果，讓球在運動過程中留下視覺痕跡，增強動態感。
+    O 5.簡單的過關動畫：當所有磚塊被擊破後，顯示過關動畫，並跳轉到下一關卡。
+
+    中等（需選5項以上）：
+    O 1.多個關卡：設計多達3-5個不同的關卡，每個關卡有不同的磚塊排列和難度。
+    O 2.升級和降級道具：加入隨機掉落的升級道具，像擴大(縮小)擋板、加速(減速)球，並實現道具的時效性效果。
+    補充說明：擴大(縮小)擋板：持續{5}秒或直到下次擊球。加速(減速)球：將球的速度提高(減速){50%}，持續{10}秒。
+    O 4.獎勵時間延長：當達到特定分數時，可以隨機延長遊戲時間或增加生命。
+    O 6.多球模式：在某些關卡或使用特定道具時，同時有多顆球在運動。
+    O 7.隱藏磚塊：設計某些隱藏磚塊，只有當球碰到某些位置時才顯示出來並可擊破，增加探索性。
+    
+    
+    困難（需選1項以上）：
+    O 1.特殊道具：擊破後會掉落道具(增加時間和球數和額外功能(貫穿、分裂球、球更換顏色(擊打強度改變)等)。
+    O 2.視覺特效：設計磚塊被擊破時的爆炸或閃光動畫效果，提升遊戲的視覺體驗。
+   
+    ※Bonus:
+    2.道具可保留或是過關後隨機抽選道具，下一場直接使用。
+ 
+    -->
+</body>
+</html>
