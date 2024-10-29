@@ -310,7 +310,7 @@ function DrawGameStatus() {
     const hpos = (gstatus.height + parseInt(gs.font, 10) / 2) / 2;
     const sectionWidth = gstatus.width / 4; // 將區域數改為四等份
 
-    gs.fillText('Point💠: ' + score, sectionWidth / 2 - gs.measureText('Point💠: ' + score).width / 2, hpos);
+    gs.fillText('Score💠: ' + score, sectionWidth / 2 - gs.measureText('Score💠: ' + score).width / 2, hpos);
 
     gs.fillText('HP❤️: ' + lives, sectionWidth + sectionWidth / 2 - gs.measureText('HP❤️: ' + lives).width / 2, hpos);
 
@@ -354,11 +354,16 @@ function drawTrails(){
 }
 
 function drawPaddle() {
+    ctx.shadowColor="rgba(255, 255, 255,0.5)";
+    ctx.shadowBlur = 5; // 光暈模糊程度
+    ctx.shadowOffsetX = 0; // 光暈水平偏移
+    ctx.shadowOffsetY = 0; // 光暈垂直偏移
     ctx.beginPath();
     ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
-    ctx.fillStyle = '#0095DD';
+    ctx.fillStyle = '#ee95DD';
     ctx.fill();
     ctx.closePath();
+    ctx.shadowColor="transparent";
 }
 
 function drawBricks() {
